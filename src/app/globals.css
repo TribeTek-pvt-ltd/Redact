@@ -1,7 +1,7 @@
 @import "tailwindcss";
 /* Shining stroke animation */
-/* @keyframes glow-slide {
-  0% {
+ @keyframes glow-slide {
+  /* 0% {
     background-position: 0% 50%;
   }
   50% {
@@ -9,11 +9,11 @@
   }
   100% {
     background-position: 0% 50%;
-  }
+  } */
 }
 
 .hero-glow span {
-  border-radius: inherit;
+  /* border-radius: inherit;
   border-width: 2px;
   border-image-slice: 1;
   border-image-source: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
@@ -29,5 +29,20 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: glow-slide 3s linear infinite;
-  pointer-events: none;
+  pointer-events: none; */
+  z-index: 10;
+} 
+
+/* Global styles */
+/* body {
+  @apply bg-white-off text-black min-h-screen;
 } */
+
+nav {
+  @apply shadow-md;
+}
+
+button {
+  position: relative;
+  z-index: 30;
+}
