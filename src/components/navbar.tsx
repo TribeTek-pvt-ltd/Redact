@@ -4,39 +4,48 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FiMenu, FiX } from 'react-icons/fi';
-import Button from './Button'; // Import the new Button component
+import Button from '@/components/Button'; // Import the new Button component
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const menuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
+  };
 
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-black sticky top-0 z-10"
+      className="bg-black sticky top-0 z-50 shadow-md"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/">
-              <span className="text-3xl font-bold font-mono tracking-tight text-white">REDACT</span>
+            <Link href="/" aria-label="Home">
+              <img src="/images/logo.png" alt="Redact Media Logo" className="h-20 w-auto max-h-full" />
             </Link>
           </div>
 
           {/* Desktop Nav Items */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
+            <Link href="/" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               Work
             </Link>
-            <Link href="/projects" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
+            <Link href="/projects" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               Services
             </Link>
-            <Link href="/about" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
+            <Link href="/about" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               About Us
             </Link>
-            <Link href="/services" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
+            <Link href="/services" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               Pricing
             </Link>
           </div>
@@ -48,7 +57,12 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white text-2xl">
+            <button
+              onClick={toggleMenu}
+              className="text-white text-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 p-1 rounded"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+            >
               {isOpen ? <FiX /> : <FiMenu />}
             </button>
           </div>
@@ -58,21 +72,22 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden bg-black px-4 pb-4 space-y-3"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={menuVariants}
+          className="md:hidden bg-black px-4 py-4 space-y-4"
         >
-          <Link href="/" className="block text-white hover:text-blue-400 text-lg">
+          <Link href="/" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>
             Work
           </Link>
-          <Link href="/projects" className="block text-white hover:text-blue-400 text-lg">
+          <Link href="/projects" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>
             Services
           </Link>
-          <Link href="/about" className="block text-white hover:text-blue-400 text-lg">
+          <Link href="/about" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>
             About Us
           </Link>
-          <Link href="/services" className="block text-white hover:text-blue-400 text-lg">
+          <Link href="/services" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>
             Pricing
           </Link>
           <Button href="/contact">Let's Talk</Button>

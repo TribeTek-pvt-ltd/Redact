@@ -1,7 +1,8 @@
 @import "tailwindcss";
+
 /* Shining stroke animation */
- @keyframes glow-slide {
-  /* 0% {
+@keyframes glow-slide {
+  0% {
     background-position: 0% 50%;
   }
   50% {
@@ -9,7 +10,7 @@
   }
   100% {
     background-position: 0% 50%;
-  } */
+  }
 }
 
 .hero-glow span {
@@ -21,28 +22,42 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 20;
-  background: linear-gradient(270deg, #3b82f6, #a855f7, #ec4899, #3b82f6);
+  height: 100%; */
+  z-index: 10;
+  /* background: linear-gradient(270deg, #3b82f6, #a855f7, #ec4899, #3b82f6);
   background-size: 600% 600%;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: glow-slide 3s linear infinite;
   pointer-events: none; */
-  z-index: 10;
-} 
+}
 
 /* Global styles */
-/* body {
-  @apply bg-white-off text-black min-h-screen;
-} */
+body {
+  @apply bg-gray-50 text-gray-900 min-h-screen;
+  /* Replace white-off with a Tailwind default or define in tailwind.config.js */
+}
 
 nav {
   @apply shadow-md;
 }
 
 button {
-  position: relative;
-  z-index: 30;
+  @apply relative z-30;
+  /* Ensure buttons stay above other elements */
+}
+
+/* Optional: Style for hero button glow */
+.button-glow {
+  @apply relative;
+}
+.button-glow::before {
+  content: '';
+  @apply absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-75 blur;
+  z-index: -1;
+  transition: opacity 0.3s;
+}
+.button-glow:hover::before {
+  opacity: 100;
 }
