@@ -8,6 +8,8 @@ interface StatsNumber {
   title: string;
 }
 
+//Commit changes
+
 const StatCard: React.FC<StatsNumber> = ({ number, title }) => {
   const count = useMotionValue(0);
   const [display, setDisplay] = useState(0);
@@ -27,7 +29,7 @@ const StatCard: React.FC<StatsNumber> = ({ number, title }) => {
   }, [number, count]);
 
   return (
-    <div className="flex  flex-col items-center p-4 rounded-2xl shadow-md">
+    <div className="flex  flex-col items-center p-4 rounded-2xl ">
       <motion.h2 className="text-8xl md:text-9xl text-center font-bold text-blue-500">
         {display}+
       </motion.h2>
