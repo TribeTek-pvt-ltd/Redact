@@ -15,7 +15,7 @@ export default function Services() {
   return (
     <div>
       <SecondaryHero
-        heading={<p>Our Services</p>} // Updated heading
+        heading={"Our Services"} // Updated heading
         body="We offer a wide range of creative services designed to bring your vision to life. Explore our expertise and see how we can help you succeed." // Updated body
       />
 

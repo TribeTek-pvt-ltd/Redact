@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import Button from "@/components/Button"; // Import the new Button component
-
+import Image from "next/image";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,9 +33,11 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" aria-label="Home">
-              <img
+              <Image
                 src="/images/logo.png"
                 alt="Redact Media Logo"
+                width={200}
+                height={80}
                 className="h-20 w-auto max-h-full"
               />
             </Link>
@@ -73,7 +75,7 @@ export default function Navbar() {
 
           {/* Desktop Let's Talk Button */}
           <div className="hidden md:block">
-            <Button href="/contact">Let's Talk</Button>
+            <Button href="/contact">Let&apos;s Talk</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -128,7 +130,7 @@ export default function Navbar() {
             onClick={toggleMenu}>
             Pricing
           </Link> */}
-          <Button href="/contact">Let's Talk</Button>
+          <Button href="/contact">Let&apos;s Talk</Button>
         </motion.div>
       )}
     </motion.nav>

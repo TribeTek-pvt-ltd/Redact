@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
+import Image from "next/image";
 const ROWS = 3;
 const IMAGES_PER_ROW = 10;
 const SPEEDS = [0.6, 0.5, 0.4]; // slower speeds for smoother scroll
@@ -71,17 +71,22 @@ export default function MultiRowInfiniteCarousel() {
           }}
           className="relative w-full h-[220px] overflow-hidden flex items-center">
           {generateImages().map((src, idx) => (
-            <img
+            <div
               key={idx}
-              src={src}
-              className="absolute object-cover grayscale hover:grayscale-0 rounded-xl"
+              className="absolute"
               style={{
                 width: `${IMAGE_WIDTH}px`,
                 height: `${IMAGE_HEIGHT}px`,
                 left: positions[rowIndex][idx] || 0,
-                willChange: "transform", // GPU optimization
-              }}
-            />
+                willChange: "transform",
+              }}>
+              <Image
+                src={src}
+                alt={`Carousel image ${rowIndex}-${idx}`}
+                fill
+                className="object-cover grayscale hover:grayscale-0 rounded-xl"
+              />
+            </div>
           ))}
         </div>
       ))}

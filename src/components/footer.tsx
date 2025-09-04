@@ -19,7 +19,7 @@ export default function Hero() {
           <p>Great Ideas Spark</p>
           <p>With Simple Conversation,</p>
           <div className="text-xl sm:text-2xl md:text-5xl font-bold mb-4 sm:mb-6 text-left py-6 text-blue-600">
-            <p>Let's Start Talking About</p>
+            <p>Let&apos;s Start Talking About</p>
             <p>Your Next Big Idea!</p>
           </div>
 
