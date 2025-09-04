@@ -4,7 +4,7 @@ import ServiceSection from "@/components/ServiceSection";
 import StatsSection from "@/components/Stats";
 import Testimonials from "@/components/TestimonailSection";
 import Hero from "@/components/hero";
-import Images from "@/components/images";
+import ScrollingRow from "@/components/images";
 import Footer from "@/components/footer";
 import FooterNav from "@/components/footerNav";
 import WhoAreWe from "@/components/whoAreWe";
@@ -25,11 +25,11 @@ export default function Home() {
       <ServiceSection />
       <Testimonials />
       {/* Footer */}
-      <Images/>
+      <ScrollingRow />
       {/* <SpecializeIn/> */}
-      <WhoAreWe/>
+      <WhoAreWe />
       <StatsSection />
-      <Footer/>
+      <Footer />
       <FooterNav />
       {/* <p className="relative z-10 mt-8 text-gray-400 text-sm">
         © {new Date().getFullYear()} Redact Editing Shop. All rights reserved..
