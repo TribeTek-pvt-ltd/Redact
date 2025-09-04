@@ -39,13 +39,13 @@ export default function Navbar() {
             <Link href="/" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               Work
             </Link>
-            <Link href="/projects" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
+            <Link href="/Services" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               Services
             </Link>
             <Link href="/about" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               About Us
             </Link>
-            <Link href="/services" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
+            <Link href="/Pricing" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               Pricing
             </Link>
           </div>
