@@ -44,20 +44,26 @@ export default function Navbar() {
           {/* Desktop Nav Items */}
           <div className="hidden md:flex items-center space-x-6">
             <Link
-              href="/works"
+              href="/"
               className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
-              Work
-            </Link>
-            <Link
-              href="/Services"
-              className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
-              Services
+              Home
             </Link>
             <Link
               href="/about"
               className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
               About Us
             </Link>
+            <Link
+              href="/works"
+              className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
+              Work
+            </Link>
+            <Link
+              href="/services"
+              className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
+              Services
+            </Link>
+
             {/* <Link
               href="/Pricing"
               className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">
@@ -92,16 +98,10 @@ export default function Navbar() {
           variants={menuVariants}
           className="md:hidden bg-black px-4 py-4 space-y-4">
           <Link
-            href="/works"
+            href="/"
             className="block text-white hover:text-blue-400 text-lg py-2 transition-colors"
             onClick={toggleMenu}>
-            Work
-          </Link>
-          <Link
-            href="/projects"
-            className="block text-white hover:text-blue-400 text-lg py-2 transition-colors"
-            onClick={toggleMenu}>
-            Services
+            Home
           </Link>
           <Link
             href="/about"
@@ -109,6 +109,19 @@ export default function Navbar() {
             onClick={toggleMenu}>
             About Us
           </Link>
+          <Link
+            href="/works"
+            className="block text-white hover:text-blue-400 text-lg py-2 transition-colors"
+            onClick={toggleMenu}>
+            Work
+          </Link>
+          <Link
+            href="/services"
+            className="block text-white hover:text-blue-400 text-lg py-2 transition-colors"
+            onClick={toggleMenu}>
+            Services
+          </Link>
+
           {/* <Link
             href="/services"
             className="block text-white hover:text-blue-400 text-lg py-2 transition-colors"
