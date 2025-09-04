@@ -32,7 +32,7 @@ export default function Home() {
       <Footer/>
       <FooterNav />
       {/* <p className="relative z-10 mt-8 text-gray-400 text-sm">
-        © {new Date().getFullYear()} Redact Editing Shop. All rights reserved.
+        © {new Date().getFullYear()} Redact Editing Shop. All rights reserved..
       </p> */}
     </div>
   );
