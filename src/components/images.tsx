@@ -1,56 +1,90 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { useEffect, useRef, useState } from "react";
 
-const images = [
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  '/images/image1.jpeg',
-  
-];
+const ROWS = 3;
+const IMAGES_PER_ROW = 10;
+const SPEEDS = [0.6, 0.5, 0.4]; // slower speeds for smoother scroll
+const IMAGE_WIDTH = 250; // increased width
+const IMAGE_HEIGHT = 200; // increased height
+const GAP = 20; // slightly bigger gap
 
-const Row = ({ images, direction }: { images: string[]; direction: 'left' | 'right' }) => {
-  const duplicatedImages = [...images, ...images]; // Duplicate for infinite loop
-  const animate = direction === 'left' ? { x: ['2%', '-2%'] } : { x: ['-2%', '2%'] };
+// Generate placeholder images
+const generateImages = () =>
+  Array.from({ length: IMAGES_PER_ROW }).map(
+    (_, i) =>
+      `https://picsum.photos/${IMAGE_WIDTH}/${IMAGE_HEIGHT}?random=${i + 1}`
+  );
+
+export default function MultiRowInfiniteCarousel() {
+  const containerRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [positions, setPositions] = useState<number[][]>(
+    Array.from({ length: ROWS }, () =>
+      Array.from({ length: IMAGES_PER_ROW }, (_, i) => i * (IMAGE_WIDTH + GAP))
+    )
+  );
+
+  useEffect(() => {
+    let animationFrame: number;
+
+    const animate = () => {
+      setPositions((prevPositions) =>
+        prevPositions.map((rowPositions, rowIndex) => {
+          const speed = SPEEDS[rowIndex];
+          const direction = rowIndex % 2 === 0 ? -1 : 1; // alternate directions
+          const containerWidth =
+            containerRefs.current[rowIndex]?.offsetWidth || 0;
+          const totalWidth = IMAGE_WIDTH + GAP;
+
+          return rowPositions.map((pos) => {
+            let newPos = pos + direction * speed;
+
+            // seamless recycling
+            if (direction === -1 && newPos < -totalWidth) {
+              const maxPos = Math.max(...rowPositions);
+              newPos = maxPos + totalWidth;
+            }
+            if (direction === 1 && newPos > containerWidth) {
+              const minPos = Math.min(...rowPositions);
+              newPos = minPos - totalWidth;
+            }
+
+            return newPos;
+          });
+        })
+      );
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, []);
 
   return (
-    <motion.div
-      className="flex overflow-hidden border-t border-black border-t-6"
-      animate={{ x: animate.x }}
-      transition={{ x: { repeat: Infinity, repeatType: 'reverse', duration: 1, ease: 'linear' } }}
-    >
-      {duplicatedImages.map((src, index) => (
-        <div key={index} className="w-1/4 flex-shrink-0 border-l border-black border-l-6">
-          <Image src={src} alt={`Image ${index + 1}`} width={300} height={200} className="w-full h-auto object-cover" />
+    <div className="space-y-0">
+      {Array.from({ length: ROWS }).map((_, rowIndex) => (
+        <div
+          key={rowIndex}
+          ref={(el) => {
+            containerRefs.current[rowIndex] = el!;
+          }}
+          className="relative w-full h-[220px] overflow-hidden flex items-center">
+          {generateImages().map((src, idx) => (
+            <img
+              key={idx}
+              src={src}
+              className="absolute object-cover grayscale hover:grayscale-0 rounded-xl"
+              style={{
+                width: `${IMAGE_WIDTH}px`,
+                height: `${IMAGE_HEIGHT}px`,
+                left: positions[rowIndex][idx] || 0,
+                willChange: "transform", // GPU optimization
+              }}
+            />
+          ))}
         </div>
       ))}
-    </motion.div>
-  );
-};
-
-export default function Images() {
-  return (
-    <div className=" bg-gradient-to-b from-black to-blue-900  bg-gray-100 py-12">
-      <div className=" px-4 sm:px-6 lg:px-8">
-        <div className="space-y-0.3">
-          {/* Row 1: Left to Right then Right to Left */}
-          <Row images={images.slice(0, 4)} direction="left" />
-          {/* Row 2: Right to Left then Left to Right */}
-          <Row images={images.slice(4, 8)} direction="right" />
-          {/* Row 3: Left to Right then Right to Left */}
-          <Row images={images.slice(8, 12)} direction="left" />
-        </div>
-      </div>
     </div>
   );
 }
