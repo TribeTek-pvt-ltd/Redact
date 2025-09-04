@@ -11,7 +11,7 @@ interface ServiceCard {
 const ServiceCard: React.FC<ServiceCard> = ({ title, Icon }) => {
   return (
     <motion.div
-      className="relative flex flex-col justify-between items-center min-w-[350px] h-[500px] 
+      className="relative flex flex-col justify-between items-center min-w-[300px] h-[400px] 
         rounded-2xl p-6 shadow-lg cursor-pointer overflow-hidden
         bg-gradient-to-b from-blue-600/10 via-blue-600/5 to-blue-600/10 
         backdrop-blur-xl border border-blue-600/50">
