@@ -25,12 +25,12 @@ const testimonialData = [
   },
 ];
 
-const AUTO_SWITCH_INTERVAL = 3500; // 2 seconds
+const AUTO_SWITCH_INTERVAL = 3500;
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const intervalRef = useRef<number | null>(null); // number, not NodeJS.Timer
+  const intervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isHovered) {
@@ -47,21 +47,21 @@ const Testimonials = () => {
   }, [isHovered]);
 
   return (
-    <section className="w-full py-16 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8">
+    <section className="w-full py-12 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-6 md:gap-12">
         {/* Title on left */}
-        <div className="md:w-1/3">
-          <h2 className="text-4xl font-bold text-white mb-4">
+        <div className="w-full md:w-1/3 text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
             Client Testimonials
           </h2>
-          <p className="text-gray-300">
+          <p className="text-gray-300 text-sm sm:text-base">
             Hear from our satisfied clients and their experiences.
           </p>
         </div>
 
-        {/* Testimonial card on right, slightly lower */}
+        {/* Testimonial card on right */}
         <div
-          className="md:w-2/3 relative overflow-hidden h-64 mt-8 md:mt-16"
+          className="w-full md:w-2/3 relative overflow-hidden min-h-[220px] sm:min-h-[250px] md:h-64 mt-6 md:mt-12"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}>
           <AnimatePresence mode="wait">
