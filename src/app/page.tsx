@@ -9,6 +9,7 @@ import Footer from "@/components/footer";
 import FooterNav from "@/components/footerNav";
 import WhoAreWe from "@/components/whoAreWe";
 import IndustriesSection from "@/components/IndustriesSection";
+import RecentWorksSection from "@/components/RecentworksSection";
 // import SpecializeIn from "@/components/specializeIn";
 
 //import HeroSection from "@/component/underconstructions";
@@ -31,6 +32,7 @@ export default function Home() {
       <WhoAreWe />
       <StatsSection />
       <IndustriesSection />
+      <RecentWorksSection />
       <Footer />
       <FooterNav />
       {/* <p className="relative z-10 mt-8 text-gray-400 text-sm">
