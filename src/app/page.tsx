@@ -8,6 +8,7 @@ import ScrollingRow from "@/components/images";
 import Footer from "@/components/footer";
 import FooterNav from "@/components/footerNav";
 import WhoAreWe from "@/components/whoAreWe";
+import IndustriesSection from "@/components/IndustriesSection";
 // import SpecializeIn from "@/components/specializeIn";
 
 //import HeroSection from "@/component/underconstructions";
@@ -29,6 +30,7 @@ export default function Home() {
       {/* <SpecializeIn/> */}
       <WhoAreWe />
       <StatsSection />
+      <IndustriesSection />
       <Footer />
       <FooterNav />
       {/* <p className="relative z-10 mt-8 text-gray-400 text-sm">
