@@ -26,6 +26,7 @@ const ServiceSection: React.FC = () => {
           <ServiceCard key={index} title={card.title} Icon={card.Icon} />
         ))}
       </div>
+      
     </div>
   );
 };

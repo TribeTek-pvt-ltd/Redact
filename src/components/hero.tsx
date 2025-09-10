@@ -35,10 +35,7 @@ export default function Hero() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
             className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-gray-200 max-w-prose text-right">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Redact, A Boutique Video Agency Based In Colombo, Sri Lanka, Has Been Serving Clients Worldwide For The For The Past Three Years.
           </motion.p>
         </motion.div>
       </div>

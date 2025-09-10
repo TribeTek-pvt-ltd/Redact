@@ -1,8 +1,8 @@
 "use client";
 //import HeroSection from "@/components/underconstructions";
 import Footer from "@/components/footer";
-import WhoAreWe from "@/components/whoAreWe";
 import WorksGallery from "@/components/WorksGallery";
+import Work from "@/components/works";
 // import SpecializeIn from "@/components/specializeIn";
 
 //import HeroSection from "@/component/underconstructions";
@@ -10,7 +10,7 @@ import WorksGallery from "@/components/WorksGallery";
 export default function Home() {
   return (
     <div className="bg-gradient-to-b from-black  to-black">
-      <WhoAreWe />
+      <Work />
       <WorksGallery />
       <Footer />
     </div>

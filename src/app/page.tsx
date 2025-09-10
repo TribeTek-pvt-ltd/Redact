@@ -1,4 +1,5 @@
 "use client";
+
 import ServiceSection from "@/components/ServiceSection";
 //import HeroSection from "@/components/underconstructions";
 import StatsSection from "@/components/Stats";
@@ -11,8 +12,14 @@ import WhoAreWe from "@/components/whoAreWe";
 import IndustriesSection from "@/components/IndustriesSection";
 import RecentWorksSection from "@/components/RecentworksSection";
 // import SpecializeIn from "@/components/specializeIn";
+import Icons from "@/components/icons";
+import { FaEdit, FaCut, FaMagic } from "react-icons/fa"; // Editing tools icons
 
-//import HeroSection from "@/component/underconstructions";
+const editingToolsIcons = [
+  { Icon: FaEdit, key: "edit" },
+  { Icon: FaCut, key: "cut" },
+  { Icon: FaMagic, key: "magic" },
+];
 
 export default function Home() {
   return (
@@ -28,6 +35,8 @@ export default function Home() {
       <Testimonials />
       {/* Footer */}
       <ScrollingRow />
+      <Icons icons={editingToolsIcons} /> {/* Pass the icons prop */}
+
       {/* <SpecializeIn/> */}
       <WhoAreWe />
       <StatsSection />
