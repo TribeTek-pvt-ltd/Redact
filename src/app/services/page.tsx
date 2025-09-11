@@ -5,6 +5,8 @@ import HorizontalServiceCard from '@/components/horizontalServiceCard';
 import { FaVideo, FaPaintBrush, FaFilm, FaCamera } from 'react-icons/fa'; // Import icons
 import Footer from '@/components/footer';
 import FooterNav from '@/components/footerNav';
+import RecentWorksSection from "@/components/RecentworksSection";
+
 
 export default function Services() {
   const services = [
@@ -17,7 +19,7 @@ export default function Services() {
   return (
     <div className="min-h-screen flex flex-col">
       <SecondaryHero
-        heading={<p>Our Services</p>}
+        heading={'Our Services'}
         body="We offer a wide range of creative services designed to bring your vision to life. Explore our expertise and see how we can help you succeed."
         aria-label="Our Services Section"
       />
@@ -35,7 +37,7 @@ export default function Services() {
           </div>
         </div>
       </div>
-      
+      <RecentWorksSection />
       <Footer />
       <FooterNav />
     </div>

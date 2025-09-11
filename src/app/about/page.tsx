@@ -3,6 +3,7 @@
 import Footer from "@/components/footer";
 import StatsSection from "@/components/Stats";
 import WhoAreWe from "@/components/whoAreWe";
+import RecentWorksSection from "@/components/RecentworksSection";
 // import WorksGallery from "@/components/WorksGallery";
 // import SpecializeIn from "@/components/specializeIn";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <WhoAreWe />
       <StatsSection />
       {/* <WorksGallery /> */}
+      <RecentWorksSection />
       <Footer />
     </div>
   );
