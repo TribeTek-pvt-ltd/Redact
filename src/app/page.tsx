@@ -1,65 +1,59 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion';
-import { FaCamera, FaVideo, FaEdit } from 'react-icons/fa';
+import ServiceSection from "@/components/ServiceSection";
+//import HeroSection from "@/components/underconstructions";
+import StatsSection from "@/components/Stats";
+import Testimonials from "@/components/TestimonailSection";
+import Hero from "@/components/hero";
+import ScrollingRow from "@/components/images";
+import Footer from "@/components/footer";
+import FooterNav from "@/components/footerNav";
+import WhoAreWe from "@/components/whoAreWe";
+import IndustriesSection from "@/components/IndustriesSection";
+import RecentWorksSection from "@/components/RecentworksSection";
+import PartnersLoop from "@/components/LogoSection";
+// import SpecializeIn from "@/components/specializeIn";
+// import "@/styles/globals.css";
+//import HeroSection from "@/component/underconstructions";
+import Icons from "@/components/icons";
+import { FaEdit, FaCut, FaMagic } from "react-icons/fa"; // Editing tools icons
+
+const editingToolsIcons = [
+  { Icon: FaEdit, key: "edit" },
+  { Icon: FaCut, key: "cut" },
+  { Icon: FaMagic, key: "magic" },
+  
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Hero Section */}
-      <motion.section
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 text-center"
-      >
-        <h1 className="text-5xl font-bold mb-4">Welcome to Redact Editing Shop</h1>
-        <p className="text-xl mb-6">Professional Photo & Video Editing Services</p>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold"
-        >
-          Get Started
-        </motion.button>
-      </motion.section>
+    <div className="bg-gradient-to-b from-black via-blue-900 to-black">
+      {/* Gradient Circle Overlay */}
+      {/* <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-gradient-to-br from-blue-500 to-purple-500 rounded-full opacity-30 blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-gradient-to-tr from-cyan-400 to-indigo-600 rounded-full opacity-30 blur-3xl pointer-events-none"></div> */}
 
-      {/* Services Section */}
-      <section className="py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white p-6 rounded-lg shadow-lg text-center"
-          >
-            <FaCamera className="text-4xl text-blue-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Photo Editing</h3>
-            <p className="text-gray-600">Enhance your photos with professional retouching.</p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white p-6 rounded-lg shadow-lg text-center"
-          >
-            <FaVideo className="text-4xl text-blue-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Video Editing</h3>
-            <p className="text-gray-600">Create stunning videos with seamless edits.</p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="bg-white p-6 rounded-lg shadow-lg text-center"
-          >
-            <FaEdit className="text-4xl text-blue-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Custom Edits</h3>
-            <p className="text-gray-600">Tailored editing solutions for your needs.</p>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Component */}
+      {/* <HeroSection /> */}
+      <Hero />
+      <ScrollingRow />
+      <Icons icons={editingToolsIcons} /> 
+      <ServiceSection />
+      <PartnersLoop />
+      <Testimonials />
+      {/* <CalendlyBadge /> */}
+
+      {/* Footer */}
+      {/* <SpecializeIn/> */}
+
+      <WhoAreWe />
+      <StatsSection />
+      <IndustriesSection />
+      <RecentWorksSection />
+      <Footer />
+      {/* <FooterNav /> */}
+      {/* <p className="relative z-10 mt-8 text-gray-400 text-sm">
+        © {new Date().getFullYear()} Redact Editing Shop. All rights reserved..
+      </p> */}
     </div>
   );
 }
