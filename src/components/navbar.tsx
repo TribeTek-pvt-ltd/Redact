@@ -6,8 +6,10 @@ import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import Button from "@/components/Button"; // Import the new Button component
 import Image from "next/image";
+import { useCalendly } from "@/app/hooks/useCalendly";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { openCalendly } = useCalendly();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -75,7 +77,7 @@ export default function Navbar() {
 
           {/* Desktop Let's Talk Button */}
           <div className="hidden md:block">
-            <Button href="/contact">Let&apos;s Talk</Button>
+            <Button onClick={openCalendly}>Let&apos;s Talk</Button>
           </div>
 
           {/* Mobile Menu Button */}

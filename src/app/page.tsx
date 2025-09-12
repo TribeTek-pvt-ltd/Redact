@@ -11,15 +11,10 @@ import FooterNav from "@/components/footerNav";
 import WhoAreWe from "@/components/whoAreWe";
 import IndustriesSection from "@/components/IndustriesSection";
 import RecentWorksSection from "@/components/RecentworksSection";
+import PartnersLoop from "@/components/LogoSection";
 // import SpecializeIn from "@/components/specializeIn";
-// import Icons from "@/components/icons";
-// import { FaEdit, FaCut, FaMagic } from "react-icons/fa"; // Editing tools icons
-
-// const editingToolsIcons = [
-//   { Icon: FaEdit, key: "edit" },
-//   { Icon: FaCut, key: "cut" },
-//   { Icon: FaMagic, key: "magic" },
-// ];
+// import "@/styles/globals.css";
+//import HeroSection from "@/component/underconstructions";
 
 export default function Home() {
   return (
@@ -34,15 +29,19 @@ export default function Home() {
       <ScrollingRow />
       {/* <Icons icons={editingToolsIcons} /> Pass the icons prop */}
       <ServiceSection />
+      <PartnersLoop />
       <Testimonials />
+      {/* <CalendlyBadge /> */}
+
       {/* Footer */}
       {/* <SpecializeIn/> */}
+
       <WhoAreWe />
       <StatsSection />
       <IndustriesSection />
       <RecentWorksSection />
       <Footer />
-      <FooterNav />
+      {/* <FooterNav /> */}
       {/* <p className="relative z-10 mt-8 text-gray-400 text-sm">
         © {new Date().getFullYear()} Redact Editing Shop. All rights reserved..
       </p> */}

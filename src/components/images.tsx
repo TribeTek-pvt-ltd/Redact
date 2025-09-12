@@ -84,7 +84,7 @@ export default function MultiRowInfiniteCarousel() {
                 src={src}
                 alt={`Carousel image ${rowIndex}-${idx}`}
                 fill
-                className="object-cover grayscale hover:grayscale-0 rounded-xl"
+                className="object-cover grayscale hover:grayscale-0 "
               />
             </div>
           ))}
