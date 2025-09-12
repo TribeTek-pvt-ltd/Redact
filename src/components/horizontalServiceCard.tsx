@@ -1,6 +1,6 @@
-'use client'; 
+"use client";
 
-import { IconType } from 'react-icons';
+import { IconType } from "react-icons";
 
 interface HorizontalServiceCardProps {
   title: string;
@@ -8,20 +8,27 @@ interface HorizontalServiceCardProps {
   description?: string;
 }
 
-const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({ title, Icon, description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' }) => {
+const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
+  title,
+  Icon,
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+}) => {
   return (
     <div className="container mx-auto flex flex-col p-2 sm:p-4">
-      <h3 className=" py-4 text-white text-3xl font-semibold mt-1 text-left">{title}</h3>
-    <div className="    flex flex-col sm:flex-row items-center rounded-3xl bg-white/5 backdrop-blur-lg border border-white/20 mx-13">
-  {/* Centered Icon with larger background */}
-  <div className=" drop-shadow-lg sm:bg-gradient-to-r  bg-gradient-to-b   from-blue-700/70 rounded-2xl to-black border border-blue-700/70">
-    <Icon className="sm:mx-12 text-9xl text-blue-700/80 my-8 mx-16 " />
-  </div>
-  <p className="m-4 sm:ml-20 text-white text-base leading-relaxed flex-1 flex justify-center items-center">
-    {description}
-  </p>
-</div>
+      <h3 className="py-4 text-white text-3xl font-semibold mt-1 text-left">
+        {title}
+      </h3>
 
+      {/* Blue glass effect card */}
+      <div className="flex items-center flex-col sm:flex-row gap-6 rounded-3xl bg-blue-700/20 backdrop-blur-lg border border-blue-500/30 shadow-lg p-6">
+        {/* Icon */}
+        <Icon className="text-9xl text-blue-400 sm:mx-11 drop-shadow-lg" />
+
+        {/* Description */}
+        <p className="text-white text-center sm:text-left sm:w-1/4 text-base leading-relaxed flex-1">
+          {description}
+        </p>
+      </div>
     </div>
   );
 };

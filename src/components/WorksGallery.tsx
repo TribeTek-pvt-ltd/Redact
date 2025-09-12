@@ -70,7 +70,7 @@ export default function WorksGallery() {
   return (
     <div className="space-y-4 container mx-auto p-4">
       {/* Filter Options */}
-      <div className="flex justify-center space-x-2">
+      <div className="flex  justify-center space-x-2">
         <button
           className={`px-2 py-2 rounded-md border border-white/30 backdrop-blur-md transition-colors duration-300 ${
             filter === "All"
@@ -84,7 +84,7 @@ export default function WorksGallery() {
         {workTypes.map((type) => (
           <button
             key={type}
-            className={`px-6 py-2 rounded-md border border-white/30 backdrop-blur-md transition-colors duration-300 ${
+            className={`px-4 sm:px-6 py-2 rounded-md border border-white/30 backdrop-blur-md transition-colors duration-300 ${
               filter === type
                 ? "bg-white/30 text-black"
                 : "bg-white/10 text-white hover:bg-white/20"
