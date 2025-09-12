@@ -100,7 +100,7 @@ export default function Navbar() {
           animate="visible"
           exit="hidden"
           variants={menuVariants}
-          className="md:hidden bg-black px-4 py-4 space-y-4">
+          className="md:hidden w-full px-4 py-4 space-y-4 border-t border-gray-700">
           <Link
             href="/"
             className="block text-white hover:text-blue-400 text-lg py-2 transition-colors"

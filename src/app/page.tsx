@@ -15,6 +15,15 @@ import PartnersLoop from "@/components/LogoSection";
 // import SpecializeIn from "@/components/specializeIn";
 // import "@/styles/globals.css";
 //import HeroSection from "@/component/underconstructions";
+import Icons from "@/components/icons";
+import { FaEdit, FaCut, FaMagic } from "react-icons/fa"; // Editing tools icons
+
+const editingToolsIcons = [
+  { Icon: FaEdit, key: "edit" },
+  { Icon: FaCut, key: "cut" },
+  { Icon: FaMagic, key: "magic" },
+  
+];
 
 export default function Home() {
   return (
@@ -27,7 +36,7 @@ export default function Home() {
       {/* <HeroSection /> */}
       <Hero />
       <ScrollingRow />
-      {/* <Icons icons={editingToolsIcons} /> Pass the icons prop */}
+      <Icons icons={editingToolsIcons} /> 
       <ServiceSection />
       <PartnersLoop />
       <Testimonials />

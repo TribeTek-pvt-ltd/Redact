@@ -17,9 +17,9 @@ const IndustriesSection = () => {
 
   return (
     <section className="container mx-auto py-12">
-      <h2 className="text-4xl font-bold mb-6">Industries</h2>
+      <h2 className="text-4xl font-bold mb-6 mx-3">Industries</h2>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 mx-1">
         {industriesList.map((industry, idx) => (
           <IndustryCard
             key={idx}

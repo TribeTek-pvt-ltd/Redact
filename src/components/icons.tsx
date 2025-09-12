@@ -8,35 +8,59 @@ interface IconsProps {
 }
 
 const Icons: React.FC<IconsProps> = ({ icons }) => {
+  if (!icons || icons.length === 0) {
+    return <div className="text-white text-center py-7">No icons provided</div>;
+  }
+
   return (
-    <div className="relative w-full bg-gray-900/50 shadow-lg overflow-hidden py-7">
+    <div className="relative w-full overflow-hidden py-7 bg-gray-900/20 rounded-3xl">
       <motion.div
-        className="flex space-x-12"
-        animate={{ x: ['100%', '-100%'] }}
+        className="flex space-x-10"
+        style={{ whiteSpace: 'nowrap' }}
+        animate={{ x: ['100%', '-100%'] }} // move entire row right → left
         transition={{
           x: {
             repeat: Infinity,
             repeatType: 'loop',
-            duration: 20,
+            duration: 10,
             ease: 'linear',
           },
         }}
-        style={{ whiteSpace: 'nowrap' }}
       >
-        {icons.map((icon) => (
-          <icon.Icon
+        {/* Original logos */}
+        {icons.map((icon, index) => (
+          <motion.div
             key={icon.key}
-            className="text-white text-4xl drop-shadow-md"
-            style={{ display: 'inline-block', margin: '0 20px' }}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 0] }} // fade in/out
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: index * 0.5, // staggered appearance
+            }}
+            className="inline-block"
+          >
+            <icon.Icon className="text-white text-4xl drop-shadow-md" />
+          </motion.div>
         ))}
-        {/* Duplicate icons for seamless looping */}
-        {icons.map((icon) => (
-          <icon.Icon
+
+        {/* Duplicate for seamless loop */}
+        {icons.map((icon, index) => (
+          <motion.div
             key={`${icon.key}-duplicate`}
-            className="text-white text-4xl drop-shadow-md"
-            style={{ display: 'inline-block', margin: '0 20px' }}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              repeatType: 'loop',
+              delay: (icons.length + index) * 0.5,
+            }}
+            className="inline-block"
+          >
+            <icon.Icon className="text-white text-4xl drop-shadow-md" />
+          </motion.div>
         ))}
       </motion.div>
     </div>

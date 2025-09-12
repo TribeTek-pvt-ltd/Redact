@@ -23,9 +23,9 @@ export default function Services() {
         body="We offer a wide range of creative services designed to bring your vision to life. Explore our expertise and see how we can help you succeed."
         aria-label="Our Services Section"
       />
-      <div className="py-12 from-gray-900 to-gray-800 flex-grow">
+      <div className="py-1 from-gray-900 to-gray-800 flex-grow">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-8">
             {services.map((service, index) => (
               <HorizontalServiceCard
                 key={index}

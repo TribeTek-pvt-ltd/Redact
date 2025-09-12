@@ -29,16 +29,16 @@ const RecentWorksSection = () => {
     <section className="container mx-auto py-12">
       {/* Header with title + See More */}
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-4xl font-bold">Recent Works</h2>
+        <h2 className="text-4xl font-bold mx-4">Recent Works</h2>
         <Link
           href="/works"
-          className="text-blue-600 font-medium hover:underline">
+          className="text-blue-600 font-medium hover:underline mx-2">
           See More →
         </Link>
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mx-3">
         {works.map((work, idx) => (
           <WorkCard
             key={idx}
