@@ -22,7 +22,6 @@ const editingToolsIcons = [
   { Icon: FaEdit, key: "edit" },
   { Icon: FaCut, key: "cut" },
   { Icon: FaMagic, key: "magic" },
-  
 ];
 
 export default function Home() {
@@ -36,7 +35,7 @@ export default function Home() {
       {/* <HeroSection /> */}
       <Hero />
       <ScrollingRow />
-      <Icons icons={editingToolsIcons} /> 
+      {/* <Icons icons={editingToolsIcons} />  */}
       <ServiceSection />
       <PartnersLoop />
       <Testimonials />

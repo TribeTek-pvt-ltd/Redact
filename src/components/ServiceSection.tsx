@@ -1,9 +1,7 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import ServiceCard from "@/components/ServiceCard";
-// import { FaVideo } from "react-icons/fa";
-// import { SiAdobe } from "react-icons/si";
-
 import { FaVideo, FaMusic, FaFilm, FaPalette } from "react-icons/fa";
 
 const cardData = [
@@ -14,6 +12,26 @@ const cardData = [
 ];
 
 const ServiceSection: React.FC = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // convert vertical scroll to horizontal scroll
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY === 0) return;
+      e.preventDefault();
+      el.scrollTo({
+        left: el.scrollLeft + e.deltaY,
+        behavior: "smooth",
+      });
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
     <div className="container mx-auto py-6">
       <h2 className="text-white font-bold text-4xl text-left mb-6">
@@ -21,12 +39,13 @@ const ServiceSection: React.FC = () => {
       </h2>
 
       {/* Horizontal scroll wrapper */}
-      <div className="flex gap-12 px-4 py-6 sm:ml-72 overflow-x-auto hide-scrollbar">
+      <div
+        ref={scrollRef}
+        className="flex gap-12 px-4 py-6 sm:ml-72 overflow-x-auto hide-scrollbar scroll-smooth">
         {cardData.map((card, index) => (
           <ServiceCard key={index} title={card.title} Icon={card.Icon} />
         ))}
       </div>
-      
     </div>
   );
 };
