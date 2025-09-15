@@ -1,9 +1,17 @@
-// hooks/useCalendly.ts
 "use client";
 
 import { useEffect, useCallback } from "react";
 
 const CALENDLY_URL = "https://calendly.com/redact-tribetek/30min";
+
+// Extend the Window interface
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: { url: string }) => void;
+    };
+  }
+}
 
 export function useCalendly() {
   useEffect(() => {
@@ -19,7 +27,7 @@ export function useCalendly() {
       document.body.appendChild(script);
     }
 
-    // Load Calendly CSS (for proper popup styling)
+    // Load Calendly CSS
     if (
       !document.querySelector(
         'link[href="https://assets.calendly.com/assets/external/widget.css"]'
@@ -33,8 +41,8 @@ export function useCalendly() {
   }, []);
 
   const openCalendly = useCallback(() => {
-    if (typeof window !== "undefined" && (window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
+    if (typeof window !== "undefined" && window.Calendly) {
+      window.Calendly.initPopupWidget({
         url: CALENDLY_URL,
       });
     } else {

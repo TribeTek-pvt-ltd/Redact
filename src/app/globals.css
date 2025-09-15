@@ -57,3 +57,9 @@ button {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+@theme {
+  --color-blue: #0072ff;
+  --color-black: #020202;
+  /* --color-blue-dark: #d9d9d9; */
+}

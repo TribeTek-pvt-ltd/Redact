@@ -40,7 +40,7 @@ export default function PartnersLoop() {
       setPositions((prevPositions) => {
         if (!containerRef.current) return prevPositions;
 
-        const containerWidth = containerRef.current.offsetWidth;
+        // const containerWidth = containerRef.current.offsetWidth;
         const totalWidth = IMAGE_WIDTH + GAP;
 
         return prevPositions.map((pos) => {

@@ -9,7 +9,7 @@ export default function Hero() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="py-10 flex items-start justify-start text-white p-4 sm:p-6 md:p-8">
+      className="py-10 min-h-[80vh] flex items-center justify-start text-white p-4 sm:p-6 md:p-8">
       <div className="container mx-auto">
         <motion.h1
           initial={{ x: -50, opacity: 0 }}
@@ -35,7 +35,8 @@ export default function Hero() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
             className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-gray-200 max-w-prose text-right">
-            Redact, A Boutique Video Agency Based In Colombo, Sri Lanka, Has Been Serving Clients Worldwide For The For The Past Three Years.
+            Redact, A Boutique Video Agency Based In Colombo, Sri Lanka, Has
+            Been Serving Clients Worldwide For The For The Past Three Years.
           </motion.p>
         </motion.div>
       </div>

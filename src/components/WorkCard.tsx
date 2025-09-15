@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 interface WorkCardProps {
   thumbnail: string;
   title: string;
@@ -17,7 +18,7 @@ export default function WorkCard({
     <div className="bg-black rounded-xl shadow-lg overflow-hidden container max-w-sm hover:shadow-2xl transition-shadow duration-300">
       {/* Image in 1.91:1 ratio */}
       <div className="relative w-full" style={{ paddingTop: `${100 / 1.91}%` }}>
-        <img
+        <Image
           src={thumbnail}
           alt={title}
           className="absolute top-0 left-0 w-full h-full object-cover"

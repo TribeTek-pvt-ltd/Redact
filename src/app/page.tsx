@@ -7,7 +7,7 @@ import Testimonials from "@/components/TestimonailSection";
 import Hero from "@/components/hero";
 import ScrollingRow from "@/components/images";
 import Footer from "@/components/footer";
-import FooterNav from "@/components/footerNav";
+// import FooterNav from "@/components/footerNav";
 import WhoAreWe from "@/components/whoAreWe";
 import IndustriesSection from "@/components/IndustriesSection";
 import RecentWorksSection from "@/components/RecentworksSection";
@@ -15,18 +15,20 @@ import PartnersLoop from "@/components/LogoSection";
 // import SpecializeIn from "@/components/specializeIn";
 // import "@/styles/globals.css";
 //import HeroSection from "@/component/underconstructions";
-import Icons from "@/components/icons";
-import { FaEdit, FaCut, FaMagic } from "react-icons/fa"; // Editing tools icons
+// import Icons from "@/components/icons";
+// import { FaEdit, FaCut, FaMagic } from "react-icons/fa"; // Editing tools icons
+import VideoAnimation from "@/components/VideoAnimation";
+import VideoEditorCTA from "@/components/cta";
 
-const editingToolsIcons = [
-  { Icon: FaEdit, key: "edit" },
-  { Icon: FaCut, key: "cut" },
-  { Icon: FaMagic, key: "magic" },
-];
+// const editingToolsIcons = [
+//   { Icon: FaEdit, key: "edit" },
+//   { Icon: FaCut, key: "cut" },
+//   { Icon: FaMagic, key: "magic" },
+// ];
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-black via-blue-900 to-black">
+    <div className="bg-gradient-to-b from-black via-blue-950 to-black">
       {/* Gradient Circle Overlay */}
       {/* <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-gradient-to-br from-blue-500 to-purple-500 rounded-full opacity-30 blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-gradient-to-tr from-cyan-400 to-indigo-600 rounded-full opacity-30 blur-3xl pointer-events-none"></div> */}
@@ -35,11 +37,13 @@ export default function Home() {
       {/* <HeroSection /> */}
       <Hero />
       <ScrollingRow />
+      <VideoAnimation />
       {/* <Icons icons={editingToolsIcons} />  */}
       <ServiceSection />
       <PartnersLoop />
       <Testimonials />
       {/* <CalendlyBadge /> */}
+      <VideoEditorCTA />
 
       {/* Footer */}
       {/* <SpecializeIn/> */}
