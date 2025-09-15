@@ -1,23 +1,21 @@
 "use client";
 
+import Button from "./Button"; // make sure the path is correct
+
 export default function VideoEditorCTA() {
   return (
-    <section className="w-full  text-white py-20 flex flex-col items-center justify-center text-center px-6">
-      <h2 className="text-4xl md:text-5xl font-bold mb-6">
-        Need a Professional Video Editor?
-      </h2>
-      <p className="text-lg md:text-xl mb-8 max-w-2xl">
-        I help freelancers, businesses, and creators craft engaging videos that
-        capture attention and deliver results. Let’s discuss your project and
-        take your content to the next level.
-      </p>
-      <a
-        href="https://calendly.com/your-link" // replace with your booking link
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-4 px-10 rounded-lg text-lg transition">
-        Schedule a Call
-      </a>
+    <section className="w-full py-20  bg-gradient-to-r from-blue-950/30 via-black/20 to-blue-950/30  flex justify-center items-center px-6">
+      <div className=" backdrop-blur-md rounded-3xl  p-10  text-center flex flex-col items-center">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+          Elevate Your Videos Professionally
+        </h2>
+        <p className="text-gray-300 text-base md:text-lg mb-8">
+          I help creators, freelancers, and businesses craft engaging videos
+          that captivate and convert. Let’s discuss your project and make it
+          stand out.
+        </p>
+        <Button href="https://calendly.com/your-link">Schedule a Call</Button>
+      </div>
     </section>
   );
 }

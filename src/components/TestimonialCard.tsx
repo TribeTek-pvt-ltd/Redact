@@ -16,7 +16,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
+      // whileHover={{ scale: 1.02 }}
       className="flex flex-col px-7 justify-start items-start text-left space-y-4">
       {/* Big Quote */}
       {/* <span className="text-8xl text-blue-400 leading-none select-none">“</span> */}

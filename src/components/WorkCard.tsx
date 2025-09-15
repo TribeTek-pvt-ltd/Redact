@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 interface WorkCardProps {
   thumbnail: string;
   title: string;
@@ -21,12 +22,15 @@ export default function WorkCard({
         <Image
           src={thumbnail}
           alt={title}
+          fill
           className="absolute top-0 left-0 w-full h-full object-cover"
+          priority
         />
       </div>
+
       {/* Text Section */}
       <div className="p-4">
-        <p className="text-blue-600 text-2xl">{title} </p>
+        <p className="text-blue-600 text-2xl">{title}</p>
         <p>
           {workType && (
             <span className="text-gray-100 font-medium">{workType}</span>
