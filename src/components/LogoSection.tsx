@@ -66,7 +66,7 @@ export default function PartnersLoop() {
   return (
     <div
       ref={containerRef}
-      className="relative container mx-auto h-[100px] overflow-hidden flex items-center">
+      className="relative container mx-auto h-[100px] overflow-hidden flex items-center ">
       {positions.map((pos, idx) => {
         const logo = LOGOS[idx % LOGOS.length]; // cycle through logos
         return (
