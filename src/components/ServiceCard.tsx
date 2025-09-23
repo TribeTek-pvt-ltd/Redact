@@ -15,53 +15,40 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, Icon }) => {
         rounded-2xl p-6 shadow-xl cursor-pointer overflow-hidden
         bg-black/30 backdrop-blur-xl border border-white/20"
       whileHover={{ rotateZ: 1, rotateY: 10, scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 120, damping: 10 }}
-    >
-      {/* Swinging Diagonal Glow Line 1 */}
+      transition={{ type: "spring", stiffness: 120, damping: 10 }}>
+      {/* 🔥 Shiny diagonal sweep */}
       <motion.div
-        className="absolute w-[200%] h-[300%] rotate-12 bg-gradient-to-br from-transparent via-white/20 to-transparent pointer-events-none"
-        initial={{ x: "-50%", y: "-50%", opacity: 0 }}
+        className="absolute inset-0 pointer-events-none"
+        initial={{ x: "-200%", y: "-200%" }}
         whileHover={{
-          x: ["-50%", "50%", "-50%"],
-          y: ["-50%", "50%", "-50%"],
-          opacity: [0, 1, 0.8],
-          transition: {
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
+          x: ["-200%", "200%"],
+          y: ["-200%", "200%"], // move across diagonally
+        }}
+        transition={{
+          duration: 1.2,
+          ease: "easeInOut",
+        }}
+        style={{
+          background:
+            "linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.7) 50%, transparent 70%)",
+          mixBlendMode: "overlay",
         }}
       />
 
-      {/* Swinging Diagonal Glow Line 2 */}
-      <motion.div
-        className="absolute w-[200%] h-[300%] rotate-12 bg-gradient-to-br from-transparent via-white/10 to-transparent pointer-events-none"
-        initial={{ x: "-60%", y: "-60%", opacity: 0 }}
-        whileHover={{
-          x: ["-60%", "60%", "-60%"],
-          y: ["-60%", "60%", "-60%"],
-          opacity: [0, 0.8, 0.5],
-          transition: {
-            duration: 2.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.2,
-          },
-        }}
-      />
-
-      {/* Top-left Glass Glow */}
+      {/* Background glow blobs */}
       <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>
 
-      {/* Centered Icon */}
+      {/* Icon */}
       <div className="flex-1 flex items-center justify-center z-10">
-        <Icon className="text-blue-600/80 text-9xl drop-shadow-lg" />
+        <Icon className="text-blue-500 text-9xl drop-shadow-lg" />
       </div>
 
       {/* Title */}
       <div className="z-10 w-full text-left pb-4">
-        <h3 className="text-white font-semibold text-3xl drop-shadow-md">{title}</h3>
+        <h3 className="text-white font-semibold text-3xl drop-shadow-md">
+          {title}
+        </h3>
       </div>
     </motion.div>
   );

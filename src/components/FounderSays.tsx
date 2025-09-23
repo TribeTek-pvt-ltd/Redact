@@ -9,7 +9,11 @@ interface FounderSaysProps {
   founderImage: string; // PNG image URL or import
 }
 
-const FounderSays: React.FC<FounderSaysProps> = ({ quote, founderName, founderImage }) => {
+const FounderSays: React.FC<FounderSaysProps> = ({
+  quote,
+  founderName,
+  founderImage,
+}) => {
   return (
     <div className="flex flex-col items-center w-full py-16 px-4 md:px-16">
       {/* Heading */}
@@ -24,8 +28,7 @@ const FounderSays: React.FC<FounderSaysProps> = ({ quote, founderName, founderIm
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 sm:p-10 max-w-3xl w-full shadow-lg flex flex-col items-center md:items-start"
-      >
+        className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 sm:p-10 max-w-3xl w-full shadow-lg flex flex-col items-center md:items-start">
         {/* Quote Icon */}
         <FaQuoteLeft className="text-5xl sm:text-6xl text-blue-400 mb-4 select-none" />
 
@@ -44,7 +47,7 @@ const FounderSays: React.FC<FounderSaysProps> = ({ quote, founderName, founderIm
           <img
             src={founderImage}
             alt={founderName}
-            className="object-cover w-full h-full rounded-full shadow-lg"
+            className="object-cover  w-66 h-72 "
           />
         </div>
       </motion.div>

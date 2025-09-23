@@ -1,52 +1,67 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const BgEffect = () => {
+const CursorGlow = () => {
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 }); // actual mouse
+  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 }); // smoothed glow
+
+  // Capture mouse movement
+  useEffect(() => {
+    const moveHandler = (e: MouseEvent) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", moveHandler);
+    return () => {
+      window.removeEventListener("mousemove", moveHandler);
+    };
+  }, []);
+
+  // Smooth animation for glow (lerp)
+  useEffect(() => {
+    let frame: number;
+    const animate = () => {
+      setGlowPos((prev) => ({
+        x: prev.x + (cursorPos.x - prev.x) * 0.1, // easing factor
+        y: prev.y + (cursorPos.y - prev.y) * 0.1,
+      }));
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [cursorPos]);
+
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-      <div className="w-full h-full relative">
-        {/* Animated colored circles */}
-        <div
-  className="absolute top-[-5%] left-[-5%] w-[500px] h-[500px] rounded-full animate-firstCircle"
-  style={{
-    background: "linear-gradient(135deg, #0072ff, #3399ff)", // dark blue → medium blue
-  }}
-></div>
-
-<div
-  className="absolute bottom-[5%] right-[5%] w-[300px] h-[300px] rounded-full animate-secondCircle"
-  style={{
-    background: "linear-gradient(135deg, #3399ff, #66ccff)", // medium blue → light blue
-  }}
-></div>
-        {/* Glass overlay */}
-        <div className="absolute inset-0  backdrop-blur-[250px]"></div>
-      </div>
-
-      <style jsx>{`
-        @keyframes firstCircle {
-          0% { transform: translate(0,0) rotate(180deg); }
-          50% { transform: translate(500px,500px) rotate(280deg); }
-          100% { transform: translate(0,0) rotate(360deg); }
+    <div className="fixed inset-0 pointer-events-none">
+      {/* Hide system cursor */}
+      {/* <style jsx global>{`
+        * {
+          cursor: none !important;
         }
+      `}</style> */}
 
-        @keyframes secondCircle {
-          0% { transform: translate(0,0) rotate(180deg); }
-          50% { transform: translate(-500px,-500px) rotate(280deg); }
-          100% { transform: translate(0,0) rotate(360deg); }
-        }
+      {/* Small white cursor dot */}
+      {/* <div
+        className="absolute w-3 h-3 z-50 rounded-full bg-white"
+        style={{
+          left: cursorPos.x - 6,
+          top: cursorPos.y - 6,
+          pointerEvents: "none",
+        }}></div> */}
 
-        .animate-firstCircle {
-          animation: firstCircle 10s linear infinite;
-        }
-
-        .animate-secondCircle {
-          animation: secondCircle 10s linear infinite 2s;
-        }
-      `}</style>
+      {/* Blue blurred glow following smoothly */}
+      <div
+        className="absolute w-[500px] h-[500px] rounded-full"
+        style={{
+          left: glowPos.x - 200,
+          top: glowPos.y - 200,
+          background:
+            "radial-gradient(circle, rgba(0,114,255,0.5), transparent 70%)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+        }}></div>
     </div>
   );
 };
 
-export default BgEffect;
+export default CursorGlow;

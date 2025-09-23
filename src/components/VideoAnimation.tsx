@@ -26,21 +26,21 @@ export default function OverlayStackedSequence() {
       });
       await new Promise((res) => setTimeout(res, 100));
 
-      await controls2.start({
-        y: "0%",
-        opacity: 1,
-        transition: { duration: 0.75},
-      });
-      await new Promise((res) => setTimeout(res, 100));
-
-      await controls3.start({
+      await controls2?.start({
         y: "0%",
         opacity: 1,
         transition: { duration: 0.75 },
       });
       await new Promise((res) => setTimeout(res, 100));
 
-      await controlsVideo.start({
+      await controls3?.start({
+        y: "0%",
+        opacity: 1,
+        transition: { duration: 0.75 },
+      });
+      await new Promise((res) => setTimeout(res, 100));
+
+      await controlsVideo?.start({
         y: "0%",
         opacity: 1,
         transition: { duration: 0.75 },
@@ -53,8 +53,7 @@ export default function OverlayStackedSequence() {
   return (
     <div
       ref={ref}
-      className="w-full flex items-center justify-center  py-8 sm:py-12 px-2 sm:px-6"
-    >
+      className="w-full flex items-center justify-center  py-8 sm:py-12 px-2 sm:px-6">
       <div
         className="
           relative 
@@ -64,8 +63,7 @@ export default function OverlayStackedSequence() {
           sm:rounded-2xl 
           rounded-lg 
           overflow-hidden
-        "
-      >
+        ">
         {/* Image 1 */}
         <motion.img
           src="https://picsum.photos/id/1015/800/450"

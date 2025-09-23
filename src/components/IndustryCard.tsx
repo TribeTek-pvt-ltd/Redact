@@ -11,7 +11,7 @@ interface IndustryCardProps {
 const IndustryCard: FC<IndustryCardProps> = ({ industry, bgImage }) => {
   return (
     <div
-      className="relative flex items-center justify-between container p-20 rounded-3xl shadow-lg overflow-hidden 
+      className="relative flex items-center justify-between container p-16 rounded-3xl shadow-lg overflow-hidden 
       bg-white/10 backdrop-blur-md border border-white/20"
       style={{
         backgroundImage: `url(${bgImage})`,

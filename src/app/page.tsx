@@ -16,9 +16,8 @@ import VideoEditorCTA from "@/components/cta";
 
 export default function Home() {
   return (
-    <div className="relative bg-black from-black via-blue-950 to-black">
+    <div className="relative ">
       {/* Background Animated Cards */}
-      <BgEffect />
 
       {/* Content Layer */}
       <div className="relative z-10">
