@@ -70,9 +70,9 @@ export default function WorksGallery() {
   return (
     <div className="space-y-4 container mx-auto p-4">
       {/* Filter Options */}
-      <div className="flex  justify-center space-x-2">
+      <div className="flex justify-center space-x-2">
         <button
-          className={`px-2 py-2  border border-white/30 backdrop-blur-md transition-colors duration-300 ${
+          className={`px-2 py-2 rounded-md border border-white/30 backdrop-blur-md transition-colors duration-300 ${
             filter === "All"
               ? "bg-white/30 text-black"
               : " text-white hover:bg-white/20"
