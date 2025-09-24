@@ -20,11 +20,7 @@ interface VideoCardProps {
 const industries = ["Tech", "Construction", "Education", "Health"];
 const categories = ["Tutorial", "Promo", "Interview", "Other"];
 
-export default function VideoCard({
-  video,
-  onDelete,
-  onUpdate,
-}: VideoCardProps) {
+export default function VideoCard({ video, onDelete, onUpdate }: VideoCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(video.title);
   const [url, setUrl] = useState(video.url);
@@ -48,33 +44,41 @@ export default function VideoCard({
   };
 
   return (
-    <div className="flex bg-white rounded-xl shadow-md overflow-hidden max-w-4xl">
+    <div className="relative flex w-3xl min-h-[300px] rounded-3xl overflow-hidden shadow-lg bg-black/30 backdrop-blur-xl border border-white/20 group hover:scale-[1.01] transition-transform duration-200">
+      {/* Glow blobs */}
+      <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>
+
+      {/* Thumbnail */}
       <img
         src={video.thumbnail}
         alt="Thumbnail"
-        className="w-1/3 object-cover"
+        className="w-1/3 object-cover rounded-l-3xl"
       />
-      <div className="flex-1 p-4 flex flex-col justify-between gap-2">
+
+      {/* Content */}
+      <div className="flex-1 p-6 flex flex-col justify-between gap-3 z-10">
         {isEditing ? (
           <>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="border p-1 rounded"
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className="border p-1 rounded"
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
             />
             <select
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
-              className="border p-1 rounded">
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            >
               {industries.map((ind) => (
-                <option key={ind} value={ind}>
+                <option key={ind} value={ind} className="bg-black/80 text-white">
                   {ind}
                 </option>
               ))}
@@ -82,41 +86,46 @@ export default function VideoCard({
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="border p-1 rounded">
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            >
               {categories.map((cat) => (
-                <option key={cat} value={cat}>
+                <option key={cat} value={cat} className="bg-black/80 text-white">
                   {cat}
                 </option>
               ))}
             </select>
-            <div className="flex gap-2 mt-2">
+            <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={handleSave}
-                className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
+              >
                 Save
               </button>
               <button
                 onClick={() => setIsEditing(false)}
-                className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500">
+                className="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition"
+              >
                 Cancel
               </button>
             </div>
           </>
         ) : (
           <>
-            <h3 className="font-semibold text-lg">{video.title}</h3>
-            <p className="text-sm text-gray-600">URL: {video.url}</p>
-            <p className="text-sm text-gray-600">Industry: {video.industry}</p>
-            <p className="text-sm text-gray-600">Category: {video.category}</p>
-            <div className="flex gap-2 mt-2">
+            <h3 className="text-white text-center font-semibold text-2xl">{video.title}</h3>
+            <p className="text-white/70 text-sm">URL: {video.url}</p>
+            <p className="text-white/70 text-sm">Industry: {video.industry}</p>
+            <p className="text-white/70 text-sm">Category: {video.category}</p>
+            <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={() => setIsEditing(true)}
-                className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
+              >
                 Edit
               </button>
               <button
                 onClick={onDelete}
-                className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 transition"
+              >
                 Delete
               </button>
             </div>

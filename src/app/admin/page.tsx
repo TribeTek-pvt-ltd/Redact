@@ -56,18 +56,30 @@ export default function AdminPage() {
 
   return (
     <div className="flex p-6 gap-6">
-      <div className="flex-1 flex flex-col gap-4">
-        <VideoForm onAddVideo={handleAddVideo} />
-        {videos.map((video, idx) => (
-          <VideoCard
-            key={video._id || idx}
-            video={video}
-            onDelete={() => handleDeleteVideo(idx)}
-            onUpdate={(updated) => handleUpdateVideo(idx, updated)}
-          />
-        ))}
+      {/* Left side: Form + Video cards */}
+      <div className="flex-1 flex flex-col gap-6">
+        {/* Form + Summary side by side */}
+        <div className="flex gap-6">
+          <div className="flex-1">
+            <VideoForm onAddVideo={handleAddVideo} />
+          </div>
+          <div className="w-1/3">
+            <VideoSummary videos={videos} />
+          </div>
+        </div>
+
+        {/* Video list below, centered with vertical scroll */}
+        <div className="flex flex-col items-center gap-4 mt-3 max-h-[70vh] overflow-y-auto p-2">
+          {videos.map((video, idx) => (
+            <VideoCard
+              key={video._id || idx}
+              video={video}
+              onDelete={() => handleDeleteVideo(idx)}
+              onUpdate={(updated) => handleUpdateVideo(idx, updated)}
+            />
+          ))}
+        </div>
       </div>
-      <VideoSummary videos={videos} />
 
       {/* Floating buttons */}
       <div className="fixed bottom-4 right-4 flex flex-col gap-4">

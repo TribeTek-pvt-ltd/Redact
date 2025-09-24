@@ -48,47 +48,55 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
   };
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow-md flex max-w-4xl mb-6">
+    <div className="relative flex max-w-9xl p-6 m-20 mb-6 gap-6 rounded-3xl bg-black/30 backdrop-blur-xl border border-white/20 shadow-lg">
+      {/* Top-left and bottom-right glow blobs */}
+      <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>
+
+      {/* Thumbnail drop area */}
       <div
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        className={`w-1/3 border-2 border-dashed border-gray-300 rounded mr-4 flex items-center justify-center cursor-pointer ${
-          thumbnail ? "border-[#0072ff]" : ""
-        }`}>
+        className={`relative w-1/3 border-2 border-dashed rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${
+          thumbnail ? "border-blue-500/50" : "border-white/20"
+        }`}
+      >
         {thumbnail ? (
           <img
             src={thumbnail}
             alt="Thumbnail"
-            className="h-40 w-full object-cover rounded"
+            className="h-40 w-full object-cover rounded-lg"
           />
         ) : (
-          <p className="text-gray-500 text-center">
+          <p className="text-white/60 text-center px-2">
             Drag & drop thumbnail here
           </p>
         )}
       </div>
 
-      <div className="flex-1 flex flex-col justify-between gap-3">
+      {/* Input fields */}
+      <div className="flex-1 flex flex-col gap-4 z-10">
         <input
           type="text"
           placeholder="Video Title"
           value={title}
           onChange={(e) => setTitle(e.target?.value)}
-          className="w-full border p-2 rounded focus:ring-2 focus:ring-[#0072ff]"
+          className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
         />
         <input
           type="text"
           placeholder="Video URL"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          className="w-full border p-2 rounded focus:ring-2 focus:ring-[#0072ff]"
+          className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
         />
         <select
           value={industry}
           onChange={(e) => setIndustry(e.target.value)}
-          className="w-full border p-2 rounded focus:ring-2 focus:ring-[#0072ff]">
+          className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        >
           {industries.map((ind) => (
-            <option key={ind} value={ind}>
+            <option key={ind} value={ind} className="bg-black/80 text-white">
               {ind}
             </option>
           ))}
@@ -96,16 +104,19 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full border p-2 rounded focus:ring-2 focus:ring-[#0072ff]">
+          className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+        >
           {categories.map((cat) => (
-            <option key={cat} value={cat}>
+            <option key={cat} value={cat} className="bg-black/80 text-white">
               {cat}
             </option>
           ))}
         </select>
+
         <button
           onClick={handleAdd}
-          className="bg-[#0072ff] text-white px-4 py-2 rounded hover:bg-[#005fcc] w-full">
+          className="mt-2 w-full py-2 rounded-lg bg-blue-600/80 backdrop-blur-md text-white font-semibold hover:bg-blue-500/90 transition"
+        >
           Add Video
         </button>
       </div>

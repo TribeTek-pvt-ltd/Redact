@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { IconType } from "react-icons";
 
 interface HorizontalServiceCardProps {
@@ -19,52 +20,70 @@ const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
         {title}
       </h3>
 
-      {/* Glass Card */}
-      <div className="relative w-full flex flex-col sm:flex-row items-center gap-6 rounded-3xl overflow-hidden cursor-pointer bg-[radial-gradient(circle_280px_at_0%_0%,#444444,#0c0d0d)] border border-[#202222] p-6 shadow-lg">
-        {/* Floating dot */}
-        {/* <div className="dot absolute w-2.5 aspect-square bg-white rounded-full shadow-[0_0_10px_#fff] z-20 animate-moveDot" /> */}
+      <motion.div
+        whileHover={{
+          scale: 1.03,
+          boxShadow: "0 25px 40px rgba(0,0,0,0.4)",
+          transition: { type: "spring", stiffness: 300, damping: 20 },
+        }}
+        className="
+          group relative flex items-center flex-col sm:flex-row gap-6
+          rounded-3xl overflow-hidden cursor-pointer
+          bg-black/30 backdrop-blur-xl border border-white/15
+          shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)] p-6
+        "
+      >
+        {/* Convex bevel: top-left rim highlight */}
+        <div className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.65)]" />
 
-        {/* Ray highlight */}
-        <div className="ray absolute w-[220px] h-[45px] rounded-full bg-[#c7c7c7] opacity-40 shadow-[0_0_50px_#fff] blur-[10px] top-0 left-0 rotate-[40deg] origin-[10%]" />
+        {/* Convex bevel: bottom-right inner shadow */}
+        <div className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)]" />
+
+       
+        {/* Subtle surface texture / vignette */}
+        <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(120%90%_at_30%-20%,rgba(255,255,255,0.06),transparent_60%)]" />
+
+        {/* Top-left Glass Glow */}
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue/60 rounded-full blur-3xl pointer-events-none"></div>
+
+        {/* Bottom-right Glass Glow */}
+        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        {/* Animated Diagonal Glass Sweep */}
+        <motion.div
+          initial={{ x: "-120%", y: "-120%", opacity: 0 }}
+          whileHover={{
+            x: "120%",
+            y: "120%",
+            opacity: 1,
+            transition: { duration: 2, repeat: Infinity, ease: "linear" },
+          }}
+          className="absolute w-[100%] h-[200%] bg-gradient-to-br from-transparent via-white/20 to-transparent opacity-0 pointer-events-none rotate-12"
+        />
+
+        {/* Shimmer / Loader effect — only on hover */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+        </div>
 
         {/* Icon */}
-        <Icon className="text-8xl text-blue-300 drop-shadow-2xl z-10" />
+        <Icon className="text-9xl text-blue-400 sm:mx-11 drop-shadow-lg z-10" />
 
         {/* Description */}
-        <p className="text-white/90 text-center sm:text-left sm:w-1/2 text-base leading-relaxed flex-1 z-10">
+        <p className="text-white text-center sm:text-left sm:w-1/2 text-base leading-relaxed flex-1 z-10">
           {description}
         </p>
+      </motion.div>
 
-        {/* Optional inner border lines */}
-        {/* <div className="line topl absolute top-[10%] w-full h-[1px] bg-gradient-to-r from-gray-400/50 to-[#1d1f1f]" />
-        <div className="line leftl absolute left-[10%] w-[1px] h-full bg-gradient-to-b from-gray-400/50 to-[#222424]" /> */}
-      </div>
-
-      {/* CSS for animation */}
-      {/* <style jsx>{`
-        @keyframes moveDot {
-          0%,
-          100% {
-            top: 10%;
-            right: 10%;
-          }
-          25% {
-            top: 10%;
-            right: calc(100% - 35px);
-          }
-          50% {
-            top: calc(100% - 30px);
-            right: calc(100% - 35px);
-          }
-          75% {
-            top: calc(100% - 30px);
-            right: 10%;
-          }
+      <style jsx>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
-        .animate-moveDot {
-          animation: moveDot 6s linear infinite;
+        .animate-shimmer {
+          animation: shimmer 1.2s linear infinite;
         }
-      `}</style> */}
+      `}</style>
     </div>
   );
 };
