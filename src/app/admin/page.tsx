@@ -55,12 +55,12 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="flex p-6 gap-6">
+    <div className="flex p-6 gap-6 overflow-x-hidden"> {/* ✅ Hide horizontal scrollbar */}
       {/* Left side: Form + Video cards */}
       <div className="flex-1 flex flex-col gap-6">
         {/* Form + Summary side by side */}
         <div className="flex gap-6">
-          <div className="flex-1">
+          <div className="flex-1 ">
             <VideoForm onAddVideo={handleAddVideo} />
           </div>
           <div className="w-1/3">
@@ -68,8 +68,8 @@ export default function AdminPage() {
           </div>
         </div>
 
-        {/* Video list below, centered with vertical scroll */}
-        <div className="flex flex-col items-center gap-4 mt-3 max-h-[70vh] overflow-y-auto p-2">
+        {/* Video list below */}
+        <div className="flex flex-col  items-left gap-4 mt-3 max-h-[70vh] overflow-y-auto overflow-x-hidden p-2"> 
           {videos.map((video, idx) => (
             <VideoCard
               key={video._id || idx}

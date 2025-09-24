@@ -48,7 +48,7 @@ export default function VideoCard({
   };
 
   return (
-    <div className="relative flex w-3xl min-h-[300px] rounded-3xl overflow-hidden shadow-lg bg-black/30 backdrop-blur-xl border border-white/20 group hover:scale-[1.01] transition-transform duration-200">
+    <div className="relative flex w-3xl min-h-[300px] ml-64 rounded-3xl overflow-hidden shadow-lg bg-black/30 backdrop-blur-xl border border-white/20 group hover:scale-[1.01] transition-transform duration-200">
       {/* Glow blobs */}
       <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>
@@ -61,7 +61,7 @@ export default function VideoCard({
       />
 
       {/* Content */}
-      <div className="flex-1 p-6 flex flex-col justify-between gap-3 z-10">
+      <div className="flex-1 p-3 flex flex-col justify-between gap-3 z-10">
         {isEditing ? (
           <>
             <input

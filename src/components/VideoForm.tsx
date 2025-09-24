@@ -79,7 +79,7 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
   };
 
   return (
-    <div className="relative flex max-w-9xl p-6 m-20 mb-6 gap-6 rounded-3xl bg-black/30 backdrop-blur-xl border border-white/20 shadow-lg">
+<div className="relative flex w-full max-w-[1000px] mx-38 p-10 mb-6 m-45 gap-10 rounded-3xl bg-black/30 backdrop-blur-xl border border-white/20 shadow-2xl">
       {/* Top-left and bottom-right glow blobs */}
       <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>

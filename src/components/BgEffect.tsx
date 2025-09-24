@@ -2,66 +2,60 @@
 
 import React, { useEffect, useState } from "react";
 
-const CursorGlow = () => {
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 }); // actual mouse
-  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 }); // smoothed glow
+const FloatingGradient = () => {
+  const [scrollY, setScrollY] = useState(0);
 
-  // Capture mouse movement
   useEffect(() => {
-    const moveHandler = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
     };
-    window.addEventListener("mousemove", moveHandler);
-    return () => {
-      window.removeEventListener("mousemove", moveHandler);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Smooth animation for glow (lerp)
-  useEffect(() => {
-    let frame: number;
-    const animate = () => {
-      setGlowPos((prev) => ({
-        x: prev.x + (cursorPos.x - prev.x) * 0.1, // easing factor
-        y: prev.y + (cursorPos.y - prev.y) * 0.1,
-      }));
-      frame = requestAnimationFrame(animate);
-    };
-    frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
-  }, [cursorPos]);
+  // Scroll speed factor (controls how fast the zigzag loops)
+  const speed = 0.002; // smaller = slower
+
+  // Normalize scroll into a repeating cycle [0..1]
+  const cycle = (scrollY * speed) % 1;
+
+  // Zigzag path logic
+  let x = 0;
+  let y = 0;
+
+  if (cycle < 0.25) {
+    // Top center → bottom left
+    x = -300 * (cycle / 0.25); // move left
+    y = 800 * (cycle / 0.25);  // move down
+  } else if (cycle < 0.5) {
+    // Bottom left → bottom center
+    x = -300 + 300 * ((cycle - 0.25) / 0.25);
+    y = 800;
+  } else if (cycle < 0.75) {
+    // Bottom center → bottom right
+    x = 0 + 300 * ((cycle - 0.5) / 0.25);
+    y = 800;
+  } else {
+    // Bottom right → back to top center
+    x = 300 - 300 * ((cycle - 0.75) / 0.25);
+    y = 800 - 800 * ((cycle - 0.75) / 0.25);
+  }
 
   return (
-    <div className="fixed inset-0 pointer-events-none">
-      {/* Hide system cursor */}
-      {/* <style jsx global>{`
-        * {
-          cursor: none !important;
-        }
-      `}</style> */}
-
-      {/* Small white cursor dot */}
-      {/* <div
-        className="absolute w-3 h-3 z-50 rounded-full bg-white"
-        style={{
-          left: cursorPos.x - 6,
-          top: cursorPos.y - 6,
-          pointerEvents: "none",
-        }}></div> */}
-
-      {/* Blue blurred glow following smoothly */}
+    <div className="fixed inset-0 -z-10 overflow-hidden">
       <div
-        className="absolute w-[500px] h-[500px] rounded-full"
+        className="absolute w-[700px] h-[700px] rounded-full"
         style={{
-          left: glowPos.x - 200,
-          top: glowPos.y - 200,
+          left: `calc(50% + ${x}px)`,
+          top: `${y}px`,
           background:
-            "radial-gradient(circle, rgba(0,114,255,0.5), transparent 70%)",
-          filter: "blur(80px)",
-          pointerEvents: "none",
-        }}></div>
+            "radial-gradient(circle at center, rgba(0,114,255,0.6), rgba(0,114,255,0.2), transparent 90%)",
+          filter: "blur(140px)",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
     </div>
   );
 };
 
-export default CursorGlow;
+export default FloatingGradient;
