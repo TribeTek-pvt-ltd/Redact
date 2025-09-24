@@ -5,6 +5,10 @@ import StatsSection from "@/components/Stats";
 import WhoAreWe from "@/components/whoAreWe";
 import RecentWorksSection from "@/components/RecentworksSection";
 import FounderSays from "@/components/FounderSays";
+import FooterNav from '@/components/footerNav';
+// import BgEffect from "@/components/BgEffect";
+
+
 // import WorksGallery from "@/components/WorksGallery";
 // import SpecializeIn from "@/components/specializeIn";
 
@@ -12,13 +16,16 @@ import FounderSays from "@/components/FounderSays";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-black  to-black">
+    <div className="">
+          {/* <BgEffect /> */}
+
       <WhoAreWe />
       <StatsSection />
       {/* <WorksGallery /> */}
       <RecentWorksSection />
       <FounderSays quote={"vujuhsdiswueyd"} founderName={"Ram"} founderImage={"./images/founder.webp"} />
       <Footer />
+      <FooterNav />
     </div>
   );
 }

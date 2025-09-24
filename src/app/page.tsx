@@ -1,6 +1,6 @@
 "use client";
 
-import BgEffect from "@/components/BgEffect";
+// import BgEffect from "@/components/BgEffect";
 import ServiceSection from "@/components/ServiceSection";
 import StatsSection from "@/components/Stats";
 import Testimonials from "@/components/TestimonailSection";
@@ -13,11 +13,13 @@ import RecentWorksSection from "@/components/RecentworksSection";
 import PartnersLoop from "@/components/LogoSection";
 import VideoAnimation from "@/components/VideoAnimation";
 import VideoEditorCTA from "@/components/cta";
+import FooterNav from "@/components/footerNav";
 
 export default function Home() {
   return (
     <div className="relative ">
       {/* Background Animated Cards */}
+{/* <BgEffect /> */}
 
       {/* Content Layer */}
       <div className="relative z-10">
@@ -33,6 +35,8 @@ export default function Home() {
         <IndustriesSection />
         <RecentWorksSection />
         <Footer />
+        <FooterNav />
+
       </div>
     </div>
   );

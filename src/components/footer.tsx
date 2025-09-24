@@ -5,6 +5,8 @@ import Button from "@/components/Button";
 
 export default function Hero() {
   return (
+        <section className="w-full  bg-gradient-to-r from-blue-950/30 via-black/20 to-blue-950/30  ">
+
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -34,5 +36,6 @@ export default function Hero() {
         </motion.h1>
       </div>
     </motion.div>
+    </section>
   );
 }
