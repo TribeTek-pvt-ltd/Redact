@@ -1,11 +1,11 @@
-"use client";
+"use client"; // must be here
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 type ButtonProps = {
-  href?: string; // optional
-  onClick?: () => void; // optional
+  href?: string;
+  onClick?: () => void;
   children: React.ReactNode;
 };
 
@@ -14,7 +14,7 @@ export default function Button({ href, onClick, children }: ButtonProps) {
 
   const handleClick = () => {
     if (onClick) onClick();
-    if (href) router.push(href);
+    if (href) router.push(href); // client-side navigation
   };
 
   return (

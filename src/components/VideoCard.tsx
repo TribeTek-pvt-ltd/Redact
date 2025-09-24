@@ -20,7 +20,11 @@ interface VideoCardProps {
 const industries = ["Tech", "Construction", "Education", "Health"];
 const categories = ["Tutorial", "Promo", "Interview", "Other"];
 
-export default function VideoCard({ video, onDelete, onUpdate }: VideoCardProps) {
+export default function VideoCard({
+  video,
+  onDelete,
+  onUpdate,
+}: VideoCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(video.title);
   const [url, setUrl] = useState(video.url);
@@ -75,10 +79,12 @@ export default function VideoCard({ video, onDelete, onUpdate }: VideoCardProps)
             <select
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
-              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-            >
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50">
               {industries.map((ind) => (
-                <option key={ind} value={ind} className="bg-black/80 text-white">
+                <option
+                  key={ind}
+                  value={ind}
+                  className="bg-black/80 text-white">
                   {ind}
                 </option>
               ))}
@@ -86,10 +92,12 @@ export default function VideoCard({ video, onDelete, onUpdate }: VideoCardProps)
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-            >
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50">
               {categories.map((cat) => (
-                <option key={cat} value={cat} className="bg-black/80 text-white">
+                <option
+                  key={cat}
+                  value={cat}
+                  className="bg-black/80 text-white">
                   {cat}
                 </option>
               ))}
@@ -97,35 +105,33 @@ export default function VideoCard({ video, onDelete, onUpdate }: VideoCardProps)
             <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={handleSave}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
-              >
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition">
                 Save
               </button>
               <button
                 onClick={() => setIsEditing(false)}
-                className="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition"
-              >
+                className="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition">
                 Cancel
               </button>
             </div>
           </>
         ) : (
           <>
-            <h3 className="text-white text-center font-semibold text-2xl">{video.title}</h3>
+            <h3 className="text-white text-center font-semibold text-2xl">
+              {video.title}
+            </h3>
             <p className="text-white/70 text-sm">URL: {video.url}</p>
             <p className="text-white/70 text-sm">Industry: {video.industry}</p>
             <p className="text-white/70 text-sm">Category: {video.category}</p>
             <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={() => setIsEditing(true)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
-              >
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition">
                 Edit
               </button>
               <button
                 onClick={onDelete}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 transition"
-              >
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 transition">
                 Delete
               </button>
             </div>

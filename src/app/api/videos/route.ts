@@ -5,10 +5,18 @@ import { ObjectId } from "mongodb";
 export async function GET() {
   try {
     const client = await clientPromise;
-    const db = client.db();
+    const db = client.db(); // match the same DB as POST
     const videos = await db.collection("videos").find({}).toArray();
-    return NextResponse.json(videos);
-  } catch {
+
+    // Convert ObjectId → string
+    const safeVideos = videos.map((v) => ({
+      ...v,
+      _id: v._id.toString(),
+    }));
+
+    return NextResponse.json(safeVideos);
+  } catch (err) {
+    console.error("GET error:", err);
     return NextResponse.json(
       { error: "Failed to fetch videos" },
       { status: 500 }
