@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { FaLink } from "react-icons/fa"; // ✅ Changed to Link icon
 
 interface WorkCardProps {
   type: "image" | "video";
@@ -8,7 +9,7 @@ interface WorkCardProps {
   title: string;
   workType: string;
   extraText?: string;
-  url?: string;
+  url?: string; // Link (YouTube or any external)
 }
 
 export default function WorkCard({
@@ -58,8 +59,17 @@ export default function WorkCard({
             {workType && <span>{workType}</span>}{" "}
             {extraText && <span>| {extraText}</span>}
           </p>
+
+          {/* ✅ External Link Icon */}
           {url && (
-            <p className="text-white text-[10px] sm:text-xs md:text-sm text-center break-words mt-2">{url}</p>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 text-white hover:text-gray-300 transition-colors"
+            >
+              <FaLink size={28} />
+            </a>
           )}
         </div>
       </div>
