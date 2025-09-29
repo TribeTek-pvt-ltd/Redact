@@ -13,26 +13,26 @@ export default function SecondaryHero({ heading, body }: SecondaryHeroProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="py-10 flex items-start justify-start text-white p-4 sm:p-6 md:p-8">
+      className="py-20 flex items-start justify-start text-white px-6 sm:px-10 md:px-16">
       <div className="container mx-auto">
         <motion.h1
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-6 text-left py-10">
+          className="text-4xl sm:text-6xl md:text-8xl font-extrabold mb-6 sm:mb-8 text-left leading-tight">
           {heading}
         </motion.h1>
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row sm:justify-between items-start gap-6 sm:gap-8 mb-4 sm:mb-8">
+          className="flex flex-col sm:flex-row sm:justify-between items-start gap-8 sm:gap-12 mb-6 sm:mb-12">
           <div></div>
           <motion.p
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-gray-200 max-w-prose text-right">
+            className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-gray-200 max-w-2xl text-right">
             {body}
           </motion.p>
         </motion.div>

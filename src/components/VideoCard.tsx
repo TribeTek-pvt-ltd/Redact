@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FaPen, FaTrash } from "react-icons/fa";
 
 interface Video {
   _id?: string;
@@ -48,7 +49,7 @@ export default function VideoCard({
   };
 
   return (
-    <div className="relative flex w-3xl min-h-[300px] ml-64 rounded-3xl overflow-hidden shadow-lg bg-black/30 backdrop-blur-xl border border-white/20 group hover:scale-[1.01] transition-transform duration-200">
+    <div className="relative container flex flex-col md:flex-row w-full md:w-3xl min-h-[300px] rounded-3xl overflow-hidden shadow-lg bg-black/30 backdrop-blur-xl border border-white/20 group hover:scale-[1.01] transition-transform duration-200">
       {/* Glow blobs */}
       <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>
@@ -57,7 +58,7 @@ export default function VideoCard({
       <img
         src={video.thumbnail}
         alt="Thumbnail"
-        className="w-1/3 object-cover rounded-l-3xl"
+        className="w-full md:w-1/3 object-cover rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none"
       />
 
       {/* Content */}
@@ -79,12 +80,10 @@ export default function VideoCard({
             <select
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
-              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            >
               {industries.map((ind) => (
-                <option
-                  key={ind}
-                  value={ind}
-                  className="bg-black/80 text-white">
+                <option key={ind} value={ind} className="bg-black/80 text-white">
                   {ind}
                 </option>
               ))}
@@ -92,12 +91,10 @@ export default function VideoCard({
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+              className="w-full p-2 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            >
               {categories.map((cat) => (
-                <option
-                  key={cat}
-                  value={cat}
-                  className="bg-black/80 text-white">
+                <option key={cat} value={cat} className="bg-black/80 text-white">
                   {cat}
                 </option>
               ))}
@@ -105,12 +102,14 @@ export default function VideoCard({
             <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={handleSave}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition">
-                Save
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
+              >
+                <FaPen /> Save
               </button>
               <button
                 onClick={() => setIsEditing(false)}
-                className="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition">
+                className="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition"
+              >
                 Cancel
               </button>
             </div>
@@ -126,13 +125,15 @@ export default function VideoCard({
             <div className="flex justify-end gap-2 mt-4">
               <button
                 onClick={() => setIsEditing(true)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition">
-                Edit
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition"
+              >
+                <FaPen />
               </button>
               <button
                 onClick={onDelete}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 transition">
-                Delete
+                className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 transition"
+              >
+                <FaTrash /> 
               </button>
             </div>
           </>

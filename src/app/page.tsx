@@ -32,7 +32,7 @@ export default function Home() {
         <VideoEditorCTA />
         <WhoAreWe />
         <StatsSection />
-        <IndustriesSection />
+        <IndustriesSection  />
         <RecentWorksSection />
         <Footer />
         <FooterNav />

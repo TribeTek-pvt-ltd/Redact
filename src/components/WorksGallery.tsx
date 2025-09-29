@@ -1,109 +1,82 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WorkCard from "./WorkCard";
 
-interface Work {
-  id: number;
-  thumbnail: string;
+interface Video {
+  _id?: string;
   title: string;
-  workType: string;
-  extraText?: string;
+  thumbnail: string;
+  url: string;
+  category: string;
+  industry: string;
 }
 
-// Sample data
-const worksData: Work[] = [
-  {
-    id: 1,
-    thumbnail: "https://picsum.photos/300/200?random=1",
-    title: "Mountain Adventure",
-    workType: "Travel",
-    extraText: "Lifestyle",
-  },
-  {
-    id: 2,
-    thumbnail: "https://picsum.photos/300/200?random=2",
-    title: "City Vibes",
-    workType: "Photography",
-    extraText: "Urban",
-  },
-  {
-    id: 3,
-    thumbnail: "https://picsum.photos/300/200?random=3",
-    title: "Beach Life",
-    workType: "Travel",
-    extraText: "Lifestyle",
-  },
-  {
-    id: 6,
-    thumbnail: "https://picsum.photos/300/200?random=3",
-    title: "Beach Life",
-    workType: "Travel",
-    extraText: "Lifestyle",
-  },
-  {
-    id: 5,
-    thumbnail: "https://picsum.photos/300/200?random=3",
-    title: "Beach Life",
-    workType: "Travel",
-    extraText: "Lifestyle",
-  },
-  {
-    id: 4,
-    thumbnail: "https://picsum.photos/300/200?random=4",
-    title: "Food Art",
-    workType: "Culinary",
-    extraText: "Gourmet",
-  },
-];
-
 export default function WorksGallery() {
+  const [videos, setVideos] = useState<Video[]>([]);
   const [filter, setFilter] = useState<string>("All");
 
-  const workTypes = Array.from(new Set(worksData.map((work) => work.workType)));
+  // Fetch videos from backend
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const res = await fetch("/api/videos"); // Make sure this API returns all videos
+        const data: Video[] = await res.json();
+        setVideos(data);
+      } catch (err) {
+        console.error("Error fetching videos:", err);
+      }
+    };
 
-  const filteredWorks =
+    fetchVideos();
+  }, []);
+
+  // Get unique categories for filtering
+  const categories = Array.from(new Set(videos.map((v) => v.category)));
+
+  // Filtered videos
+  const filteredVideos =
     filter === "All"
-      ? worksData
-      : worksData.filter((work) => work.workType === filter);
+      ? videos
+      : videos.filter((v) => v.category === filter);
 
   return (
     <div className="space-y-4 container mx-auto p-4">
       {/* Filter Options */}
-      <div className="flex  justify-center space-x-2">
+      <div className="flex justify-center space-x-2 flex-wrap">
         <button
-          className={`px-2 py-2  border border-white/30 backdrop-blur-md transition-colors duration-300 ${
-            filter === "All"
-              ? "bg-white/30 text-black"
-              : " text-white hover:bg-white/20"
+          className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${
+            filter === "All" ? "bg-white/30 text-black" : "text-white hover:bg-white/20"
           }`}
-          onClick={() => setFilter("All")}>
+          onClick={() => setFilter("All")}
+        >
           All
         </button>
 
-        {workTypes.map((type) => (
+        {categories.map((cat) => (
           <button
-            key={type}
-            className={`px-4 sm:px-6 py-2  border border-white/30 backdrop-blur-md transition-colors duration-300 ${
-              filter === type
-                ? "bg-white/30 text-black"
-                : " text-white hover:bg-white/20"
+            key={cat}
+            className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${
+              filter === cat ? "bg-white/30 text-black" : "text-white hover:bg-white/20"
             }`}
-            onClick={() => setFilter(type)}>
-            {type}
+            onClick={() => setFilter(cat)}
+          >
+            {cat}
           </button>
         ))}
       </div>
 
       {/* Works Grid */}
-      <div className="grid grid-cols-1 pt-12 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-items-center ">
-        {filteredWorks.map((work) => (
+      <div className="grid grid-cols-1 pt-12 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
+        {filteredVideos.map((video) => (
           <WorkCard
-            key={work.id}
-            thumbnail={work.thumbnail}
-            title={work.title}
-            workType={work.workType}
-            extraText={work.extraText}
+            key={video._id}
+            type="video"
+            thumbnail={video.thumbnail}
+            title={video.title}
+            workType={video.category}
+            extraText={video.industry}
+            url={video.url}
           />
         ))}
       </div>

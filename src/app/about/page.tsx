@@ -20,10 +20,10 @@ export default function Home() {
           {/* <BgEffect /> */}
 
       <WhoAreWe />
+      <FounderSays quote={"vujuhsdiswueyd"} founderName={"Ram"} founderImage={"./images/founder.webp"} />
       <StatsSection />
       {/* <WorksGallery /> */}
       <RecentWorksSection />
-      <FounderSays quote={"vujuhsdiswueyd"} founderName={"Ram"} founderImage={"./images/founder.webp"} />
       <Footer />
       <FooterNav />
     </div>
