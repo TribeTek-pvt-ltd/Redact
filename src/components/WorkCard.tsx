@@ -1,50 +1,93 @@
 "use client";
 
 import Image from "next/image";
+import { FaLink } from "react-icons/fa"; // ✅ Changed to Link icon
 
 interface WorkCardProps {
+  type: "image" | "video";
   thumbnail: string;
   title: string;
   workType: string;
   extraText?: string;
+  url?: string; // Link (YouTube or any external)
 }
 
 export default function WorkCard({
+  type,
   thumbnail,
   title,
   workType,
   extraText,
+  url,
 }: WorkCardProps) {
   return (
-    <div className="relative shadow-lg overflow-hidden rounded-2xl container max-w-sm hover:shadow-2xl transition-shadow duration-300">
-      {/* Background Blur Overlay */}
-      <div className="absolute inset-0 rounded-2xl  bg-white/10 backdrop-blur-md border border-white/20 z-0"></div>
+    <div className="card perspective-1000 w-full max-w-xs sm:max-w-sm md:max-w-md h-56 sm:h-60 md:h-64 mx-auto">
+      <div className="card-inner relative w-full h-full transform-style-preserve-3d transition-transform duration-[1000ms] hover:rotate-y-180">
+        {/* Front Side */}
+        <div className="card-front absolute w-full h-full backface-hidden rounded-xl flex flex-col justify-between p-3 backdrop-blur-md bg-white/10 border border-white/20 shadow-lg">
+          <div className="relative w-full h-3/4 rounded-xl overflow-hidden">
+            {type === "video" ? (
+              <video
+                src={url}
+                poster={thumbnail}
+                controls
+                className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+              />
+            ) : (
+              <Image
+                src={thumbnail}
+                alt={title}
+                fill
+                className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
+                priority
+              />
+            )}
+          </div>
+          <div className="mt-2 text-white">
+            <p className="text-base sm:text-lg md:text-xl font-bold">{title}</p>
+            <p className="text-xs sm:text-sm md:text-base">
+              {workType && <span className="font-medium">{workType}</span>}{" "}
+              {extraText && <span>| {extraText}</span>}
+            </p>
+          </div>
+        </div>
 
-      {/* Image in 1.91:1 ratio */}
-      <div
-        className="relative w-full z-10"
-        style={{ paddingTop: `${100 / 1.91}%` }}>
-        <Image
-          src={thumbnail}
-          alt={title}
-          fill
-          className="absolute top-0 left-0 w-full h-full object-cover "
-          priority
-        />
+        {/* Back Side */}
+        <div className="card-back absolute w-full h-full backface-hidden rounded-xl flex flex-col justify-center items-center p-4 backdrop-blur-md bg-white/10 border border-white/20 shadow-lg rotate-y-180">
+          <p className="text-white text-base sm:text-lg md:text-xl font-bold text-center">{title}</p>
+          <p className="text-white text-xs sm:text-sm md:text-base text-center mt-1">
+            {workType && <span>{workType}</span>}{" "}
+            {extraText && <span>| {extraText}</span>}
+          </p>
+
+          {/* ✅ External Link Icon */}
+          {url && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 text-white hover:text-gray-300 transition-colors"
+            >
+              <FaLink size={28} />
+            </a>
+          )}
+        </div>
       </div>
 
-      {/* Text Section */}
-      <div className="p-4 relative z-10">
-        <p className="text-blue-400 text-2xl font-bold drop-shadow-lg">
-          {title}
-        </p>
-        <p>
-          {workType && (
-            <span className="text-gray-100 font-medium">{workType}</span>
-          )}{" "}
-          {extraText && <span className="text-gray-300">| {extraText}</span>}
-        </p>
-      </div>
+      <style jsx>{`
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        .transform-style-preserve-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+          transform: rotateY(180deg);
+        }
+      `}</style>
     </div>
   );
 }

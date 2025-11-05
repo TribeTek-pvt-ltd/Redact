@@ -1,96 +1,30 @@
-// "use client";
-
-// import { useRef, useEffect } from "react";
-// import ServiceCard from "@/components/ServiceCard";
-// import { FaVideo, FaMusic, FaFilm, FaPalette } from "react-icons/fa";
-
-// const cardData = [
-//   { title: "Shortform Editing", Icon: FaVideo },
-//   { title: "Commercials", Icon: FaFilm },
-//   { title: "Sound Designing", Icon: FaMusic },
-//   { title: "Color Grading", Icon: FaPalette },
-// ];
-
-// const ServiceSection: React.FC = () => {
-//   const scrollRef = useRef<HTMLDivElement>(null);
-
-//   // convert vertical scroll to horizontal scroll
-//   // useEffect(() => {
-//   //   const el = scrollRef.current;
-//   //   if (!el) return;
-
-//   //   const onWheel = (e: WheelEvent) => {
-//   //     if (e.deltaY === 0) return;
-//   //     e.preventDefault();
-//   //     el.scrollTo({
-//   //       left: el.scrollLeft + e.deltaY,
-//   //       behavior: "smooth",
-//   //     });
-//   //   };
-
-//   //   el.addEventListener("wheel", onWheel, { passive: false });
-//   //   return () => el.removeEventListener("wheel", onWheel);
-//   // }, []);
-
-//   return (
-//     <div className="container mx-auto py-6 ">
-//       <h2 className="text-white font-bold text-4xl text-left mb-6">
-//         We Specialize in
-//       </h2>
-
-//       {/* Horizontal scroll wrapper */}
-//       <div
-//         ref={scrollRef}
-//         className="flex sm:justify-around px-4 py-6  scroll-smooth">
-//         {cardData.map((card, index) => (
-//           <ServiceCard key={index} title={card.title} Icon={card.Icon} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ServiceSection;
-
 "use client";
 
-import { useRef } from "react";
-import ServiceCard from "@/components/ServiceCard";
-import { FaVideo, FaMusic, FaFilm, FaPalette } from "react-icons/fa";
+import IndustryCard from "./IndustryCard";
 
-const cardData = [
-  { title: "Shortform Editing", Icon: FaVideo },
-  { title: "Commercials", Icon: FaFilm },
-  { title: "Sound Designing", Icon: FaMusic },
-  { title: "Color Grading", Icon: FaPalette },
-];
-
-const ServiceSection: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+const IndustriesSection = () => {
+  const industriesList = [
+    { name: "Technology", img: "https://picsum.photos/seed/tech/800/400" },
+    { name: "Healthcare", img: "https://picsum.photos/seed/health/800/400" },
+    { name: "Education", img: "https://picsum.photos/seed/edu/800/400" },
+    { name: "Finance", img: "https://picsum.photos/seed/finance/800/400" },
+  ];
 
   return (
-    <div className="container mx-auto py-6">
-      <h2 className="text-white font-bold text-4xl text-left mb-6 mx-4">
-        We Specialize in
-      </h2>
+    <section className="container mx-auto py-12">
+      <h2 className="text-4xl font-bold mb-6 mx-3">Industries</h2>
 
-      {/* Horizontal scroll wrapper */}
-      <div
-        ref={scrollRef}
-        className="
-          flex px-4 py-6 gap-4 scroll-smooth
-          sm:justify-around 
-          sm:overflow-visible
-          overflow-x-auto
-          scrollbar-hide
-        "
-      >
-        {cardData.map((card, index) => (
-          <ServiceCard key={index} title={card.title} Icon={card.Icon} />
+      <div className="flex flex-col gap-6 mx-1">
+        {industriesList.map((industry, idx) => (
+          <IndustryCard
+            key={idx}
+            industry={industry.name}
+            bgImage={industry.img}
+          />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default ServiceSection;
+export default IndustriesSection;

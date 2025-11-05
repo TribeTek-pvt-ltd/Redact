@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "../components/navbar";
 import "./globals.css";
 import BgEffect from "@/components/BgEffect";
+import FluidCursor from "@/components/FluidCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white min-h-screen`}>
         <BgEffect />
-
+        {/* <FluidCursor /> */}
         <div className="fixed top-0 left-0 w-full z-50  backdrop-blur-md">
           {" "}
           <Navbar />

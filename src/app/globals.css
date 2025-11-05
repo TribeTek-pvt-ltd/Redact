@@ -47,7 +47,29 @@ button {
   position: relative;
   z-index: 30;
 } */
-
+/* Headings in UberMove */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "UberMove", sans-serif;
+  font-weight: 700;
+}
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+  font-family: "UberMove", sans-serif;
+  font-weight: 700;
+}
+p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
 /* Hide scrollbar for all browsers */
 .hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
@@ -63,4 +85,3 @@ button {
   --color-black: #020202;
   /* --color-blue-dark: #d9d9d9; */
 }
-
