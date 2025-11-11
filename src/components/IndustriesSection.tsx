@@ -8,7 +8,6 @@ const IndustriesSection = () => {
     { name: "Healthcare", img: "https://picsum.photos/seed/health/800/400" },
     { name: "Education", img: "https://picsum.photos/seed/edu/800/400" },
     { name: "Finance", img: "https://picsum.photos/seed/finance/800/400" },
-    
   ];
 
   return (
@@ -21,7 +20,6 @@ const IndustriesSection = () => {
             key={idx}
             industry={industry.name}
             bgImage={industry.img}
-            
           />
         ))}
       </div>
