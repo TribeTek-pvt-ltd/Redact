@@ -46,7 +46,7 @@ const FloatingGradient = () => {
   if (t < 0.3) {
     eased = 0; // hold
   } else {
-    const moveT = (t - 0.3) / 0.7; // rescale 0.3–1 → 0–1
+    const moveT = (t - 0.3) / 0.6; // rescale 0.3–1 → 0–1
     // ease-in-out cubic
     eased =
       moveT < 0.5

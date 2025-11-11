@@ -16,8 +16,8 @@ export default function Hero() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
           className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-6 text-left py-10">
-          <p>Creating Cutting Edge</p>
-          <p>Videos For Epic Brands</p>
+          <p>Creating bold visuals </p>
+          <p>for brands that lead.</p>
         </motion.h1>
         <motion.div
           initial={{ x: -50, opacity: 0 }}
@@ -34,9 +34,11 @@ export default function Hero() {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-gray-200 max-w-prose text-right">
-            Redact, A Boutique Video Agency Based In Colombo, Sri Lanka, Has
-            Been Serving Clients Worldwide For The For The Past Three Years.
+            className=" text-xs sm:text-shadow-sm md:text-lg font-light leading-relaxed text-gray-200 max-w-prose text-right">
+            Redact Media helps brands and creators grow online through bold
+            strategy, sharp storytelling, and standout content. From social
+            media to commercials, we craft work that connects, converts, and
+            scales with style
           </motion.p>
         </motion.div>
       </div>
