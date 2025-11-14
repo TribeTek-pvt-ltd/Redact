@@ -29,7 +29,7 @@ const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
 
       <motion.div
         whileHover={{
-          scale: 1.03,
+          // scale: 1.03,
           boxShadow: "0 25px 40px rgba(0,0,0,0.4)",
           transition: { type: "spring", stiffness: 300, damping: 20 },
         }}
@@ -38,15 +38,13 @@ const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
           rounded-3xl overflow-hidden cursor-pointer
           bg-black/30 backdrop-blur-xl border border-white/15
           shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)] p-6
-        "
-      >
+        ">
         {/* Convex bevel: top-left rim highlight */}
         <div className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.65)]" />
 
         {/* Convex bevel: bottom-right inner shadow */}
         <div className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)]" />
 
-       
         {/* Subtle surface texture / vignette */}
         <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(120%90%_at_30%-20%,rgba(255,255,255,0.06),transparent_60%)]" />
 
@@ -84,8 +82,12 @@ const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
 
       <style jsx>{`
         @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
         }
         .animate-shimmer {
           animation: shimmer 1.2s linear infinite;

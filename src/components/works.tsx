@@ -5,8 +5,8 @@ import SecondaryHero from "@/components/secondaryHero";
 export default function WhoAreWe() {
   return (
     <SecondaryHero
-      heading={"Work"} // Updated heading
-      body="We are a creative team passionate about bringing your ideas to life through innovative design and technology. Our expertise spans multiple domains, ensuring exceptional results every time." // Updated body
+      heading={"Our Works"} // Updated heading
+      body="We’ve delivered viral reels, cinematic ads, and branded content that moves audiences and scales influence. Trusted by creators and brands worldwide, our work speaks in results." // Updated body
     />
   );
 }
