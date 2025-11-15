@@ -10,10 +10,7 @@ const GAP = 20; // gap between images
 
 // Generate placeholder images dynamically
 const generateImages = (width: number, height: number) =>
-  Array.from({ length: IMAGES_PER_ROW }).map(
-    (_, i) =>
-      `https://picsum.photos/${Math.round(width)}/${Math.round(height)}?random=${i + 1}`
-  );
+  Array.from({ length: IMAGES_PER_ROW }).map((_, i) => `/${i + 1}.jpg`);
 
 export default function MultiRowInfiniteCarousel() {
   const containerRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -103,8 +100,7 @@ export default function MultiRowInfiniteCarousel() {
                 height: `${imageHeight}px`,
                 left: positions[rowIndex]?.[idx] || 0,
                 willChange: "transform",
-              }}
-            >
+              }}>
               <Image
                 src={src}
                 alt={`Carousel image ${rowIndex}-${idx}`}
@@ -118,4 +114,3 @@ export default function MultiRowInfiniteCarousel() {
     </div>
   );
 }
-

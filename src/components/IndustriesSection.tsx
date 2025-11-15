@@ -4,10 +4,17 @@ import IndustryCard from "./IndustryCard";
 
 const IndustriesSection = () => {
   const industriesList = [
-    { name: "Technology", img: "https://picsum.photos/seed/tech/800/400" },
-    { name: "Healthcare", img: "https://picsum.photos/seed/health/800/400" },
-    { name: "Education", img: "https://picsum.photos/seed/edu/800/400" },
-    { name: "Finance", img: "https://picsum.photos/seed/finance/800/400" },
+    { name: "Event & lifestyle ", img: "/2.png" },
+    { name: "Commercials ", img: "/3.png" },
+    { name: "Automobile", img: "/4.png" },
+    {
+      name: "Shortform videos",
+      img: "https://picsum.photos/seed/finance/600/400",
+    },
+    {
+      name: "Beauty & Healthcare",
+      img: "https://picsum.photos/seed/finance/600/400",
+    },
   ];
 
   return (
