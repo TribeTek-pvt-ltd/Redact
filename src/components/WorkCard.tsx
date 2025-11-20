@@ -40,28 +40,42 @@ export default function WorkCard({
       {/* Card */}
       <div
         onClick={() => url && setOpen(true)}
-        className="cursor-pointer w-full max-w-xs sm:max-w-sm md:max-w-md h-56 sm:h-60 md:h-64 mx-auto rounded-xl overflow-hidden shadow-lg bg-white/10 backdrop-blur-md border border-white/20 transition hover:scale-[1.02]">
-        <div className="relative w-full h-3/4 rounded-xl overflow-hidden">
-          {type === "video" ? (
-            <Image
-              src={thumbnail}
-              alt={title}
-              fill
-              className="object-cover"
-              priority
-            />
-          ) : (
-            <Image
-              src={thumbnail}
-              alt={title}
-              fill
-              className="object-cover"
-              priority
-            />
-          )}
+        className="
+          relative cursor-pointer w-full max-w-xs sm:max-w-sm md:max-w-md h-56 sm:h-60 md:h-64 
+          mx-auto rounded-xl overflow-hidden transition hover:scale-[1.03]
+          bg-white/10 backdrop-blur-xl border border-white/15
+          shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
+        "
+      >
+        {/* Glass Effect Layers */}
+        {/* Top-left highlight */}
+        <div className="pointer-events-none absolute inset-0 rounded-xl shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.45)]" />
+
+        {/* Bottom-right inner shadow */}
+        <div className="pointer-events-none absolute inset-0 rounded-xl shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)]" />
+
+        {/* Light texture */}
+        <div className="pointer-events-none absolute inset-0 rounded-xl 
+            bg-[radial-gradient(120%90%_at_30%-20%,rgba(255,255,255,0.06),transparent_60%)] 
+        " />
+
+        {/* Soft glow blobs */}
+        <div className="absolute -top-10 -left-10 w-36 h-36 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-10 -right-10 w-36 h-36 bg-blue-300/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        {/* Thumbnail */}
+        <div className="relative w-full h-3/4 rounded-xl overflow-hidden z-10">
+          <Image
+            src={thumbnail}
+            alt={title}
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
 
-        <div className="p-3 text-white">
+        {/* Bottom Text */}
+        <div className="p-3 text-white relative z-10">
           <p className="text-base sm:text-lg font-bold">{title}</p>
           <p className="text-xs sm:text-sm">
             {workType} {extraText && ` | ${extraText}`}
@@ -76,7 +90,8 @@ export default function WorkCard({
             {/* Close Button */}
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-3 right-3 text-white text-xl hover:text-gray-300">
+              className="absolute top-3 right-3 text-white text-xl hover:text-gray-300"
+            >
               <FaTimes />
             </button>
 
@@ -87,7 +102,8 @@ export default function WorkCard({
                 url || ""
               )}`}
               allow="autoplay; encrypted-media"
-              allowFullScreen></iframe>
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       )}
