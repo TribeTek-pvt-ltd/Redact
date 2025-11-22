@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div className="relative ">
       {/* Background Animated Cards */}
-{/* <BgEffect /> */}
+      {/* <BgEffect /> */}
 
       {/* Content Layer */}
       <div className="relative z-10">
@@ -28,15 +28,16 @@ export default function Home() {
         <VideoAnimation />
         <PartnersLoop />
         <ServiceSection />
-        <Testimonials />
-        <VideoEditorCTA />
         <WhoAreWe />
+        <VideoEditorCTA />
         <StatsSection />
-        <IndustriesSection  />
+
+        <Testimonials />
+
+        <IndustriesSection />
         <RecentWorksSection />
         <Footer />
         <FooterNav />
-
       </div>
     </div>
   );

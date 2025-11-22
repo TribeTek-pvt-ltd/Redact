@@ -21,6 +21,13 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
+  // Fetch videos
+  useEffect(() => {
+    fetch("/api/videos")
+      .then((res) => res.json())
+      .then((data) => setVideos(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   // 🔒 Check if logged-in user is admin
   useEffect(() => {
@@ -54,15 +61,7 @@ export default function AdminPage() {
   }
 
   // If not admin (extra safety)
-  if (!isAdmin) return null;
-
-  // Fetch videos
-  useEffect(() => {
-    fetch("/api/videos")
-      .then((res) => res.json())
-      .then((data) => setVideos(data))
-      .catch((err) => console.error(err));
-  }, []);
+  // if (!isAdmin) return null;
 
   const handleAddVideo = async (video: Video) => {
     try {

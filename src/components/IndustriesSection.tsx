@@ -4,22 +4,22 @@ import IndustryCard from "./IndustryCard";
 
 const IndustriesSection = () => {
   const industriesList = [
-    { name: "Event & lifestyle ", img: "/2.png" },
-    { name: "Commercials ", img: "/3.png" },
-    { name: "Automobile", img: "/4.png" },
+    { name: "Event & lifestyle ", img: "/industries/events.png" },
+    { name: "Commercials ", img: "/industries/commercials.png" },
+    { name: "Automobile", img: "/industries/automobile.png" },
     {
       name: "Shortform videos",
-      img: "https://picsum.photos/seed/finance/600/400",
+      img: "/industries/shortform.png",
     },
     {
       name: "Beauty & Healthcare",
-      img: "https://picsum.photos/seed/finance/600/400",
+      img: "/industries/beautyhealthcare.png",
     },
   ];
 
   return (
     <section className="container mx-auto py-12">
-      <h2 className="text-4xl font-bold mb-6 mx-3">Industries</h2>
+      <h2 className="text-4xl font-bold mb-6 mx-3">Industries We worked</h2>
 
       <div className="flex flex-col gap-6 mx-1 ">
         {industriesList.map((industry, idx) => (
