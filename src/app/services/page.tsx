@@ -6,7 +6,7 @@ import { FaVideo, FaPaintBrush, FaFilm, FaCamera } from "react-icons/fa"; // Imp
 import Footer from "@/components/footer";
 import FooterNav from "@/components/footerNav";
 import RecentWorksSection from "@/components/RecentworksSection";
-import { desc } from "framer-motion/client";
+// import { desc } from "framer-motion/client";
 
 export default function Services() {
   const services = [
