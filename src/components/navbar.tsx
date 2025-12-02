@@ -65,18 +65,11 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
-              Home
-            </Link>
-            <Link href="/about" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
-              About Us
-            </Link>
-            <Link href="/works" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
-              Work
-            </Link>
-            <Link href="/services" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium">
-              Services
-            </Link>
+            <Link href="/" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">Home</Link>
+            <Link href="/about" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">About Us</Link>
+            <Link href="/works" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">Work</Link>
+            <Link href="/services" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">Services</Link>
+            <Link href="/blog" className="text-white hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors">Blogs</Link>
           </div>
 
           {/* Desktop Right-Side Button */}
@@ -107,29 +100,14 @@ export default function Navbar() {
           animate="visible"
           exit="hidden"
           variants={menuVariants}
-          className="md:hidden w-full px-4 py-4 space-y-4 border-t border-gray-700"
-        >
-          <Link href="/" className="block text-white text-lg py-2" onClick={toggleMenu}>
-            Home
-          </Link>
+          className="md:hidden w-full px-4 py-4 space-y-4 border-t border-gray-700">
+          <Link href="/" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>Home</Link>
+          <Link href="/about" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>About Us</Link>
+          <Link href="/works" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>Work</Link>
+          <Link href="/services" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>Services</Link>
+          <Link href="/blog" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>Blogs</Link>
 
-          <Link href="/about" className="block text-white text-lg py-2" onClick={toggleMenu}>
-            About Us
-          </Link>
-
-          <Link href="/works" className="block text-white text-lg py-2" onClick={toggleMenu}>
-            Work
-          </Link>
-
-          <Link href="/services" className="block text-white text-lg py-2" onClick={toggleMenu}>
-            Services
-          </Link>
-
-          {isAdmin ? (
-            <Button onClick={handleLogout}>Logout</Button>
-          ) : (
-            <Button onClick={openCalendly}>Let&apos;s Talk</Button>
-          )}
+          <Button href="/contact">Let&apos;s Talk</Button>
         </motion.div>
       )}
     </motion.nav>

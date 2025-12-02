@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const LOGOS = [
-  "/images/logo.png",
-  "/images/logo.png",
-  "/images/logo.png",
-  "/images/logo.png",
-  "/images/logo.png",
+  "/images/SheratonMallEmirates.png",
+  "/images/SheratonMallEmirates.png",
+  "/images/SheratonMallEmirates.png",
+  "/images/SheratonMallEmirates.png",
+  "/images/SheratonMallEmirates.png",
 ];
 
 const IMAGE_WIDTH = 150;

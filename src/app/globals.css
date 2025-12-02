@@ -85,3 +85,88 @@ p {
   --color-black: #020202;
   /* --color-blue-dark: #d9d9d9; */
 }
+
+.markdown-body {
+  color: #e5e7eb; /* text-gray-300 */
+  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+  word-break: break-word;
+}
+
+.markdown-body h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.markdown-body h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.markdown-body h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.markdown-body p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  list-style: disc;
+}
+
+.markdown-body li {
+  margin-bottom: 0.5rem;
+}
+
+/* Target bold text inside your markdown blog */
+.markdown-body strong {
+        /* Set text color */
+  font-weight: 900;      /* Ensure bold weight */
+ /* Optional soft highlight */
+  padding: 0 0.2rem;    /* Optional small padding */
+  border-radius: 3px;    /* Optional rounded edges for highlight */
+}
+
+/* Style subheadings inside the blog article */
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 800;
+}
+
+/* Style main blog headings (h1) inside markdown content */
+.markdown-body h1 {
+  color: #0072ff; /* Your desired blue */
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body h1 {
+  color: #0072ff;
+  font-weight: 700;
+  font-size: 2.5rem; /* Adjust as needed */
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-decoration: underline; /* Adds underline */
+  text-underline-offset: 4px; /* Adjust distance from text */
+  text-decoration-color: #0072ff; /* Optional: match underline color */
+  text-decoration-thickness: 2px; /* Optional: thicker underline */
+}
