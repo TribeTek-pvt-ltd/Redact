@@ -19,7 +19,7 @@ export default function SecondaryHero({ heading, body }: SecondaryHeroProps) {
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-          className="text-4xl sm:text-6xl md:text-8xl font-extrabold mb-6 sm:mb-8 text-left leading-tight">
+          className="text-4xl mt-20 sm:text-6xl md:text-8xl font-extrabold mb-6 sm:mb-8 text-left leading-tight">
           {heading}
         </motion.h1>
         <motion.div
