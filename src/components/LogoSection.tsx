@@ -4,16 +4,30 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const LOGOS = [
-  "/images/SheratonMallEmirates.png",
-  "/images/SheratonMallEmirates.png",
-  "/images/SheratonMallEmirates.png",
-  "/images/SheratonMallEmirates.png",
-  "/images/SheratonMallEmirates.png",
+  "/patners/1.png",
+  "/patners/2.png",
+  "/patners/3.png",
+  "/patners/4.png",
+  "/patners/5.png",
+  "/patners/6.png",
+  "/patners/7.png",
+  "/patners/8.png",
+  "/patners/9.png",
+  "/patners/10.png",
+  "/patners/11.png",
+  "/patners/12.png",
+  "/patners/13.png",
+  "/patners/14.png",
+  "/patners/15.png",
+  "/patners/16.png",
+  "/patners/17.png",
+  "/patners/18.png",
+  "/patners/19.png",
 ];
 
 const IMAGE_WIDTH = 150;
 const IMAGE_HEIGHT = 80;
-const GAP = 40;
+const GAP = 60;
 const SPEED = 0.7; // smoother speed (px per frame)
 
 export default function PartnersLoop() {
@@ -66,7 +80,7 @@ export default function PartnersLoop() {
   return (
     <div
       ref={containerRef}
-      className="relative container mx-auto h-[100px] overflow-hidden flex items-center ">
+      className="relative container mx-auto h-[150px] my-12 overflow-hidden flex items-center ">
       {positions.map((pos, idx) => {
         const logo = LOGOS[idx % LOGOS.length]; // cycle through logos
         return (
