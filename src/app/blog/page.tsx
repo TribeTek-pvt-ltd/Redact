@@ -2,12 +2,8 @@ import Link from "next/link";
 import { getAllPostSlugs, getPostData, PostData } from "@/lib/post";
 
 export default async function BlogsListPage() {
-  // Fetch all slugs
   const slugs = getAllPostSlugs();
-
-  // Fetch all posts data
-  const postsData = await Promise.all(slugs.map(({ slug }) => getPostData(slug)));
-  const posts: PostData[] = postsData.filter((p): p is PostData => p !== null);
+  const posts = await Promise.all(slugs.map(({ slug }) => getPostData(slug)));
 
   return (
     <main className="relative min-h-screen text-white overflow-hidden">

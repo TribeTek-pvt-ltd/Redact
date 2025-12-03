@@ -38,32 +38,27 @@ export function getAllPostSlugs(): { slug: string }[] {
 /**
  * Read markdown → parse frontmatter → convert to HTML
  */
-export async function getPostData(slug: string): Promise<PostData | null> {
-  try {
-    const fullPath = path.join(postsDirectory, `${slug}.md`);
+export async function getPostData(slug: string): Promise<PostData> {
+  console.log("Reading slug:", slug);
 
-    if (!fs.existsSync(fullPath)) {
-      console.warn("Markdown file not found:", fullPath);
-      return null;
-    }
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
 
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const matterResult = matter(fileContents);
+  const { data, content } = matter(fileContents);
 
-    // Convert Markdown → HTML
-    const processedContent = await remark().use(html).process(matterResult.content);
-    const contentHtml = processedContent.toString();
+  const processedContent = await remark().use(html).process(content);
+  const contentHtml = processedContent.toString();
 
-    return {
-      slug,
-      title: String(matterResult.data.title ?? "Untitled"),
-      description: String(matterResult.data.description ?? ""),
-      date: String(matterResult.data.date ?? new Date().toISOString()),
-      keywords: Array.isArray(matterResult.data.keywords) ? matterResult.data.keywords.map(String) : [],
-      contentHtml,
-    };
-  } catch (error) {
-    console.error("Error loading post:", slug, error);
-    return null;
-  }
+     return {
+    slug,
+    contentHtml,
+    title: data.title,
+    description: data.description,
+    keywords: data.keywords,
+    date: data.date,
+  };
+  // } catch (error) {
+  //   console.error("Error loading post:", slug, error);
+  //   return null;
+  // }
 }
