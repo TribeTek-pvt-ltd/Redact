@@ -96,7 +96,7 @@ export default function OverlayStackedSequence() {
 
         {/* Video */}
         <motion.video
-          src="/VSLVideo-2.mp4"
+          src="/video/vsl.mp4"
           className="absolute w-full h-full object-cover rounded-lg sm:rounded-2xl shadow-lg sm:shadow-xl"
           initial={{ y: "100%", opacity: 0 }}
           animate={controlsVideo}
