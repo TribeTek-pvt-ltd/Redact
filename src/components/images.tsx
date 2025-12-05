@@ -47,8 +47,15 @@ export default function MultiRowInfiniteCarousel() {
       const containerWidth =
         containerRefs.current[0]?.offsetWidth || window.innerWidth;
 
-      const width = (containerWidth - GAP * 4) / 5; // Show 5 images on screen
+      const isMobile = window.innerWidth <= 768;
+
+      // Fewer images visible on mobile = bigger images
+      const visibleImages = isMobile ? 3 : 5;
+
+      const width =
+        (containerWidth - GAP * (visibleImages - 1)) / visibleImages;
       const height = width * 0.8;
+
       setImageWidth(width);
       setImageHeight(height);
 
@@ -106,7 +113,7 @@ export default function MultiRowInfiniteCarousel() {
   }, [imageWidth]);
 
   return (
-    <div className="space-y-2 md:space-y-8 md:py-12 py-1">
+    <div className="space-y-2 md:space-y-8 md:py-12 pb-12 ">
       {Array.from({ length: ROWS }).map((_, rowIndex) => (
         <div
           key={rowIndex}

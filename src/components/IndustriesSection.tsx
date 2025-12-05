@@ -13,7 +13,7 @@ const IndustriesSection = () => {
     },
     {
       name: "Beauty & Healthcare",
-      img: "/industries/beautyhealthcare.png",
+      img: "/industries/beautyandhealthcare.png",
     },
   ];
 

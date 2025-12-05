@@ -2,7 +2,9 @@
 
 import SecondaryHero from "@/components/secondaryHero";
 import HorizontalServiceCard from "@/components/horizontalServiceCard";
-import { FaVideo, FaPaintBrush, FaFilm, FaCamera } from "react-icons/fa"; // Import icons
+import { HiOutlineFilm, HiOutlineColorSwatch } from "react-icons/hi";
+import { RiVideoLine, RiSoundModuleLine } from "react-icons/ri";
+
 import Footer from "@/components/footer";
 import FooterNav from "@/components/footerNav";
 import RecentWorksSection from "@/components/RecentworksSection";
@@ -12,25 +14,25 @@ export default function Services() {
   const services = [
     {
       title: "Short-Form Editing",
-      Icon: FaVideo,
+      Icon: RiVideoLine,
       description:
         "Bold strategy meets killer content. We craft scroll-stopping videos with razor-sharp storytelling and pacing that hooks fast. From snappy cuts to viral-ready reels, our edits are built to connect, convert, and leave a mark.",
     },
     {
       title: "Commercials",
-      Icon: FaPaintBrush,
+      Icon: HiOutlineFilm,
       description:
         "Commercials that don’t just sell, they stick. We fuse cinematic visuals with punchy narratives to create ads that grab attention and drive action. Whether it’s a 15-second teaser or a full-scale campaign, every frame is designed to deliver impact.",
     },
     {
       title: "Sound Design",
-      Icon: FaFilm,
+      Icon: RiSoundModuleLine,
       description:
         "Sound that speaks louder than words. From sonic branding to immersive audio layers, we build soundscapes that elevate your message and sharpen your identity. Clean, punchy, unforgettable, every beat hits where it matters.",
     },
     {
       title: "Colour Grading",
-      Icon: FaCamera,
+      Icon: HiOutlineColorSwatch,
       description:
         "Colour that commands attention. We transform raw footage into visual gold, dialing in mood, tone, and cinematic flair. Whether it’s bold, moody, or sunlit and sleek, our grading makes your content pop with precision and style.",
     },

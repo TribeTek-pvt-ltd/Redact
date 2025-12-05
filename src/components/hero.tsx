@@ -9,13 +9,13 @@ export default function Hero() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="py-10 min-h-[80vh] flex items-center justify-start text-white p-4 sm:p-6 md:p-8">
+      className="py-10 sm:min-h-[80vh] min-h-[60vh] flex items-center justify-start text-white p-4 sm:p-6 md:p-8">
       <div className="container mx-auto">
         <motion.h1
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl md:text-7xl font-bold mb-4 sm:mb-6 text-left py-10">
+          className="text-4xl sm:text-4xl md:text-7xl font-bold mb-2 sm:mb-6 text-left py-10">
           <p>Creating bold visuals </p>
           <p>for brands that lead.</p>
         </motion.h1>
@@ -34,7 +34,7 @@ export default function Hero() {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-            className=" text-xs sm:text-shadow-sm md:text-lg font-light leading-relaxed text-gray-200 max-w-prose text-right">
+            className=" text-s sm:text-shadow-sm md:text-lg font-light leading-relaxed text-gray-200 max-w-prose text-right">
             Redact Media helps brands and creators grow online through bold
             strategy, sharp storytelling, and standout content. From social
             media to commercials, we craft work that connects, converts, and
