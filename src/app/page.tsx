@@ -29,8 +29,8 @@ export default function Home() {
         <PartnersLoop />
         <ServiceSection />
         <WhoAreWe />
-        <VideoEditorCTA />
         <StatsSection />
+        <VideoEditorCTA />
 
         <Testimonials />
 

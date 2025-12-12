@@ -66,7 +66,7 @@ export default function OverlayStackedSequence() {
         ">
         {/* Image 1 */}
         <motion.img
-          src="https://picsum.photos/id/1015/800/450"
+          src="/1.png"
           alt="Image 1"
           className="absolute w-full h-full object-cover rounded-lg sm:rounded-2xl shadow-lg sm:shadow-xl"
           initial={{ y: "100%", opacity: 0 }}

@@ -33,14 +33,20 @@ export default function AdminPage() {
   useEffect(() => {
     async function checkAdmin() {
       try {
-        const res = await fetch("/api/auth/me", { cache: "no-store" });
-        const data = await res.json();
+        const res = localStorage.getItem("isAdmin");
 
-        if (!data?.user || data.user.role !== "admin") {
-          router.push("/unauthorized"); // redirect if not admin
+        if (res !== "true") {
+          router.push("/login");
+          return;
         } else {
           setIsAdmin(true);
         }
+        // const data = await res.json();
+
+        // if (!data?.user || data.user.role !== "admin") {
+        //   router.push("/unauthorized"); // redirect if not admin
+        // } else {
+        // }
       } catch (err) {
         router.push("/login");
       } finally {
@@ -61,7 +67,7 @@ export default function AdminPage() {
   }
 
   // If not admin (extra safety)
-  // if (!isAdmin) return null;
+  if (!isAdmin) return null;
 
   const handleAddVideo = async (video: Video) => {
     try {
