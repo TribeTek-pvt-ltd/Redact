@@ -18,6 +18,9 @@ const StatsSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  // 👇 Unique key every refresh (forces StatsNumber to re-run animation)
+  const [refreshKey] = useState(Date.now());
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,7 +49,7 @@ const StatsSection: React.FC = () => {
       {isVisible &&
         stats.map((stat, index) => (
           <div
-            key={index}
+            key={`${refreshKey}-${index}`} // 👈 this line forces re-animation
             className="flex justify-center w-full max-w-[200px] sm:max-w-none mx-auto"
           >
             <StatsNumber number={stat.number} title={stat.title} />

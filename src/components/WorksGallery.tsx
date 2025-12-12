@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import WorkCard from "./WorkCard";
 
 interface Video {
@@ -16,11 +17,13 @@ export default function WorksGallery() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [filter, setFilter] = useState<string>("All");
 
-  // Fetch videos from backend
+  const searchParams = useSearchParams();
+  const industryQuery = searchParams.get("industry");
+
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const res = await fetch("/api/videos"); // Make sure this API returns all videos
+        const res = await fetch("/api/videos");
         const data: Video[] = await res.json();
         setVideos(data);
       } catch (err) {
@@ -31,14 +34,17 @@ export default function WorksGallery() {
     fetchVideos();
   }, []);
 
-  // Get unique categories for filtering
+  // Set filter from query param when component mounts
+  useEffect(() => {
+    if (industryQuery) setFilter(industryQuery);
+  }, [industryQuery]);
+
   const categories = Array.from(new Set(videos.map((v) => v.category)));
 
-  // Filtered videos
   const filteredVideos =
     filter === "All"
       ? videos
-      : videos.filter((v) => v.category === filter);
+      : videos.filter((v) => v.industry === filter); // filter by industry
 
   return (
     <div className="space-y-4 container mx-auto p-4">
@@ -46,7 +52,9 @@ export default function WorksGallery() {
       <div className="flex justify-center space-x-2 flex-wrap">
         <button
           className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${
-            filter === "All" ? "bg-white/30 text-black" : "text-white hover:bg-white/20"
+            filter === "All"
+              ? "bg-white/30 text-black"
+              : "text-white hover:bg-white/20"
           }`}
           onClick={() => setFilter("All")}
         >
@@ -57,7 +65,9 @@ export default function WorksGallery() {
           <button
             key={cat}
             className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${
-              filter === cat ? "bg-white/30 text-black" : "text-white hover:bg-white/20"
+              filter === cat
+                ? "bg-white/30 text-black"
+                : "text-white hover:bg-white/20"
             }`}
             onClick={() => setFilter(cat)}
           >
