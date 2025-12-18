@@ -15,7 +15,7 @@ export default function Navbar() {
   const router = useRouter();
   const { openCalendly } = useCalendly();
 
-  // Check admin login status
+  // Check admin login status.
   useEffect(() => {
     const adminStatus = localStorage.getItem("isAdmin");
     setIsAdmin(adminStatus === "true");
@@ -112,4 +112,4 @@ export default function Navbar() {
       )}
     </motion.nav>
   );
-}
+} 
