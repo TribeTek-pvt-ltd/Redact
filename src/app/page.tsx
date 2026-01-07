@@ -23,9 +23,9 @@ export default function Home() {
 
       {/* Content Layer */}
       <div className="relative z-10">
-        <Hero />
+        <Hero /><VideoAnimation />
         <ScrollingRow />
-        <VideoAnimation />
+
         <PartnersLoop />
         <ServiceSection />
         <WhoAreWe />

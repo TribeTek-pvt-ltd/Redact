@@ -16,6 +16,9 @@ module.exports = {
         "brand-white": "#FFFFFF",
         "brand-white-off": "#F9FAFB",
       },
+      fontFamily: {
+        uber: ["var(--font-uber-move)", "sans-serif"],
+      },
     },
   },
   plugins: [],
