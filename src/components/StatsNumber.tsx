@@ -30,7 +30,7 @@ const StatCard: React.FC<StatsNumber> = ({ number, title }) => {
 
   return (
     <div className="flex  flex-col items-center p-4 rounded-2xl ">
-      <motion.h2 className="text-8xl md:text-9xl text-center font-bold text-blue-500">
+      <motion.h2 className="text-8xl md:text-9xl text-center font-bold text-blue-500 font-uber">
         {display}+
       </motion.h2>
       <p className="text-3xl text-gray-100 font-light">{title}</p>

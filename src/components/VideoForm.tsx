@@ -12,8 +12,19 @@ interface VideoFormProps {
   }) => void;
 }
 
-const industries = ["Tech", "Construction", "Education", "Health"];
-const categories = ["Tutorial", "Promo", "Interview", "Other"];
+const industries = [
+  "Event & lifestyle",
+  "Commercials",
+  "Automobile",
+  "Shortform videos",
+  "Beauty & Healthcare",
+];
+const categories = [
+  "Shortform Editing",
+  "Commercials",
+  "Sound Designing",
+  "Color Grading",
+];
 
 export default function VideoForm({ onAddVideo }: VideoFormProps) {
   const [title, setTitle] = useState("");
@@ -82,8 +93,7 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
         onDragOver={(e) => e.preventDefault()}
         className={`relative w-full md:w-1/3 border-2 border-dashed rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${
           thumbnail ? "border-blue-500/50" : "border-white/20"
-        } h-40 md:h-48`}
-      >
+        } h-40 md:h-48`}>
         {thumbnail ? (
           <img
             src={thumbnail}
@@ -116,8 +126,7 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
         <select
           value={industry}
           onChange={(e) => setIndustry(e.target.value)}
-          className="w-full p-2 md:p-3 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm md:text-base"
-        >
+          className="w-full p-2 md:p-3 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm md:text-base">
           {industries.map((ind) => (
             <option key={ind} value={ind} className="bg-black/80 text-white">
               {ind}
@@ -127,8 +136,7 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 md:p-3 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm md:text-base"
-        >
+          className="w-full p-2 md:p-3 rounded-lg bg-black/20 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm md:text-base">
           {categories.map((cat) => (
             <option key={cat} value={cat} className="bg-black/80 text-white">
               {cat}
@@ -138,8 +146,7 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
 
         <button
           onClick={handleAdd}
-          className="mt-2 w-full py-2 md:py-3 rounded-lg bg-blue-600/80 backdrop-blur-md text-white font-semibold hover:bg-blue-500/90 transition text-sm md:text-base"
-        >
+          className="mt-2 w-full py-2 md:py-3 rounded-lg bg-blue-600/80 backdrop-blur-md text-white font-semibold hover:bg-blue-500/90 transition text-sm md:text-base">
           Add Video
         </button>
       </div>

@@ -1,23 +1,20 @@
 "use client";
-//import HeroSection from "@/components/underconstructions";
+
+import { Suspense } from "react";
 import Footer from "@/components/footer";
-import WorksGallery from "@/components/WorksGallery";
 import Work from "@/components/works";
-import FooterNav from '@/components/footerNav';
-// import BgEffect from '@/components/BgEffect';
-
-
-// import SpecializeIn from "@/components/specializeIn";
-
-//import HeroSection from "@/component/underconstructions";
+import FooterNav from "@/components/footerNav";
+import WorksGalleryClient from "@/components/WorksGalleryClient";
 
 export default function Home() {
   return (
     <div className="">
-          {/* <BgEffect /> */}
-
       <Work />
-      <WorksGallery />
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <WorksGalleryClient />
+      </Suspense>
+
       <Footer />
       <FooterNav />
     </div>
