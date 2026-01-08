@@ -20,31 +20,39 @@ export default function OverlayStackedSequence() {
     if (!inView) return;
 
     async function runSequence() {
-      await controls1.start({
-        y: "0%",
-        opacity: 1,
-        transition: { duration: 0.75 },
-      });
-      await new Promise((res) => setTimeout(res, 100));
+      // Luxury smooth ease-out-expo for cohesive flow
+      // This creates a very slick, non-bouncy slide effect
+      const smoothTransition = {
+        duration: 0.8,
+        ease: "easeIn",
+      };
 
-      await controls2.start({
+      // Stagger (300ms) to make it feel like one continuous stream
+      controls1.start({
         y: "0%",
         opacity: 1,
-        transition: { duration: 0.75 },
+        transition: smoothTransition,
       });
-      await new Promise((res) => setTimeout(res, 100));
+      await new Promise((res) => setTimeout(res, 300));
 
-      await controls3.start({
+      controls2.start({
         y: "0%",
         opacity: 1,
-        transition: { duration: 0.75 },
+        transition: smoothTransition,
       });
-      await new Promise((res) => setTimeout(res, 100));
+      await new Promise((res) => setTimeout(res, 300));
 
-      await controlsVideo.start({
+      controls3.start({
         y: "0%",
         opacity: 1,
-        transition: { duration: 0.75 },
+        transition: smoothTransition,
+      });
+      await new Promise((res) => setTimeout(res, 300));
+
+      controlsVideo.start({
+        y: "0%",
+        opacity: 1,
+        transition: smoothTransition,
       });
     }
 
@@ -67,10 +75,8 @@ export default function OverlayStackedSequence() {
   return (
     <div
       ref={ref}
-      className="w-full flex items-center justify-center py-8 sm:py-12 px-2 sm:px-6"
-    >
+      className="w-full flex items-center justify-center py-8 sm:py-12 px-2 sm:px-6">
       <div className="relative w-full max-w-7xl aspect-video sm:rounded-2xl rounded-lg overflow-hidden">
-        
         {/* Image 1 */}
         <motion.img
           src="/1.png"

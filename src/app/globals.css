@@ -54,30 +54,44 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "UberMove", sans-serif;
+  font-family: var(--font-uber-move), sans-serif;
   font-weight: 700;
 }
+
+h1 {
+  background: linear-gradient(to bottom right, #ffffff 0%, #000000 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 h1 p,
 h2 p,
 h3 p,
 h4 p,
 h5 p,
 h6 p {
-  font-family: "UberMove", sans-serif;
+  font-family: var(--font-uber-move), sans-serif;
   font-weight: 700;
 }
+
 p {
   font-family: "Inter", sans-serif;
   font-weight: 400;
 }
+
 /* Hide scrollbar for all browsers */
 .hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 @theme {
@@ -87,7 +101,8 @@ p {
 }
 
 .markdown-body {
-  color: #e5e7eb; /* text-gray-300 */
+  color: #e5e7eb;
+  /* text-gray-300 */
   line-height: 1.8;
   font-family: "Inter", sans-serif;
   word-break: break-word;
@@ -134,11 +149,14 @@ p {
 
 /* Target bold text inside your markdown blog */
 .markdown-body strong {
-        /* Set text color */
-  font-weight: 900;      /* Ensure bold weight */
- /* Optional soft highlight */
-  padding: 0 0.2rem;    /* Optional small padding */
-  border-radius: 3px;    /* Optional rounded edges for highlight */
+  /* Set text color */
+  font-weight: 900;
+  /* Ensure bold weight */
+  /* Optional soft highlight */
+  padding: 0 0.2rem;
+  /* Optional small padding */
+  border-radius: 3px;
+  /* Optional rounded edges for highlight */
 }
 
 /* Style subheadings inside the blog article */
@@ -152,7 +170,8 @@ p {
 
 /* Style main blog headings (h1) inside markdown content */
 .markdown-body h1 {
-  color: #0072ff; /* Your desired blue */
+  color: #0072ff;
+  /* Your desired blue */
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -161,34 +180,17 @@ p {
 .markdown-body h1 {
   color: #0072ff;
   font-weight: 700;
-  font-size: 2.5rem; /* Adjust as needed */
+  font-size: 2.5rem;
+  /* Adjust as needed */
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  text-decoration: underline; /* Adds underline */
-  text-underline-offset: 4px; /* Adjust distance from text */
-  text-decoration-color: #0072ff; /* Optional: match underline color */
-  text-decoration-thickness: 2px; /* Optional: thicker underline */
+  text-decoration: underline;
+  /* Adds underline */
+  text-underline-offset: 4px;
+  /* Adjust distance from text */
+  text-decoration-color: #0072ff;
+  /* Optional: match underline color */
+  text-decoration-thickness: 2px;
+  /* Optional: thicker underline */
 }
-/* 
-@keyframes slide-x {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes slide-x-reverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
-.animate-slide-x {
-  animation: slide-x 25s linear infinite;
-}
-
-.animate-slide-x-reverse {
-  animation: slide-x-reverse 25s linear infinite;
-}
-
-.hover\:pause:hover {
-  animation-play-state: paused;
-} */
