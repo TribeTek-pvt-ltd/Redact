@@ -31,16 +31,30 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         className="
           relative flex flex-col items-center md:items-start rounded-2xl p-8 sm:p-10 max-w-3xl w-full
           bg-white/10 backdrop-blur-2xl border border-white/15 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
-          overflow-visible
         "
       >
+        {/* Clipped Background Wrapper */}
+        <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
+          {/* Background Image Layer */}
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage: "url('/images/founder2.jpeg')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+          {/* Dark Overlay for Readability */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
         {/* Convex bevels and glow (glass effect) */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.65)]" />
-        <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)]" />
-        <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(120%90%_at_30%-20%,rgba(255,255,255,0.06),transparent_60%)]" />
-        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.65)] z-[1]" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)] z-[1]" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(120%90%_at_30%-20%,rgba(255,255,255,0.06),transparent_60%)] z-[1]" />
+        <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10 z-[1]" />
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/40 rounded-full blur-3xl pointer-events-none z-[1]"></div>
+        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none z-[1]"></div>
 
         {/* Quote Icon */}
         <FaQuoteLeft className="text-5xl sm:text-6xl text-blue-400 mb-8 select-none relative z-10" />
@@ -56,13 +70,13 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         </p>
 
         {/* Overlay / Pop-out Image */}
-        <div className="absolute -top-20 -right-8 md:-top-24 md:-right-12 w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden shadow-2xl z-20">
+        {/* <div className="absolute -top-20 -right-8 md:-top-24 md:-right-12 w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden shadow-2xl z-20">
           <img
             src={founderImage}
             alt={founderName}
             className="object-cover w-full h-full"
           />
-        </div>
+        </div> */}
       </motion.div>
     </div>
   );

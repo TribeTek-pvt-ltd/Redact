@@ -170,3 +170,25 @@ p {
   text-decoration-color: #0072ff; /* Optional: match underline color */
   text-decoration-thickness: 2px; /* Optional: thicker underline */
 }
+/* 
+@keyframes slide-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes slide-x-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-slide-x {
+  animation: slide-x 25s linear infinite;
+}
+
+.animate-slide-x-reverse {
+  animation: slide-x-reverse 25s linear infinite;
+}
+
+.hover\:pause:hover {
+  animation-play-state: paused;
+} */

@@ -1,24 +1,37 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 
 interface IndustryCardProps {
   industry: string;
   bgImage: string;
-  onClick?: () => void; // 👈 add optional onClick prop
+  onClick?: () => void;
 }
 
 const IndustryCard = ({ industry, bgImage, onClick }: IndustryCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const imageControls = useAnimation();
 
   return (
     <motion.div
       ref={ref}
-      onClick={onClick} // 👈 attach click handler
+      onClick={onClick}
+      onHoverStart={() =>
+        imageControls.start({
+          x: [0, -20, 0],   // 👈 slide animation (Automobile style)
+          scale: 1.08,
+        })
+      }
+      onHoverEnd={() =>
+        imageControls.start({
+          x: 0,
+          scale: 1,
+        })
+      }
       className="
-        relative flex items-center justify-between container 
+        relative flex items-center justify-between container
         p-16 rounded-3xl overflow-hidden cursor-pointer
         bg-white/10 backdrop-blur-xl border border-white/20
         shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
@@ -28,6 +41,11 @@ const IndustryCard = ({ industry, bgImage, onClick }: IndustryCardProps) => {
       <motion.img
         src={bgImage}
         alt={industry}
+        animate={imageControls}
+        transition={{
+          duration: 0.5,
+          ease: "easeInOut",
+        }}
         className="absolute inset-0 w-full h-full object-cover rounded-3xl"
       />
 
@@ -41,12 +59,18 @@ const IndustryCard = ({ industry, bgImage, onClick }: IndustryCardProps) => {
       <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/40 rounded-full blur-3xl" />
       <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl" />
 
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/40 rounded-3xl"></div>
 
       {/* Content */}
       <div className="relative z-10 flex items-center justify-between w-full">
-        <div className="text-white text-2xl font-semibold">{industry}</div>
-        <FaArrowRight size={32} className="text-white" />
+        <div className="text-white text-2xl font-semibold">
+          {industry}
+        </div>
+        <FaArrowRight
+          size={32}
+          className="text-white transition-transform duration-300 hover:translate-x-2"
+        />
       </div>
     </motion.div>
   );

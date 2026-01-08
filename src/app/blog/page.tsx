@@ -24,51 +24,75 @@ export default async function BlogsListPage() {
       {/* Blog Cards Section */}
       <section className="container mx-auto px-6 sm:px-12 lg:px-10 py-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-  {posts.map((post) => (
-    <Link
-      key={post.slug}
-      href={`/blog/${post.slug}`}
-      className="
-        group block
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="
+        group relative block
         rounded-3xl overflow-hidden
-        border border-white/10
-        bg-white/5 backdrop-blur-lg
-        shadow-[0_8px_32px_rgba(0,0,0,0.3)]
+        border border-white/20
+        bg-white/10 backdrop-blur-xl
+        shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
         transition-all duration-500
-
-        hover:bg-white/10
-        hover:shadow-[0_12px_40px_rgba(0,0,0,0.45)]
+        min-h-[400px]
+        
+        hover:shadow-[0_12px_40px_rgba(0,114,255,0.3)]
         hover:border-[#0072ff]/40
       "
-    >
-      <div className="p-8 flex flex-col justify-between h-full">
-        <div>
-          <h3 className="text-2xl font-semibold text-[#0072ff] group-hover:text-[#0072ff] transition">
-            {post.title}
-          </h3>
-          <p className="text-gray-400 mt-3 line-clamp-3 leading-relaxed">
-            {post.description}
-          </p>
+            >
+              {/* Background Image with Overlay */}
+              {post.image && (
+                <div
+                  className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110"
+                  style={{
+                    backgroundImage: `url('${post.image}')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+              )}
+
+              {/* Glass layers (Premium effect from IndustryCard) */}
+              <div className="absolute inset-0 z-[1] rounded-3xl shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.45)]" />
+              <div className="absolute inset-0 z-[1] rounded-3xl shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)]" />
+              <div className="absolute inset-0 z-[1] rounded-3xl bg-[radial-gradient(120%_90%_at_30%_-20%,rgba(255,255,255,0.08),transparent_60%)]" />
+              <div className="absolute inset-0 z-[1] rounded-3xl ring-1 ring-white/10" />
+
+              {/* Glow blobs */}
+              <div className="absolute -top-10 -left-10 w-32 h-32 bg-blue-500/30 rounded-full blur-3xl z-[1]" />
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-400/20 rounded-full blur-3xl z-[1]" />
+
+              <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+
+              <div className="relative z-10 p-8 flex flex-col justify-end h-full min-h-[400px]">
+                <div>
+                  <h3 className="text-2xl font-bold text-white group-hover:text-[#3b82f6] transition-colors duration-300">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-300 mt-3 line-clamp-3 leading-relaxed font-medium">
+                    {post.description}
+                  </p>
+                </div>
+
+                <div className="mt-6 flex items-center justify-between text-sm">
+                  <span className="text-gray-400">
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </span>
+                  <span className="font-bold text-white flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    Read more <span className="text-[#3b82f6]">→</span>
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
 
-        <div className="mt-6 flex items-center justify-between text-sm text-gray-500">
-          <span>
-            {new Date(post.date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </span>
-          <span className="font-semibold text-white group-hover:underline">
-            Read more →
-          </span>
-        </div>
-      </div>
-    </Link>
-  ))}
-</div>
 
-        
       </section>
     </main>
   );

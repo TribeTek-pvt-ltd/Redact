@@ -14,6 +14,7 @@ export interface PostData {
   date: string;
   contentHtml: string;
   keywords: string[];
+  image?: string;
 }
 
 /**
@@ -49,13 +50,14 @@ export async function getPostData(slug: string): Promise<PostData> {
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
-     return {
+  return {
     slug,
     contentHtml,
     title: data.title,
     description: data.description,
     keywords: data.keywords,
     date: data.date,
+    image: data.image,
   };
   // } catch (error) {
   //   console.error("Error loading post:", slug, error);

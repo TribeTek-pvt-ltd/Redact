@@ -3,6 +3,7 @@ title: "The Psychology of Tech Workers: Stress, Burnout, and Well-Being"
 description: "Explore the mental challenges faced by tech employees and strategies to enhance resilience, focus, and productivity."
 date: "2025-12-02"
 keywords: ["tech", "mental health", "workplace well-being", "burnout"]
+image: "/images/2026 Social Media Trends That Matter (Blog image) 1 (1).png"
 ---
 
 # Introduction

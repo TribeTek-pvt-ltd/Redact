@@ -3,111 +3,128 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const LOGOS = [
-  "/patners/1.png",
-  "/patners/2.png",
-  "/patners/3.png",
-  "/patners/4.png",
-  "/patners/5.png",
-  "/patners/6.png",
-  "/patners/7.png",
-  "/patners/8.png",
-  "/patners/9.png",
-  "/patners/10.png",
-  "/patners/11.png",
-  "/patners/12.png",
-  "/patners/13.png",
-  "/patners/14.png",
-  "/patners/15.png",
-  "/patners/16.png",
-  "/patners/17.png",
-  "/patners/18.png",
-  "/patners/19.png",
+const LOGOS_ROW_1 = [
+  "/patners/1.png", "/patners/2.png", "/patners/3.png",
+  "/patners/4.png", "/patners/5.png", "/patners/6.png",
+  "/patners/7.png", "/patners/8.png", "/patners/9.png"
 ];
 
-const IMAGE_WIDTH = 150;
-const IMAGE_HEIGHT = 80;
-const GAP = 60;
-const SPEED = 0.7; // smoother speed (px per frame)
+const LOGOS_ROW_2 = [
+  "/patners/10.png", "/patners/11.png", "/patners/12.png",
+  "/patners/13.png", "/patners/14.png", "/patners/15.png",
+  "/patners/16.png", "/patners/17.png", "/patners/18.png",
+  "/patners/19.png"
+];
 
-export default function PartnersLoop() {
+const IMAGE_WIDTH = 120;
+const IMAGE_HEIGHT = 60;
+const SPEED = 0.5;
+
+function useMarquee(visibleCount: number) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [positions, setPositions] = useState<number[]>([]);
+  const [spacing, setSpacing] = useState(0);
 
-  // initialize positions based on container width
   useEffect(() => {
     if (containerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
-      const totalWidth = IMAGE_WIDTH + GAP;
-      const numVisible = Math.ceil(containerWidth / totalWidth) + 2; // cover + buffer
+      const calculatedSpacing = containerWidth / visibleCount;
+      setSpacing(calculatedSpacing);
 
+      // Initialize positions: visibleCount + 1 to handle seamless wrap-around
       setPositions(
-        Array.from({ length: numVisible }).map((_, i) => i * totalWidth)
+        Array.from({ length: visibleCount + 1 }).map((_, i) => i * calculatedSpacing)
       );
     }
-  }, []);
+  }, [visibleCount]);
 
   useEffect(() => {
-    let animationFrame: number;
+    if (spacing === 0) return;
 
+    let frame: number;
     const animate = () => {
-      setPositions((prevPositions) => {
-        if (!containerRef.current) return prevPositions;
-
-        // const containerWidth = containerRef.current.offsetWidth;
-        const totalWidth = IMAGE_WIDTH + GAP;
-
-        return prevPositions.map((pos) => {
-          let newPos = pos - SPEED;
-
-          // recycle logos seamlessly when they go fully out
-          if (newPos < -totalWidth) {
-            const maxPos = Math.max(...prevPositions);
-            newPos = maxPos + totalWidth;
+      setPositions((prev) => {
+        return prev.map((x) => {
+          let newPos = x - SPEED;
+          if (newPos < -spacing) {
+            const maxPos = Math.max(...prev);
+            newPos = maxPos + spacing;
           }
-
           return newPos;
         });
       });
-
-      animationFrame = requestAnimationFrame(animate);
+      frame = requestAnimationFrame(animate);
     };
 
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, []);
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [spacing]);
+
+  return { containerRef, positions, spacing };
+}
+
+export default function PartnersLoop() {
+  // row 1 → exactly 5 visible
+  const row1 = useMarquee(5);
+  // row 2 → exactly 7 visible
+  const row2 = useMarquee(7);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative container mx-auto h-[150px] my-12 overflow-hidden flex items-center ">
-      {positions.map((pos, idx) => {
-        const logo = LOGOS[idx % LOGOS.length]; // cycle through logos
-        return (
+    <div className="container mx-auto my-12 flex flex-col gap-8">
+
+      {/* ------------ ROW 1 ------------ */}
+      <div
+        ref={row1.containerRef}
+        className="relative h-[100px] overflow-hidden flex items-center shadow-inner"
+      >
+        {row1.positions.map((pos, i) => (
           <div
-            key={idx}
-            className="absolute"
+            key={i}
+            className="absolute flex justify-center items-center"
             style={{
-              width: `${IMAGE_WIDTH}px`,
+              width: `${row1.spacing}px`,
               height: `${IMAGE_HEIGHT}px`,
               transform: `translateX(${pos}px)`,
-              opacity:
-                pos < IMAGE_WIDTH * 0.5 ||
-                pos >
-                  (containerRef.current?.offsetWidth || 0) - IMAGE_WIDTH * 1.2
-                  ? 0.5
-                  : 1,
-              transition: "opacity 0.3s linear",
-            }}>
-            <Image
-              src={logo}
-              alt={`Partner ${idx}`}
-              fill
-              className="object-contain grayscale hover:grayscale-0"
-            />
+            }}
+          >
+            <div className="relative w-full h-full max-w-[120px] px-4">
+              <Image
+                src={LOGOS_ROW_1[i % LOGOS_ROW_1.length]}
+                fill
+                alt="logo"
+                className="object-contain grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110 opacity-70 hover:opacity-100"
+              />
+            </div>
           </div>
-        );
-      })}
+        ))}
+      </div>
+
+      {/* ------------ ROW 2 ------------ */}
+      <div
+        ref={row2.containerRef}
+        className="relative h-[100px] overflow-hidden flex items-center shadow-inner"
+      >
+        {row2.positions.map((pos, i) => (
+          <div
+            key={i}
+            className="absolute flex justify-center items-center"
+            style={{
+              width: `${row2.spacing}px`,
+              height: `${IMAGE_HEIGHT}px`,
+              transform: `translateX(${pos}px)`,
+            }}
+          >
+            <div className="relative w-full h-full max-w-[100px] px-2">
+              <Image
+                src={LOGOS_ROW_2[i % LOGOS_ROW_2.length]}
+                fill
+                alt="logo"
+                className="object-contain grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110 opacity-70 hover:opacity-100"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

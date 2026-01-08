@@ -60,16 +60,16 @@ export default function WorksGalleryClient() {
   const categories =
     filterType === "category"
       ? Array.from(
-          new Set(
-            videos
-              .filter(
-                (v) =>
-                  v.industry ===
-                  videos.find((x) => x.category === filterValue)?.industry
-              )
-              .map((v) => v.category)
-          )
+        new Set(
+          videos
+            .filter(
+              (v) =>
+                v.industry ===
+                videos.find((x) => x.category === filterValue)?.industry
+            )
+            .map((v) => v.category)
         )
+      )
       : [];
 
   // 👉 Filtering logic
@@ -77,19 +77,18 @@ export default function WorksGalleryClient() {
     filterType === "All"
       ? videos
       : filterType === "industry"
-      ? videos.filter((v) => v.industry === filterValue)
-      : videos.filter((v) => v.category === filterValue);
+        ? videos.filter((v) => v.industry === filterValue)
+        : videos.filter((v) => v.category === filterValue);
 
   return (
     <div className="space-y-4 container mx-auto p-4">
-      <div className="flex justify-center space-x-2 flex-wrap">
+      <div className="flex justify-center mt-2 space-x-2 flex-wrap">
         {/* ALWAYS SHOW ALL BUTTON */}
         <button
-          className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${
-            filterValue === "All"
-              ? "bg-white/30 text-black"
-              : "text-white hover:bg-white/20"
-          }`}
+          className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${filterValue === "All"
+            ? "bg-white/30 text-black"
+            : "text-white hover:bg-white/20"
+            }`}
           onClick={() => {
             setFilterType("All");
             setFilterValue("All");
@@ -101,11 +100,10 @@ export default function WorksGalleryClient() {
         {industries.map((ind) => (
           <button
             key={ind}
-            className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${
-              filterType === "industry" && filterValue === ind
-                ? "bg-white/30 text-black"
-                : "text-white hover:bg-white/20"
-            }`}
+            className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${filterType === "industry" && filterValue === ind
+              ? "bg-white/30 text-black"
+              : "text-white hover:bg-white/20"
+              }`}
             onClick={() => {
               setFilterType("industry");
               setFilterValue(ind);
@@ -119,11 +117,10 @@ export default function WorksGalleryClient() {
           categories.map((cat) => (
             <button
               key={cat}
-              className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${
-                filterValue === cat
-                  ? "bg-white/30 text-black"
-                  : "text-white hover:bg-white/20"
-              }`}
+              className={`px-4 py-2 border border-white/30 backdrop-blur-md transition-colors duration-300 ${filterValue === cat
+                ? "bg-white/30 text-black"
+                : "text-white hover:bg-white/20"
+                }`}
               onClick={() => {
                 setFilterType("category");
                 setFilterValue(cat);

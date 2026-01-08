@@ -5,10 +5,11 @@ import { IconType } from "react-icons";
 
 interface ServiceCardProps {
   title: string;
-  Icon: IconType;
+  Icon?: IconType;
+  imageSrc?: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, Icon }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ title, Icon, imageSrc }) => {
   const controls = useAnimation();
 
   return (
@@ -36,11 +37,19 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, Icon }) => {
 
       {/* Background glow blobs */}
       <div className="absolute -top-10 -left-10 w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 bg-blue-500/40 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-10 -right-10 w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div>
+      {/* <div className="absolute -bottom-10 -right-10 w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none"></div> */}
 
-      {/* Icon */}
+      {/* Icon or Image */}
       <div className="flex-1 flex items-center justify-center z-10">
-        <Icon className="text-blue-500 text-6xl sm:text-7xl md:text-9xl drop-shadow-lg" />
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={title}
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 object-contain [filter:brightness(0)_saturate(100%)_invert(43%)_sepia(85%)_saturate(1354%)_hue-rotate(200deg)_brightness(97%)_contrast(92%)] drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+          />
+        ) : Icon ? (
+          <Icon className="text-blue-500 text-6xl sm:text-7xl md:text-9xl drop-shadow-lg" />
+        ) : null}
       </div>
 
       {/* Title */}

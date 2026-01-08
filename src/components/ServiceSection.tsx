@@ -2,14 +2,14 @@
 
 import { useRef } from "react";
 import ServiceCard from "@/components/ServiceCard";
-import { HiOutlineFilm, HiOutlineColorSwatch } from "react-icons/hi";
-import { RiVideoLine, RiSoundModuleLine } from "react-icons/ri";
+import { HiOutlineFilm } from "react-icons/hi";
+import { RiVideoLine } from "react-icons/ri";
 
 const cardData = [
   { title: "Shortform Editing", Icon: RiVideoLine }, // trendy video icon
   { title: "Commercials", Icon: HiOutlineFilm }, // sleek film icon
-  { title: "Sound Designing", Icon: RiSoundModuleLine }, // modern sound/music icon
-  { title: "Color Grading", Icon: HiOutlineColorSwatch }, // trendy color/design icon
+  { title: "Sound Designing", imageSrc: "/images/Sound Design Icon.png" }, // modern sound/music icon
+  { title: "Color Grading", imageSrc: "/images/Colour Grade icon.png" }, // trendy color/design icon
 ];
 
 const ServiceSection: React.FC = () => {
@@ -38,7 +38,7 @@ const ServiceSection: React.FC = () => {
               w-60 sm:w-72  
               flex-shrink-0
             ">
-            <ServiceCard title={card.title} Icon={card.Icon} />
+            <ServiceCard title={card.title} Icon={card.Icon} imageSrc={card.imageSrc} />
           </div>
         ))}
       </div>

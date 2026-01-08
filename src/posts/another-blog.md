@@ -3,6 +3,7 @@ title: "The Psychology of Tech Workers"
 description: "Explore the mental challenges faced by tech employees and strategies to enhance resilience, focus, and productivity."
 date: "2025-12-02"
 keywords: ["tech", "mental health", "workplace well-being", "burnout"]
+image: "/images/What Is Video Editing (Blog image).png"
 ---
 
 # Introduction

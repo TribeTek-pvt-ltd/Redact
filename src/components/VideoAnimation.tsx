@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function OverlayStackedSequence() {
@@ -9,12 +9,13 @@ export default function OverlayStackedSequence() {
   const controls2 = useAnimation();
   const controls3 = useAnimation();
   const controlsVideo = useAnimation();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.3,
+    threshold: 0.4,
   });
 
+  // animation logic
   useEffect(() => {
     if (!inView) return;
 
@@ -26,21 +27,21 @@ export default function OverlayStackedSequence() {
       });
       await new Promise((res) => setTimeout(res, 100));
 
-      await controls2?.start({
+      await controls2.start({
         y: "0%",
         opacity: 1,
         transition: { duration: 0.75 },
       });
       await new Promise((res) => setTimeout(res, 100));
 
-      await controls3?.start({
+      await controls3.start({
         y: "0%",
         opacity: 1,
         transition: { duration: 0.75 },
       });
       await new Promise((res) => setTimeout(res, 100));
 
-      await controlsVideo?.start({
+      await controlsVideo.start({
         y: "0%",
         opacity: 1,
         transition: { duration: 0.75 },
@@ -48,22 +49,28 @@ export default function OverlayStackedSequence() {
     }
 
     runSequence();
-  }, [inView, controls1, controls2, controls3, controlsVideo]);
+  }, [inView]);
+
+  // audio + play/pause logic
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    if (inView) {
+      videoRef.current.muted = false;
+      videoRef.current.play();
+    } else {
+      videoRef.current.muted = true;
+      videoRef.current.pause();
+    }
+  }, [inView]);
 
   return (
     <div
       ref={ref}
-      className="w-full flex items-center justify-center  py-8 sm:py-12 px-2 sm:px-6">
-      <div
-        className="
-          relative 
-          w-full 
-          max-w-7xl 
-          aspect-video 
-          sm:rounded-2xl 
-          rounded-lg 
-          overflow-hidden
-        ">
+      className="w-full flex items-center justify-center py-8 sm:py-12 px-2 sm:px-6"
+    >
+      <div className="relative w-full max-w-7xl aspect-video sm:rounded-2xl rounded-lg overflow-hidden">
+        
         {/* Image 1 */}
         <motion.img
           src="/1.png"
@@ -96,12 +103,11 @@ export default function OverlayStackedSequence() {
 
         {/* Video */}
         <motion.video
+          ref={videoRef}
           src="/video/vsl.mp4"
           className="absolute w-full h-full object-cover rounded-lg sm:rounded-2xl shadow-lg sm:shadow-xl"
           initial={{ y: "100%", opacity: 0 }}
           animate={controlsVideo}
-          autoPlay
-          muted
           playsInline
           loop
           style={{ zIndex: 4 }}

@@ -107,7 +107,7 @@ export default function Navbar() {
           <Link href="/services" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>Services</Link>
           <Link href="/blog" className="block text-white hover:text-blue-400 text-lg py-2 transition-colors" onClick={toggleMenu}>Blogs</Link>
 
-          <Button href="/contact">Let&apos;s Talk</Button>
+          <Button onClick={openCalendly}>Let&apos;s Talk</Button>
         </motion.div>
       )}
     </motion.nav>

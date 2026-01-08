@@ -1,10 +1,14 @@
 "use client";
 
 import Button from "./Button"; // make sure the path is correct
+import { useCalendly } from "@/app/hooks/useCalendly";
 
 export default function VideoEditorCTA() {
+  const { openCalendly } = useCalendly(); // ← moved inside  ✔
+
+  //export default function VideoEditorCTA() {
   return (
-    <section className="w-full py-20  bg-gradient-to-r from-blue-950/30 via-black/20 to-blue-950/30  flex justify-center items-center px-6">
+    <section className="w-full py-20   flex justify-center items-center px-6">
       <div className=" backdrop-blur-md rounded-3xl  p-10  text-center flex flex-col items-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
           Cut through the noise. Call Redact{" "}
@@ -14,8 +18,7 @@ export default function VideoEditorCTA() {
           that captivate and convert. Let’s discuss your project and make it
           stand out.
         </p>
-        <Button href="https://calendly.com/your-link">Schedule a Call</Button>
-      </div>
+        <Button onClick={openCalendly}>Schedule a Call</Button>      </div>
     </section>
   );
 }

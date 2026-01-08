@@ -1,4 +1,4 @@
-'use client'; 
+'use client';
 
 import { motion } from "framer-motion";
 import { IconType } from "react-icons";
@@ -17,7 +17,7 @@ const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
   return (
     <div className="container mx-auto flex flex-col p-2 sm:p-4">
       <h3 className=" py-4 text-white text-3xl font-semibold mt-1 text-left">{title}</h3>
-    
+
 
       <motion.div
         whileHover={{
@@ -44,7 +44,7 @@ const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue/60 rounded-full blur-3xl pointer-events-none"></div>
 
         {/* Bottom-right Glass Glow */}
-        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue/30 rounded-full blur-3xl pointer-events-none"></div>
+        {/* <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue/30 rounded-full blur-3xl pointer-events-none"></div> */}
 
         {/* Animated Diagonal Glass Sweep */}
         <motion.div
