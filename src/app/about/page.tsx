@@ -1,11 +1,9 @@
 "use client";
 //import HeroSection from "@/components/underconstructions";
-import Footer from "@/components/footer";
 import StatsSection from "@/components/Stats";
 import WhoAreWe from "@/components/whoAreWe";
 import RecentWorksSection from "@/components/RecentworksSection";
 import FounderSays from "@/components/FounderSays";
-import FooterNav from "@/components/footerNav";
 // import BgEffect from "@/components/BgEffect";
 
 // import WorksGallery from "@/components/WorksGallery";
@@ -29,8 +27,6 @@ export default function Home() {
       <StatsSection />
       {/* <WorksGallery /> */}
       <RecentWorksSection />
-      <Footer />
-      <FooterNav />
     </div>
   );
 }

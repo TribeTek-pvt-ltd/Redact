@@ -5,6 +5,8 @@ import Navbar from "../components/navbar";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import BgEffect from "@/components/BgEffect";
+import Footer from "@/components/footer";
+import FooterNav from "@/components/footerNav";
 // import FluidCursor from "@/components/FluidCursor";
 
 const geistSans = Geist({
@@ -45,6 +47,8 @@ export default function RootLayout({
           <Navbar />
         </div>
         {children}
+        <Footer />
+        <FooterNav />
       </body>
     </html>
   );

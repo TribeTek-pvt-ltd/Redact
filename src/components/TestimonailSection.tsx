@@ -61,7 +61,7 @@ const Testimonials = () => {
 
         {/* Testimonial card on right */}
         <div
-          className="w-full md:w-2/3 relative overflow-hidden min-h-[220px] sm:min-h-[250px] md:h-64 mt-6 md:mt-12"
+          className="w-full md:w-2/3 relative min-h-[300px] sm:min-h-[320px] md:h-80 mt-6 md:mt-0 p-4"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}>
           <AnimatePresence mode="wait">
@@ -71,7 +71,7 @@ const Testimonials = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "-100%", opacity: 0 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="absolute inset-0">
+              className="absolute inset-4">
               <TestimonialCard {...testimonialData[currentIndex]} />
             </motion.div>
           </AnimatePresence>

@@ -39,13 +39,17 @@ const FounderSays: React.FC<FounderSaysProps> = ({
           <div
             className="absolute inset-y-0 right-0 w-1/2 opacity-40 lg:opacity-50"
             style={{
-              backgroundImage: "url('/images/founder2.jpeg')",
+              backgroundImage: "url('/images/founder final.jpeg')",
               backgroundSize: 'cover',
               backgroundPosition: 'right center',
             }}
           />
           {/* Transition Overlay: Fades the image out towards the left */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a] to-transparent" />
+
+          {/* Blue Glows contained within the card */}
+          <div className="absolute -top-10 -left-10 w-48 h-48 bg-blue-500/40 rounded-full blur-3xl z-10" />
+          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-blue-400/30 rounded-full blur-3xl z-10" />
         </div>
 
         {/* Convex bevels and glow (glass effect) */}
@@ -53,8 +57,6 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)] z-[1]" />
         <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(120%90%_at_30%-20%,rgba(255,255,255,0.06),transparent_60%)] z-[1]" />
         <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10 z-[1]" />
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/40 rounded-full blur-3xl pointer-events-none z-[1]"></div>
-        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl pointer-events-none z-[1]"></div>
 
         {/* Quote Icon */}
         <FaQuoteLeft className="text-5xl sm:text-6xl text-blue-400 mb-8 select-none relative z-10" />

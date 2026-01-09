@@ -25,17 +25,17 @@ export default function Hero() {
               <p>Let&apos;s Start Talking About</p>
               <p>Your Next Big Idea!</p>
             </div>
-
-            <div className="mt-4">
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
-              >
-                <Button href="/contact">Schedule Call</Button>
-              </motion.div>
-            </div>
           </motion.h1>
+
+          <div className="mt-4">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
+            >
+              <Button href="/contact" className="text-white">Schedule Call</Button>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>

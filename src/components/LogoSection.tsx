@@ -72,6 +72,10 @@ export default function PartnersLoop() {
         <div
           ref={row1.containerRef}
           className="relative h-[100px] overflow-hidden flex items-center shadow-inner"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+          }}
         >
           {row1.positions.map((pos, i) => (
             <div
@@ -100,6 +104,10 @@ export default function PartnersLoop() {
       <div
         ref={row2.containerRef}
         className="relative h-[100px] overflow-hidden flex items-center shadow-inner"
+        style={{
+          maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        }}
       >
         {row2.positions.map((pos, i) => (
           <div

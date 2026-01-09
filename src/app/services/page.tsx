@@ -5,8 +5,6 @@ import HorizontalServiceCard from "@/components/horizontalServiceCard";
 import { HiOutlineFilm, HiOutlineColorSwatch } from "react-icons/hi";
 import { RiVideoLine, RiSoundModuleLine } from "react-icons/ri";
 
-import Footer from "@/components/footer";
-import FooterNav from "@/components/footerNav";
 import RecentWorksSection from "@/components/RecentworksSection";
 // import { desc } from "framer-motion/client";
 
@@ -62,8 +60,6 @@ export default function Services() {
         </div>
       </div>
       <RecentWorksSection />
-      <Footer />
-      <FooterNav />
     </div>
   );
 }

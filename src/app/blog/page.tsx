@@ -35,7 +35,7 @@ export default async function BlogsListPage() {
         bg-white/10 backdrop-blur-xl
         shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
         transition-all duration-500
-        min-h-[400px]
+        aspect-video
         
         hover:shadow-[0_12px_40px_rgba(0,114,255,0.3)]
         hover:border-[#0072ff]/40
@@ -65,17 +65,17 @@ export default async function BlogsListPage() {
 
               <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
 
-              <div className="relative z-10 p-8 flex flex-col justify-end h-full min-h-[400px]">
+              <div className="relative z-10 p-6 sm:p-8 flex flex-col justify-end h-full">
                 <div>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-[#3b82f6] transition-colors duration-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-[#3b82f6] transition-colors duration-300 line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-gray-300 mt-3 line-clamp-3 leading-relaxed font-medium">
+                  <p className="text-gray-300 mt-2 line-clamp-2 leading-relaxed font-medium text-sm sm:text-base">
                     {post.description}
                   </p>
                 </div>
 
-                <div className="mt-6 flex items-center justify-between text-sm">
+                <div className="mt-4 flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-gray-400">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       year: "numeric",

@@ -6,14 +6,12 @@ import StatsSection from "@/components/Stats";
 import Testimonials from "@/components/TestimonailSection";
 import Hero from "@/components/hero";
 import ScrollingRow from "@/components/images";
-import Footer from "@/components/footer";
 import WhoAreWe from "@/components/whoAreWe";
 import IndustriesSection from "@/components/IndustriesSection";
 import RecentWorksSection from "@/components/RecentworksSection";
 import PartnersLoop from "@/components/LogoSection";
 import VideoAnimation from "@/components/VideoAnimation";
 import VideoEditorCTA from "@/components/cta";
-import FooterNav from "@/components/footerNav";
 
 export default function Home() {
   return (
@@ -23,7 +21,8 @@ export default function Home() {
 
       {/* Content Layer */}
       <div className="relative z-10">
-        <Hero /><VideoAnimation />
+        <Hero />
+        <VideoAnimation />
         <ScrollingRow />
 
         <PartnersLoop />
@@ -36,8 +35,6 @@ export default function Home() {
 
         <IndustriesSection />
         <RecentWorksSection />
-        <Footer />
-        <FooterNav />
       </div>
     </div>
   );
