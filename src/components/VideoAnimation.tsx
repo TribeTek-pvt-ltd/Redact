@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function OverlayStackedSequence() {
@@ -10,6 +10,7 @@ export default function OverlayStackedSequence() {
   const controls3 = useAnimation();
   const controlsVideo = useAnimation();
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isAtVideoStage, setIsAtVideoStage] = useState(false);
 
   const [ref, inView] = useInView({
     threshold: 0.4,
@@ -17,7 +18,10 @@ export default function OverlayStackedSequence() {
 
   // animation logic
   useEffect(() => {
-    if (!inView) return;
+    if (!inView) {
+      setIsAtVideoStage(false);
+      return;
+    }
 
     async function runSequence() {
       // Luxury smooth ease-out-expo for cohesive flow
@@ -42,7 +46,8 @@ export default function OverlayStackedSequence() {
       });
       await new Promise((res) => setTimeout(res, 300));
 
-      controls3.start({
+      // Mark that we are entering the video reveal stage
+      await controlsVideo.start({
         y: "0%",
         opacity: 1,
         transition: smoothTransition,
@@ -54,6 +59,7 @@ export default function OverlayStackedSequence() {
         opacity: 1,
         transition: smoothTransition,
       });
+      setIsAtVideoStage(true);
     }
 
     runSequence();
@@ -63,14 +69,14 @@ export default function OverlayStackedSequence() {
   useEffect(() => {
     if (!videoRef.current) return;
 
-    if (inView) {
+    if (inView && isAtVideoStage) {
       videoRef.current.muted = false;
       videoRef.current.play();
     } else {
       videoRef.current.muted = true;
       videoRef.current.pause();
     }
-  }, [inView]);
+  }, [inView, isAtVideoStage]);
 
   return (
     <div

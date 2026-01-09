@@ -16,7 +16,6 @@ const LOGOS_ROW_2 = [
   "/patners/19.png"
 ];
 
-const IMAGE_WIDTH = 120;
 const IMAGE_HEIGHT = 60;
 const SPEED = 0.5;
 
@@ -31,7 +30,6 @@ function useMarquee(visibleCount: number) {
       const calculatedSpacing = containerWidth / visibleCount;
       setSpacing(calculatedSpacing);
 
-      // Initialize positions: visibleCount + 1 to handle seamless wrap-around
       setPositions(
         Array.from({ length: visibleCount + 1 }).map((_, i) => i * calculatedSpacing)
       );
@@ -39,20 +37,19 @@ function useMarquee(visibleCount: number) {
   }, [visibleCount]);
 
   useEffect(() => {
-    if (spacing === 0) return;
+    if (!spacing) return;
 
     let frame: number;
     const animate = () => {
-      setPositions((prev) => {
-        return prev.map((x) => {
-          let newPos = x - SPEED;
-          if (newPos < -spacing) {
-            const maxPos = Math.max(...prev);
-            newPos = maxPos + spacing;
+      setPositions(prev =>
+        prev.map(x => {
+          let next = x - SPEED;
+          if (next < -spacing) {
+            next = Math.max(...prev) + spacing;
           }
-          return newPos;
-        });
-      });
+          return next;
+        })
+      );
       frame = requestAnimationFrame(animate);
     };
 
@@ -64,42 +61,42 @@ function useMarquee(visibleCount: number) {
 }
 
 export default function PartnersLoop() {
-  // row 1 → exactly 5 visible
   const row1 = useMarquee(5);
-  // row 2 → exactly 7 visible
   const row2 = useMarquee(7);
 
   return (
-    <div className="container mx-auto my-12 flex flex-col gap-8">
+    <div className="container mx-auto my-12 flex flex-col gap-10">
 
-      {/* ------------ ROW 1 ------------ */}
-      <div
-        ref={row1.containerRef}
-        className="relative h-[100px] overflow-hidden flex items-center shadow-inner"
-      >
-        {row1.positions.map((pos, i) => (
-          <div
-            key={i}
-            className="absolute flex justify-center items-center"
-            style={{
-              width: `${row1.spacing}px`,
-              height: `${IMAGE_HEIGHT}px`,
-              transform: `translateX(${pos}px)`,
-            }}
-          >
-            <div className="relative w-full h-full max-w-[120px] px-4">
-              <Image
-                src={LOGOS_ROW_1[i % LOGOS_ROW_1.length]}
-                fill
-                alt="logo"
-                className="object-contain grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110 opacity-70 hover:opacity-100"
-              />
+      {/* ------------ ROW 1 (REDUCED WIDTH) ------------ */}
+      <div className="max-w-6xl mx-auto w-full">
+        <div
+          ref={row1.containerRef}
+          className="relative h-[100px] overflow-hidden flex items-center shadow-inner"
+        >
+          {row1.positions.map((pos, i) => (
+            <div
+              key={i}
+              className="absolute flex justify-center items-center"
+              style={{
+                width: `${row1.spacing}px`,
+                height: IMAGE_HEIGHT,
+                transform: `translateX(${pos}px)`,
+              }}
+            >
+              <div className="relative w-full h-full max-w-[120px] px-4">
+                <Image
+                  src={LOGOS_ROW_1[i % LOGOS_ROW_1.length]}
+                  fill
+                  alt="logo"
+                  className="object-contain grayscale hover:grayscale-0 transition-all duration-500 hover:scale-110 opacity-70 hover:opacity-100"
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* ------------ ROW 2 ------------ */}
+      {/* ------------ ROW 2 (FULL WIDTH) ------------ */}
       <div
         ref={row2.containerRef}
         className="relative h-[100px] overflow-hidden flex items-center shadow-inner"
@@ -110,7 +107,7 @@ export default function PartnersLoop() {
             className="absolute flex justify-center items-center"
             style={{
               width: `${row2.spacing}px`,
-              height: `${IMAGE_HEIGHT}px`,
+              height: IMAGE_HEIGHT,
               transform: `translateX(${pos}px)`,
             }}
           >

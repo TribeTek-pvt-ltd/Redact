@@ -26,13 +26,13 @@ export default function Services() {
     },
     {
       title: "Sound Design",
-      Icon: RiSoundModuleLine,
+      imageSrc: "/images/Sound Design Icon.png",
       description:
         "Sound that speaks louder than words. From sonic branding to immersive audio layers, we build soundscapes that elevate your message and sharpen your identity. Clean, punchy, unforgettable, every beat hits where it matters.",
     },
     {
       title: "Colour Grading",
-      Icon: HiOutlineColorSwatch,
+      imageSrc: "/images/Colour Grade icon.png",
       description:
         "Colour that commands attention. We transform raw footage into visual gold, dialing in mood, tone, and cinematic flair. Whether it’s bold, moody, or sunlit and sleek, our grading makes your content pop with precision and style.",
     },
@@ -53,6 +53,7 @@ export default function Services() {
                 key={index}
                 title={service.title}
                 Icon={service.Icon}
+                imageSrc={service.imageSrc}
                 description={service.description}
                 aria-label={`${service.title} Service Details`}
               />

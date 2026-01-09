@@ -5,13 +5,15 @@ import { IconType } from "react-icons";
 
 interface HorizontalServiceCardProps {
   title: string;
-  Icon: IconType;
+  Icon?: IconType;
+  imageSrc?: string;
   description?: string;
 }
 
 const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
   title,
   Icon,
+  imageSrc,
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 }) => {
   return (
@@ -63,8 +65,18 @@ const HorizontalServiceCard: React.FC<HorizontalServiceCardProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
         </div>
 
-        {/* Icon */}
-        <Icon className="text-9xl text-blue-400 sm:mx-11 drop-shadow-lg z-10" />
+        {/* Icon or Image */}
+        <div className="z-10 flex items-center justify-center sm:mx-11">
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={title}
+              className="w-24 h-24 sm:w-32 sm:h-32 object-contain [filter:brightness(0)_saturate(100%)_invert(43%)_sepia(85%)_saturate(1354%)_hue-rotate(200deg)_brightness(97%)_contrast(92%)] drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+            />
+          ) : Icon ? (
+            <Icon className="text-8xl sm:text-9xl text-blue-400 drop-shadow-lg" />
+          ) : null}
+        </div>
 
         {/* Description */}
         <p className="text-white text-center sm:text-left sm:w-1/2 text-base leading-relaxed flex-1 z-10">

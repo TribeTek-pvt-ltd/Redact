@@ -35,17 +35,17 @@ const FounderSays: React.FC<FounderSaysProps> = ({
       >
         {/* Clipped Background Wrapper */}
         <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
-          {/* Background Image Layer */}
+          {/* Background Image Layer - Focused on the right */}
           <div
-            className="absolute inset-0 opacity-40"
+            className="absolute inset-y-0 right-0 w-1/2 opacity-40 lg:opacity-50"
             style={{
               backgroundImage: "url('/images/founder2.jpeg')",
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: 'right center',
             }}
           />
-          {/* Dark Overlay for Readability */}
-          <div className="absolute inset-0 bg-black/40" />
+          {/* Transition Overlay: Fades the image out towards the left */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a] to-transparent" />
         </div>
 
         {/* Convex bevels and glow (glass effect) */}
@@ -60,7 +60,7 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         <FaQuoteLeft className="text-5xl sm:text-6xl text-blue-400 mb-8 select-none relative z-10" />
 
         {/* Quote Text */}
-        <p className="text-white text-center md:text-left text-lg md:text-xl font-medium mb-6 leading-relaxed relative z-10">
+        <p className="text-white text-center md:text-left text-lg md:text-xl font-medium mb-6 leading-relaxed max-w-md relative z-10">
           {quote}.
         </p>
 
