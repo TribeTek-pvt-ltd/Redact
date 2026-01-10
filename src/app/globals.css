@@ -194,3 +194,7 @@ p {
   text-decoration-thickness: 2px;
   /* Optional: thicker underline */
 }
+
+body {
+  overflow-x: hidden;
+}

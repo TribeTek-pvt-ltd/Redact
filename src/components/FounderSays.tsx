@@ -37,15 +37,15 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden pointer-events-none">
           {/* Background Image Layer - Focused on the right */}
           <div
-            className="absolute inset-y-0 right-0 w-1/2 opacity-40 lg:opacity-50"
+            className="absolute inset-y-0 right-0 w-full h-full opacity-40 lg:opacity-50"
             style={{
-              backgroundImage: "url('/images/founder final.jpeg')",
+              backgroundImage: "url('/images/download.png')",
               backgroundSize: 'cover',
               backgroundPosition: 'right center',
             }}
           />
           {/* Transition Overlay: Fades the image out towards the left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a] to-transparent" />
+          {/* <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a] to-transparent" /> */}
 
           {/* Blue Glows contained within the card */}
           <div className="absolute -top-10 -left-10 w-48 h-48 bg-blue-500/40 rounded-full blur-3xl z-10" />
