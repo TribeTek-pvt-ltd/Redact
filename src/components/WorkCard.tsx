@@ -43,7 +43,7 @@ export default function WorkCard({
         className="
           relative cursor-pointer w-full max-w-xs sm:max-w-sm md:max-w-md h-56 sm:h-60 md:h-64 
           mx-auto rounded-xl overflow-hidden transition hover:scale-[1.03]
-          bg-white/5 backdrop-blur-2xl border border-white/1015
+          bg-white/5 backdrop-blur-2xl border border-white/10
           shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
         "
       >

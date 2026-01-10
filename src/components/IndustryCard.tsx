@@ -7,9 +7,10 @@ import { FaArrowRight } from "react-icons/fa";
 interface IndustryCardProps {
   industry: string;
   bgImage: string;
+  onClick?: () => void;
 }
 
-const IndustryCard = ({ industry, bgImage }: IndustryCardProps) => {
+const IndustryCard = ({ industry, bgImage, onClick }: IndustryCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -40,6 +41,7 @@ const IndustryCard = ({ industry, bgImage }: IndustryCardProps) => {
   return (
     <motion.div
       ref={ref}
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY }}

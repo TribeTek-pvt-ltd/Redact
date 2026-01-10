@@ -47,7 +47,7 @@ const Testimonials = () => {
   }, [isHovered]);
 
   return (
-    <section className="w-full py-12 px-4 sm:px-6">
+    <section className="w-full py-12 px-4 sm:px-6 overflow-x-hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-6 md:gap-12">
         {/* Title on left */}
         <div className="w-full md:w-1/3 text-center md:text-left">
