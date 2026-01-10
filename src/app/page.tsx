@@ -1,21 +1,41 @@
 "use client";
 
-import HeroSection from "@/component/underconstructions";
+// import BgEffect from "@/components/BgEffect";
+import ServiceSection from "@/components/ServiceSection";
+import StatsSection from "@/components/Stats";
+import Testimonials from "@/components/TestimonailSection";
+import Hero from "@/components/hero";
+import ScrollingRow from "@/components/images";
+import WhoAreWe from "@/components/whoAreWe";
+import IndustriesSection from "@/components/IndustriesSection";
+import RecentWorksSection from "@/components/RecentworksSection";
+import PartnersLoop from "@/components/LogoSection";
+import VideoAnimation from "@/components/VideoAnimation";
+import VideoEditorCTA from "@/components/cta";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-black flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-      {/* Gradient Circle Overlay */}
-      <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-gradient-to-br from-blue-500 to-purple-500 rounded-full opacity-30 blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-gradient-to-tr from-cyan-400 to-indigo-600 rounded-full opacity-30 blur-3xl pointer-events-none"></div>
+    <div className="relative ">
+      {/* Background Animated Cards */}
+      {/* <BgEffect /> */}
 
-      {/* Hero Component */}
-      <HeroSection />
+      {/* Content Layer */}
+      <div className="relative z-10">
+        <Hero />
+        <VideoAnimation />
+        <ScrollingRow />
 
-      {/* Footer */}
-      {/* <p className="relative z-10 mt-8 text-gray-400 text-sm">
-        © {new Date().getFullYear()} Redact Editing Shop. All rights reserved.
-      </p> */}
+        <PartnersLoop />
+        <ServiceSection />
+        <WhoAreWe />
+        <StatsSection />
+        <VideoEditorCTA />
+
+        <Testimonials />
+
+        <IndustriesSection />
+        <RecentWorksSection />
+      </div>
     </div>
   );
 }
