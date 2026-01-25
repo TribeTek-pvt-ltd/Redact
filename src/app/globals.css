@@ -198,3 +198,8 @@ p {
 body {
   overflow-x: hidden;
 }
+
+.footerText p {
+  font-weight: 700;
+  color: #0072ff;
+}
