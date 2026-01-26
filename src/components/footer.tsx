@@ -13,7 +13,7 @@ export default function Hero() {
         className="py-6 flex items-start justify-start text-white px-4 sm:px-6 md:px-8" // ⬅️ reduced from py-10
       >
         <div className="container mx-auto">
-          <motion.h1
+          <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
@@ -21,11 +21,11 @@ export default function Hero() {
           >
             <p>Great Ideas Spark</p>
             <p>With Simple Conversation,</p>
-            <div className="text-xl sm:text-2xl md:text-5xl font-bold mb-3 sm:mb-4 text-left text-blue-600 mt-4">
+            <div className="footerText text-xl sm:text-2xl md:text-5xl font-bold mb-3 sm:mb-4 text-left mt-4">
               <p>Let&apos;s Start Talking About</p>
               <p>Your Next Big Idea!</p>
             </div>
-          </motion.h1>
+          </motion.div>
 
           <div className="mt-4">
             <motion.div
