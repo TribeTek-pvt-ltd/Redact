@@ -125,21 +125,19 @@ export default function MultiRowInfiniteCarousel() {
           {images[rowIndex]?.map((src, idx) => (
             <div
               key={idx}
-              className="absolute bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] rounded-2xl p-2 hover:bg-white/10 transition-colors duration-300"
+              className="absolute"
               style={{
                 width: `${imageWidth}px`,
                 height: `${imageHeight}px`,
                 left: positions[rowIndex]?.[idx] || 0,
                 willChange: "transform",
               }}>
-              <div className="relative w-full h-full rounded-xl overflow-hidden">
-                <Image
-                  src={src}
-                  alt={`Carousel image ${rowIndex}-${idx}`}
-                  fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
-                />
-              </div>
+              <Image
+                src={src}
+                alt={`Carousel image ${rowIndex}-${idx}`}
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-1500 ease-in-out rounded-lg"
+              />
             </div>
           ))}
         </div>
