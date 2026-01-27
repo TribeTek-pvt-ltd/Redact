@@ -26,8 +26,8 @@ const StatsSection: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(false);
-            setTimeout(() => setIsVisible(true), 50);
+            setIsVisible(true);
+            if (sectionRef.current) observer.unobserve(sectionRef.current);
           }
         });
       },
@@ -37,7 +37,8 @@ const StatsSection: React.FC = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
 
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      // Cleanup is handled by unobserve in callback, but good practice to disconnect on unmount
+      observer.disconnect();
     };
   }, []);
 

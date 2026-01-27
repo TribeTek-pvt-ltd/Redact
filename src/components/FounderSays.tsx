@@ -39,7 +39,7 @@ const FounderSays: React.FC<FounderSaysProps> = ({
           <div
             className="absolute inset-y-0 right-0 w-full h-full opacity-40 lg:opacity-50"
             style={{
-              backgroundImage: "url('/images/download.png')",
+              backgroundImage: "url('/images/founder final2.jpeg')",
               backgroundSize: 'cover',
               backgroundPosition: 'right center',
             }}
