@@ -76,11 +76,15 @@ export default function OverlayStackedSequence() {
     }
   }, [inView, isAtVideoStage]);
 
-  const bevelStyle = {
+  const glassStyle = {
+    backdropFilter: "blur(12px) saturate(180%)",
+    WebkitBackdropFilter: "blur(12px) saturate(180%)",
+    backgroundColor: "rgba(255, 255, 255, 0.08)",
+    border: "1px solid rgba(255, 255, 255, 0.12)",
     boxShadow: `
       0 30px 60px rgba(0,0,0,0.35),
       0 10px 20px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(255,255,255,0.15)
+      inset 0 1px 1px rgba(255,255,255,0.2)
     `,
   };
 
@@ -112,7 +116,8 @@ export default function OverlayStackedSequence() {
           style={{
             zIndex: 1,
             willChange: "transform, opacity",
-            ...bevelStyle,
+            opacity: 0.9,
+            ...glassStyle,
           }}
         />
 
@@ -131,7 +136,8 @@ export default function OverlayStackedSequence() {
           style={{
             zIndex: 2,
             willChange: "transform, opacity",
-            ...bevelStyle,
+            opacity: 0.9,
+            ...glassStyle,
           }}
         />
 
@@ -150,7 +156,8 @@ export default function OverlayStackedSequence() {
           style={{
             zIndex: 3,
             willChange: "transform, opacity",
-            ...bevelStyle,
+            opacity: 0.9,
+            ...glassStyle,
           }}
         />
 
@@ -171,7 +178,7 @@ export default function OverlayStackedSequence() {
           style={{
             zIndex: 4,
             willChange: "transform, opacity",
-            ...bevelStyle,
+            ...glassStyle,
           }}
         />
       </div>
