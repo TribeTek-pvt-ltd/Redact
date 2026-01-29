@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import Navbar from "../components/navbar";
 import "./globals.css";
+import Script from "next/script";
 import SmoothScroll from "@/components/SmoothScroll";
 import BgEffect from "@/components/BgEffect";
 import Footer from "@/components/footer";
@@ -49,6 +50,19 @@ export default function RootLayout({
         {children}
         <Footer />
         <FooterNav />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-3HJ0CQZV81"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-3HJ0CQZV81');
+          `}
+        </Script>
       </body>
     </html>
   );
