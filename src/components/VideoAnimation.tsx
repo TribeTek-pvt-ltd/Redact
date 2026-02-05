@@ -4,40 +4,31 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-const BASE_IMAGES = [
+const IMAGES = [
   "/1.png",
   "https://picsum.photos/id/1016/800/450",
   "https://picsum.photos/id/1018/800/450",
+  "/images/vdoImage1.avif",
+  "/images/vdoImage2.webp",
+  "/images/vdoImage3.jpg",
+  "/images/vdoImage4.webp",
+  "/images/vdoImage5.jpg",
 ];
-
-// Repeat images 5 times (Total 15 images)
-const IMAGES = Array.from({ length: 5 })
-  .flatMap(() => BASE_IMAGES);
-
-const CARD_DELAY = 0.24; // Delay between each card in seconds
 
 export default function OverlayStackedSequence() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isAtVideoStage, setIsAtVideoStage] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
   const [ref, inView] = useInView({
     threshold: 0.4,
-    triggerOnce: true, // Only trigger animation once
   });
 
-  // Calculate when the video should start
-  // Total time = (IMAGES.length - 1) * CARD_DELAY + transitionDuration?
-  // Actually, we can just delay the video animation by IMAGES.length * CARD_DELAY
-
   useEffect(() => {
-    if (inView) {
-      const totalSequenceTime = IMAGES.length * CARD_DELAY * 1000 + 500; // slightly padded
-      const timer = setTimeout(() => {
-        setIsAtVideoStage(true);
-      }, totalSequenceTime);
-      return () => clearTimeout(timer);
+    if (inView && !hasStarted) {
+      setHasStarted(true);
     }
-  }, [inView]);
+  }, [inView, hasStarted]);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -65,28 +56,32 @@ export default function OverlayStackedSequence() {
     `,
   };
 
-  const smoothTransition = {
-    duration: 1,
-    ease: [0.22, 1, 0.36, 1],
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.24,
+      },
+    },
   };
 
-  const cardVariants = {
+  const itemVariants = {
     hidden: {
       y: "100%",
       opacity: 0,
       rotateX: 12,
       z: 100,
     },
-    visible: (index: number) => ({
+    visible: {
       y: "0%",
       opacity: 1,
       rotateX: 0,
       z: -100,
       transition: {
-        ...smoothTransition,
-        delay: index * CARD_DELAY,
+        duration: 1,
+        ease: [0.22, 1, 0.36, 1],
       },
-    }),
+    },
   };
 
   const videoVariants = {
@@ -104,7 +99,6 @@ export default function OverlayStackedSequence() {
       transition: {
         duration: 1.1,
         ease: [0.16, 1, 0.3, 1],
-        delay: IMAGES.length * CARD_DELAY,
       },
     },
   };
@@ -115,38 +109,30 @@ export default function OverlayStackedSequence() {
       className="w-full flex items-center justify-center py-8 rounded-lg sm:py-12 px-2 sm:px-6"
     >
       {/* 3D perspective container */}
-      <div
+      <motion.div
         className="relative w-full max-w-7xl aspect-video rounded-xl sm:rounded-[32px] overflow-hidden"
         style={{
           perspective: "1400px",
           transformStyle: "preserve-3d",
         }}
+        variants={containerVariants}
+        initial="hidden"
+        animate={hasStarted ? "visible" : "hidden"}
       >
         {IMAGES.map((src, index) => (
-          <motion.div
-            key={`${src}-${index}`}
-            custom={index}
-            variants={cardVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="absolute inset-0 m-auto group relative flex flex-col justify-between items-center
-              min-w-[220px] sm:min-w-[250px] md:min-w-[300px]
-              h-[300px] sm:h-[350px] md:h-[400px]
-              rounded-3xl p-4 sm:p-5 md:p-6 cursor-pointer overflow-hidden
-              bg-black/30 backdrop-blur-xl
-              border border-white/15
-              shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]"
+          <motion.img
+            key={index}
+            src={src}
+            alt={`Image ${index + 1}`}
+            className="absolute inset-0 w-full h-full object-cover rounded-xl sm:rounded-[32px]"
+            variants={itemVariants}
             style={{
               zIndex: index + 1,
               willChange: "transform, opacity",
+              opacity: 0.9,
+              ...glassStyle,
             }}
-          >
-            <img
-              src={src}
-              alt={`Image ${index + 1}`}
-              className="absolute inset-0 w-full h-full object-cover -z-10"
-            />
-          </motion.div>
+          />
         ))}
 
         {/* Video */}
@@ -155,8 +141,7 @@ export default function OverlayStackedSequence() {
           src="/video/vsl.mp4"
           className="absolute inset-0 w-full h-full object-cover rounded-xl sm:rounded-[32px]"
           variants={videoVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          onAnimationComplete={() => setIsAtVideoStage(true)}
           playsInline
           loop
           style={{
@@ -165,7 +150,7 @@ export default function OverlayStackedSequence() {
             ...glassStyle,
           }}
         />
-      </div>
+      </motion.div>
     </div>
   );
 }
