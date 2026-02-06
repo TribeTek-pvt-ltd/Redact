@@ -1,5 +1,6 @@
 ---
 title: What Is Video Editing? A Clear Guide From Redact Media
+image: "/images/Colour Grade icon.png"
 ---
 
 No fluff. Just the basics that make videos clearer, stronger, and easier

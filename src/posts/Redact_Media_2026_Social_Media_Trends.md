@@ -2,6 +2,7 @@
 title: |
   2026 Social Media Trends That Matter\
   (for Psychologists and Instagram Creators)
+image: "/images/2026 Social Media Trends That Matter (Blog image).png"
 ---
 
 A clear, no-fluff guide --- and how Redact Media turns these trends into

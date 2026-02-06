@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 
 interface WorkCardProps {
@@ -38,7 +39,11 @@ export default function WorkCard({
   return (
     <>
       {/* Card */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         onClick={() => url && setOpen(true)}
         className="
           relative cursor-pointer w-full max-w-xs sm:max-w-sm md:max-w-md h-56 sm:h-60 md:h-64 
@@ -81,7 +86,7 @@ export default function WorkCard({
             {workType} {extraText && ` | ${extraText}`}
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Popup Modal */}
       {open && (
