@@ -1,6 +1,7 @@
 ---
 title: What Is Video Editing? A Clear Guide From Redact Media
-image: "/images/Colour Grade icon.png"
+image: "/images/What_Is_Video_Editing_(Blog_image).png"
+date: "2026-01-01"
 ---
 
 No fluff. Just the basics that make videos clearer, stronger, and easier

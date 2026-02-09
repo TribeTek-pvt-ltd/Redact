@@ -7,12 +7,16 @@ interface TestimonialCardProps {
   name: string;
   role?: string;
   feedback: string;
+  profileLink?: string;
+  workLink?: string;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   name,
   role,
   feedback,
+  profileLink,
+  workLink,
 }) => {
   return (
     <motion.div
@@ -22,7 +26,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         rounded-3xl p-8 sm:p-10 cursor-pointer overflow-hidden
         bg-black/30 backdrop-blur-xl
         border border-white/15
-        shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
+        shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)] group
       "
     >
       {/* Convex bevels and textures */}
@@ -34,7 +38,17 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       {/* Background glow blobs */}
       <div className="absolute -top-10 -left-10 w-28 h-28 sm:w-36 sm:h-36 bg-blue-500/20 rounded-full blur-3xl pointer-events-none z-0"></div>
 
-      <div className="relative z-10 space-y-4">
+      {workLink && (
+        <a
+          href={workLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10"
+          aria-label={`View work for ${name}`}
+        />
+      )}
+
+      <div className="relative z-20 space-y-4 pointer-events-none">
         {/* Big Quote */}
         <div className="flex justify-end w-full">
           <FaQuoteLeft className="text-4xl text-blue-400 select-none" />
@@ -46,8 +60,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         </p>
 
         {/* Name */}
-        <div className="mt-2">
-          <p className="text-white font-bold text-lg">{name}</p>
+        <div className="mt-2 pointer-events-auto">
+          {profileLink ? (
+            <a
+              href={profileLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-bold text-lg hover:text-blue-400 transition-colors inline-block relative z-30"
+            >
+              {name}
+            </a>
+          ) : (
+            <p className="text-white font-bold text-lg">{name}</p>
+          )}
           {role && <p className="text-gray-400 text-sm">{role}</p>}
         </div>
       </div>

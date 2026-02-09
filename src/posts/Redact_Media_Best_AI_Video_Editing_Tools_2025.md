@@ -1,6 +1,9 @@
 ---
 title: Best AI Video Editing Tools for 2025 (A No-Fluff Guide) --- by
   Redact Media
+image: "/images/2026_Social_Media_Trends_That_Matter_(Blog_image)_1_(1).png"
+date: "2026-01-01"
+
 ---
 
 A practical breakdown of AI tools by use-case, plus how Redact Media

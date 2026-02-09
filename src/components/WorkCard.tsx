@@ -40,14 +40,15 @@ export default function WorkCard({
     <>
       {/* Card */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} // Custom ease-out cubic
+        whileHover={{ scale: 1.05 }}
         onClick={() => url && setOpen(true)}
         className="
           relative cursor-pointer w-full max-w-xs sm:max-w-sm md:max-w-md h-56 sm:h-60 md:h-64 
-          mx-auto rounded-xl overflow-hidden transition hover:scale-[1.03]
+          mx-auto rounded-xl overflow-hidden
           bg-white/5 backdrop-blur-2xl border border-white/10
           shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
         "

@@ -8,11 +8,12 @@ const IMAGES = [
   "/1.png",
   "https://picsum.photos/id/1016/800/450",
   "https://picsum.photos/id/1018/800/450",
-  "/images/vdoImage1.avif",
-  "/images/vdoImage2.webp",
-  "/images/vdoImage3.jpg",
-  "/images/vdoImage4.webp",
-  "/images/vdoImage5.jpg",
+  "https://picsum.photos/id/1015/800/450",
+  "https://picsum.photos/id/1016/800/450",
+  "https://picsum.photos/id/1014/800/450",
+  "https://picsum.photos/id/1019/800/450",
+  "https://picsum.photos/id/1020/800/450",
+
 ];
 
 export default function OverlayStackedSequence() {
