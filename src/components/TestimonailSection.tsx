@@ -7,10 +7,10 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const testimonialData = [
   {
-    name: "JBenyamin Azadian",
+    name: "Benyamin Azadian",
     role: "American Distribution General Trading LLC",
     feedback:
-      "edact from overseas did a job that many people wouldn’t do with the same passion in the country I am. Let me mention that the quality of work was off the roof and saran did a state of the art editing for us. The video was shot with the minimum equipment and managed and edited and fined remotely by saran. The end result was state of the art, their pricing also was great. I’m super happy and pleased with their work.",
+      "Redact delivered state-of-the-art editing remotely with incredible passion. Even with minimal filming equipment, he managed, edited, and polished the video to an outstanding final result. Great quality, fair pricing, I’m truly happy with the work.",
     profileLink: "#",
     workLink: "#",
   },
@@ -34,7 +34,7 @@ const testimonialData = [
     name: "Vaasanthika Parthasarathy ",
     role: "Heartsease counseling services",
     feedback:
-      "I’ve been working with Saran Raj for over six months, and it’s been one of the most seamless collaborations I’ve had. He’s not only technically skilled but also reliable, respectful, and genuinely invested in quality. Saran is professional, communicates clearly, and always delivers on time even when challenges come up. What really stands out is his proactive mindset and willingness to offer helpful suggestions. His organized workflow, humility, and consistency make him a standout. I truly hope to continue working with him long term.",
+      "Worked with Saran Raj 6+ months one of my smoothest collaborations. Skilled, reliable, respectful, and quality-driven. Clear communication, always on time, proactive with great suggestions. Organized, humble, consistent. Hope to work long-term.",
     profileLink: "#",
     workLink: "#",
   },
@@ -42,7 +42,7 @@ const testimonialData = [
     name: "Rufus Linton",
     role: "",
     feedback:
-      "Working with Saran has been an absolute game-changer. He’s insanely talented, super easy to work with. He’s open to feedback, quick to adapt, and somehow manages to make real-time edits during our short calls shows his technical capabilities. Saran always up to date with the latest trends, bringing fresh ideas that take reels to the next level. On top of that, he’s approachable, fast to respond, and makes the whole process feel effortless.",
+      "Working with Saran is a game-changer. He’s insanely talented, easy to work with, and adapts fast. He even makes real-time edits on quick calls. Always on top of trends, brings fresh ideas, responds fast, and makes the process effortless.",
     profileLink: "#",
     workLink: "#",
   },
@@ -50,7 +50,7 @@ const testimonialData = [
     name: "Praveen Krishnaraja",
     role: "Windsor Production",
     feedback:
-      "Working with Saran on The Maadhar was an incredible experience. His youthful enthusiasm and deep cinematic knowledge brought exceptional technical finesse to the film, especially in editing. The massive positive response to the film’s technical quality is a testament to his talent. I’m excited to collaborate with him again on bigger projects soon. Truly outstanding work.",
+      "Working with Saran on The Maadhar was incredible. His youthful energy and cinematic knowledge brought real finesse—especially in the edit. The huge positive response to the film’s technical quality speaks for itself. Excited to collaborate again soon.",
     profileLink: "#",
     workLink: "#",
   },
