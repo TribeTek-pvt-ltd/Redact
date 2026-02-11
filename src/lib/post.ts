@@ -15,6 +15,7 @@ export interface PostData {
   contentHtml: string;
   keywords: string[];
   image?: string;
+  blogbanner?: string;
 }
 
 /**
@@ -58,6 +59,7 @@ export async function getPostData(slug: string): Promise<PostData> {
     keywords: data.keywords,
     date: data.date,
     image: data.image,
+    blogbanner: data.blogbanner,
   };
   // } catch (error) {
   //   console.error("Error loading post:", slug, error);

@@ -11,8 +11,7 @@ const IMAGES = [
   "https://picsum.photos/id/1015/800/450",
   "https://picsum.photos/id/1016/800/450",
   "https://picsum.photos/id/1014/800/450",
-  "https://picsum.photos/id/1019/800/450",
-  "https://picsum.photos/id/1020/800/450",
+
 
 ];
 
@@ -45,6 +44,23 @@ export default function OverlayStackedSequence() {
     }
   }, [inView, isAtVideoStage]);
 
+  // Enhanced glassmorphism with bevel/emboss for images only
+  const imageGlassStyle = {
+    backdropFilter: "blur(24px) saturate(250%)",
+    WebkitBackdropFilter: "blur(24px) saturate(250%)",
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    border: "2px solid rgba(255, 255, 255, 0.25)",
+    boxShadow: `
+      0 30px 60px rgba(0,0,0,0.4),
+      0 10px 20px rgba(0,0,0,0.3),
+      inset 0 2px 4px rgba(255,255,255,0.4),
+      inset 0 -2px 4px rgba(0,0,0,0.25),
+      inset -2px 0 6px rgba(0,0,0,0.2),
+      inset 2px 2px 8px rgba(255,255,255,0.35)
+    `,
+  };
+
+  // Standard glass style for video
   const glassStyle = {
     backdropFilter: "blur(12px) saturate(180%)",
     WebkitBackdropFilter: "blur(12px) saturate(180%)",
@@ -121,19 +137,37 @@ export default function OverlayStackedSequence() {
         animate={hasStarted ? "visible" : "hidden"}
       >
         {IMAGES.map((src, index) => (
-          <motion.img
+          <motion.div
             key={index}
-            src={src}
-            alt={`Image ${index + 1}`}
-            className="absolute inset-0 w-full h-full object-cover rounded-xl sm:rounded-[32px]"
+            className="absolute inset-0 w-full h-full rounded-xl sm:rounded-[32px] overflow-hidden"
             variants={itemVariants}
             style={{
               zIndex: index + 1,
               willChange: "transform, opacity",
-              opacity: 0.9,
-              ...glassStyle,
+              ...imageGlassStyle,
             }}
-          />
+          >
+            {/* Shining corner shade from left side */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `radial-gradient(circle at 0% 0%, 
+                  rgba(255,255,255,0.4) 0%, 
+                  rgba(255,255,255,0.2) 15%, 
+                  rgba(255,255,255,0.05) 30%, 
+                  transparent 50%)`,
+                mixBlendMode: "overlay",
+              }}
+            />
+            <img
+              src={src}
+              alt={`Image ${index + 1}`}
+              className="w-full h-full object-cover"
+              style={{
+                opacity: 0.9,
+              }}
+            />
+          </motion.div>
         ))}
 
         {/* Video */}

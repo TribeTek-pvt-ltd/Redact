@@ -19,18 +19,46 @@ export default async function BlogPostPage({
   return (
     <>
       {/* HERO SECTION */}
-      <section className="relative flex items-center justify-center text-center mt-20 overflow-hidden">
-        <div className="absolute -top-40 -left-32 w-[400px] h-[400px] bg-[#0072ff]/20 blur-[140px] rounded-full animate-pulse-slow" />
-        <div className="absolute -bottom-32 -right-32 w-[350px] h-[350px] bg-[#0072ff]/15 blur-[120px] rounded-full animate-pulse-slow" />
+      <section className="relative flex flex-col items-center justify-center text-center mt-20 mb-20 px-4 sm:px-6">
+        {/* Background Blobs (Behind everything) */}
+        <div className="absolute -top-40 -left-32 w-[400px] h-[400px] bg-[#0072ff]/20 blur-[140px] rounded-full animate-pulse-slow -z-10" />
+        <div className="absolute -bottom-32 -right-32 w-[350px] h-[350px] bg-[#0072ff]/15 blur-[120px] rounded-full animate-pulse-slow -z-10" />
 
-        <div className="relative z-10 max-w-4xl px-6 sm:px-12 py-32 flex flex-col items-center gap-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg">
+        {/* Banner Container - Own Ratio */}
+        {postData.blogbanner && (
+          <div className="
+            relative w-full max-w-5xl 
+            rounded-3xl overflow-hidden 
+            border border-white/10 bg-white/5 
+            shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]
+            mb-10
+          ">
+            {/* 
+                Image display respecting aspect ratio. 
+                Using a standard img tag with w-full h-auto ensures it scales naturally.
+             */}
+            <img
+              src={postData.blogbanner}
+              alt={postData.title}
+              className="w-full h-auto object-cover"
+            />
+
+            {/* Overlays for Depth & Glass Effect (On top of image only) */}
+            <div className="absolute inset-0 z-[1] shadow-[inset_1px_1px_0_0_rgba(255,255,255,0.45)] pointer-events-none" />
+            <div className="absolute inset-0 z-[1] shadow-[inset_-6px_-8px_20px_rgba(0,0,0,0.35)] pointer-events-none" />
+            <div className="absolute inset-0 z-[1] bg-[radial-gradient(120%_90%_at_30%_-20%,rgba(255,255,255,0.08),transparent_60%)] pointer-events-none" />
+          </div>
+        )}
+
+        {/* Content (Text) - Below Banner */}
+        <div className="relative z-10 px-6 sm:px-12 flex flex-col items-center gap-6 text-center max-w-4xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-2xl">
             {postData.title}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-500 font-medium max-w-3xl">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-200 font-medium max-w-3xl drop-shadow-lg">
             {postData.description}
           </p>
-          <span className="text-gray-400 text-sm mt-2">
+          <span className="text-gray-300 text-sm mt-2 font-medium bg-black/30 px-4 py-1 rounded-full backdrop-blur-sm border border-white/10">
             {new Date(postData.date).toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",

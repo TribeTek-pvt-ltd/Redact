@@ -9,6 +9,7 @@ interface TestimonialCardProps {
   feedback: string;
   profileLink?: string;
   workLink?: string;
+  backgroundImage?: string;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
@@ -17,14 +18,20 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   feedback,
   profileLink,
   workLink,
+  backgroundImage,
 }) => {
   return (
     <motion.div
+      style={{
+        backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       className="
         relative flex flex-col justify-center items-start
         w-full h-full
         rounded-3xl p-8 sm:p-10 cursor-pointer overflow-hidden
-        bg-black/30 backdrop-blur-xl
+        backdrop-blur-xl
         border border-white/15
         shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)] group
       "

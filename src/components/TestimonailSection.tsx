@@ -13,6 +13,7 @@ const testimonialData = [
       "Redact delivered state-of-the-art editing remotely with incredible passion. Even with minimal filming equipment, he managed, edited, and polished the video to an outstanding final result. Great quality, fair pricing, I’m truly happy with the work.",
     profileLink: "#",
     workLink: "#",
+    backgroundImage: "/testimonials/Founder.jpeg",
   },
   {
     name: "Dr. Daniella Marchetti",
@@ -110,7 +111,7 @@ const Testimonials = () => {
     <section className="w-full py-12 px-4 sm:px-6 overflow-x-hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-stretch gap-6 md:gap-12">
         {/* Title on left */}
-        <div className="w-full md:w-1/3 flex flex-col justify-between text-center md:text-left h-full min-h-[inherit]">
+        <div className="w-full md:w-1/3 flex flex-col justify-center text-center md:text-left h-full min-h-[inherit]">
           <div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
               Client Testimonials
@@ -120,7 +121,7 @@ const Testimonials = () => {
             </p>
           </div>
 
-          <div className="flex gap-3 mt-6 md:mt-0 justify-center md:justify-start mb-4">
+          <div className="flex gap-3 mt-8 justify-center md:justify-start">
             <button
               onClick={handlePrev}
               className="p-3 rounded-full bg-white/10 border border-white/20 text-white backdrop-blur-md hover:bg-white/20 transition-all hover:scale-105 active:scale-95"
