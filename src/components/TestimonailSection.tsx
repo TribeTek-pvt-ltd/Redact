@@ -11,33 +11,36 @@ const testimonialData = [
     role: "American Distribution General Trading LLC",
     feedback:
       "Redact delivered state-of-the-art editing remotely with incredible passion. Even with minimal filming equipment, he managed, edited, and polished the video to an outstanding final result. Great quality, fair pricing, I’m truly happy with the work.",
-    profileLink: "#",
+    profileLink: "https://www.instagram.com/ben.dxb1313/",
     workLink: "#",
-    backgroundImage: "/testimonials/Founder.jpeg",
+    backgroundImage: "/testimonials/BenyaminAzadian.jpeg",
   },
   {
     name: "Dr. Daniella Marchetti",
     role: "Sleep Psychologist",
     feedback:
       "Working with Redact was easy and enjoyable. They were responsive, professional, and made the process smooth from start to finish.",
-    profileLink: "#",
+    profileLink: "https://www.instagram.com/drdaniellamarchetti/",
     workLink: "#",
+    backgroundImage: "/testimonials/DrDaniellaMarchetti.jpeg",
   },
   {
     name: "Kyri Leontiou",
     role: "Kyri Media",
     feedback:
       "I’ve been working with Saran for over two years, and he’s an exceptional editor. He’s highly professional, consistently delivers high-quality work, and always meets deadlines. He’s also quick, reliable, and genuinely easy to work with.",
-    profileLink: "#",
+    profileLink: "https://www.instagram.com/kyrileo/",
     workLink: "#",
+    backgroundImage: "/testimonials/KyriLeontiou.jpeg",
   },
   {
     name: "Vaasanthika Parthasarathy ",
     role: "Heartsease counseling services",
     feedback:
       "Worked with Saran Raj 6+ months one of my smoothest collaborations. Skilled, reliable, respectful, and quality-driven. Clear communication, always on time, proactive with great suggestions. Organized, humble, consistent. Hope to work long-term.",
-    profileLink: "#",
+    profileLink: "https://www.instagram.com/vaasanthika/",
     workLink: "#",
+    backgroundImage: "/testimonials/VaasanthikaParthasarathy.jpeg",
   },
   {
     name: "Rufus Linton",
@@ -46,14 +49,16 @@ const testimonialData = [
       "Working with Saran is a game-changer. He’s insanely talented, easy to work with, and adapts fast. He even makes real-time edits on quick calls. Always on top of trends, brings fresh ideas, responds fast, and makes the process effortless.",
     profileLink: "#",
     workLink: "#",
+    backgroundImage: "/testimonials/RufusLinton.jpeg",
   },
   {
     name: "Praveen Krishnaraja",
     role: "Windsor Production",
     feedback:
       "Working with Saran on The Maadhar was incredible. His youthful energy and cinematic knowledge brought real finesse—especially in the edit. The huge positive response to the film’s technical quality speaks for itself. Excited to collaborate again soon.",
-    profileLink: "#",
+    profileLink: "https://www.instagram.com/praveen_krishnaraja/",
     workLink: "#",
+    backgroundImage: "/testimonials/PraveenKrishnaraja.jpeg",
   },
 ];
 

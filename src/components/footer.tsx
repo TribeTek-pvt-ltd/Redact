@@ -17,10 +17,10 @@ export default function Hero() {
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-            className="text-2xl sm:text-3xl md:text-6xl font-bold mb-3 sm:mb-4 text-left"
+            className="text-2xl sm:text-3xl md:text-6xl font-inter font-bold mb-3 sm:mb-4 text-left"
           >
-            <p>Great Ideas Spark</p>
-            <p>With Simple Conversation,</p>
+            <p className="footerHeading">Great Ideas Spark</p>
+            <p className="footerHeading">With Simple Conversation,</p>
             <div className="footerText text-xl sm:text-2xl md:text-5xl font-bold mb-3 sm:mb-4 text-left mt-4">
               <p>Let&apos;s Start Talking About</p>
               <p>Your Next Big Idea!</p>

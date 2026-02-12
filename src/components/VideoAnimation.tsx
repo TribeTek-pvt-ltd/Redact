@@ -5,12 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 const IMAGES = [
-  "/1.png",
-  "https://picsum.photos/id/1016/800/450",
-  "https://picsum.photos/id/1018/800/450",
-  "https://picsum.photos/id/1015/800/450",
-  "https://picsum.photos/id/1016/800/450",
-  "https://picsum.photos/id/1014/800/450",
+  "video/1.png",
+  "video/2.png",
+  "video/3.png",
+  "video/4.png",
+  "video/5.png",
+  "video/6.png",
 
 
 ];

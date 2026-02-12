@@ -52,7 +52,7 @@ export default async function BlogPostPage({
 
         {/* Content (Text) - Below Banner */}
         <div className="relative z-10 px-6 sm:px-12 flex flex-col items-center gap-6 text-center max-w-4xl">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-2xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-2xl whitespace-pre-line">
             {postData.title}
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-200 font-medium max-w-3xl drop-shadow-lg">

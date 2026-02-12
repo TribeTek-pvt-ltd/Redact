@@ -1,6 +1,6 @@
 ---
 title: |
-  2026 Social Media Trends That Matter\
+  2026 Social Media Trends That Matter
   (for Psychologists and Instagram Creators)
 image: "/Blog/2026 Social Media Trends That Matter (Thumbnail).png"
 blogbanner: "/Blog/2026 Social Media Trends That Matter (Blog image).png"

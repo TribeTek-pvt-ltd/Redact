@@ -201,5 +201,14 @@ body {
 
 .footerText p {
   font-weight: 700;
+  font-family: var(--font-inter), sans-serif;
+
   color: #0072ff;
+}
+
+.footerHeading {
+  font-weight: 700;
+  font-family: var(--font-uber-move), sans-serif;
+
+
 }

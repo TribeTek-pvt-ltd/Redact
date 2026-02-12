@@ -87,7 +87,7 @@ export default function BlogCard({ post }: BlogCardProps) {
                 <div className="relative z-10 w-full">
                     <div className="flex items-end justify-between gap-4">
                         <div className="flex-1">
-                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 line-clamp-2">
+                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 line-clamp-2 whitespace-pre-line">
                                 {post.title}
                             </h3>
                             <span className="text-gray-300 text-sm">
