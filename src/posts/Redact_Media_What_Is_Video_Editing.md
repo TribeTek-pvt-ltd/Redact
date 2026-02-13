@@ -1,6 +1,7 @@
 ---
-title: What Is Video Editing?
-    A Clear Guide From Redact Media
+title: |
+  What Is Video Editing?
+  A Clear Guide From Redact Media
 image: "/Blog/What Is Video Editing (Thumbnail).png"
 blogbanner: "/Blog/What Is Video Editing (Blog image).png"
 date: "2026-01-01"
