@@ -49,7 +49,7 @@ const testimonialData = [
       "Working with Saran is a game-changer. He’s insanely talented, easy to work with, and adapts fast. He even makes real-time edits on quick calls. Always on top of trends, brings fresh ideas, responds fast, and makes the process effortless.",
     profileLink: "#",
     workLink: "#",
-    backgroundImage: "/testimonials/RufusLinton.jpeg",
+    backgroundImage: "/testimonials/Linton.jpeg",
   },
   {
     name: "Praveen Krishnaraja",

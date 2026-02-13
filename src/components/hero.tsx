@@ -20,7 +20,7 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
           className="text-4xl sm:text-4xl md:text-7xl font-bold mb-2 sm:mb-6 text-left py-10">
           <p>Creating bold visuals </p>
-          <p>for brands that lead.</p>
+          <p>for brands that lead</p>
         </motion.h1>
         <motion.div
           initial={{ x: -50, opacity: 0 }}
