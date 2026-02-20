@@ -115,7 +115,7 @@ export default function AdminPage() {
         </div>
 
         {/* Video listing */}
-        <div className="flex flex-col items-left gap-4 mt-3 max-h-[70vh] overflow-y-auto overflow-x-hidden p-2">
+        <div className="grid container mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-3 p-2">
           {videos.map((video, idx) => (
             <VideoCard
               key={video._id || idx}
