@@ -25,7 +25,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       style={{
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "right",
       }}
       className="
         relative flex flex-col justify-center items-start

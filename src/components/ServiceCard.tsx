@@ -48,7 +48,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, Icon, imageSrc }) => {
             className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain [filter:brightness(0)_saturate(100%)_invert(43%)_sepia(85%)_saturate(1354%)_hue-rotate(200deg)_brightness(97%)_contrast(92%)] drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"
           />
         ) : Icon ? (
-          <Icon className="text-8xl sm:text-9xl md:text-9xl drop-shadow-lg" />
+          <Icon className="text-8xl sm:text-9xl text-blue-500 md:text-9xl drop-shadow-lg" />
         ) : null}
       </div>
 
