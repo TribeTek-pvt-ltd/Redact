@@ -45,12 +45,12 @@ export async function PUT(req: NextRequest) {
     if (!_id)
       return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
-    await db
-      .collection("videos")
-      .updateOne(
-        { _id: new ObjectId(_id) },
-        { $set: { title, thumbnail, url, category, industry } }
-      );
+    // await db
+    //   .collection("videos")
+    //   .updateOne(
+    //     { _id: new ObjectId(_id) },
+    //     { $set: { title, thumbnail, url, category, industry } }
+    //   );
 
     return NextResponse.json({ success: true });
   } catch {
@@ -67,9 +67,9 @@ export async function DELETE(req: NextRequest) {
     const id = searchParams.get("id");
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
-    const client = await clientPromise;
-    const db = client.db();
-    await db.collection("videos").deleteOne({ _id: new ObjectId(id) });
+    // const client = await clientPromise;
+    // const db = client.db();
+    // await db.collection("videos").deleteOne({ _id: new ObjectId(id) });
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(

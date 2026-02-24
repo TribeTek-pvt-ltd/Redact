@@ -146,7 +146,7 @@ const Testimonials = () => {
 
         {/* Testimonial card on right */}
         <div
-          className="w-full md:w-2/3 relative min-h-[300px] sm:min-h-[320px] md:h-80 mt-6 md:mt-0 p-4"
+          className="w-full md:w-2/3 relative min-h-[450px] sm:min-h-[400px] md:h-80 mt-6 md:mt-0 p-4"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}>
           <AnimatePresence mode="wait" custom={direction}>
