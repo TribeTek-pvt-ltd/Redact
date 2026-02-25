@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" aria-label="Home">
               <Image
-                src="/images/WebsiteCornerLogo.png"
+                src="/images/logo.png"
                 alt="Redact Media Logo"
                 width={200}
                 height={80}
