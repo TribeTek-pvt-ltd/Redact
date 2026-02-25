@@ -57,7 +57,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
       <div className="relative z-20 space-y-4 pointer-events-none">
         {/* Big Quote */}
-        <div className="flex justify-end w-full">
+        <div className="flex justify-start w-full">
           <FaQuoteLeft className="text-3xl sm:text-4xl text-blue-400 select-none" />
         </div>
 
