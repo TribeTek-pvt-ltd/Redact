@@ -29,7 +29,7 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="
-          relative flex flex-col items-center md:items-start rounded-2xl p-8 sm:p-10 max-w-3xl w-full
+          relative flex flex-col items-center md:items-start justify-center rounded-2xl p-6 sm:p-10 max-w-3xl w-full aspect-video
           bg-white/10 backdrop-blur-2xl border border-white/15 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)]
         "
       >
@@ -59,15 +59,15 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10 z-[1]" />
 
         {/* Quote Icon */}
-        <FaQuoteLeft className="hidden md:block text-5xl sm:text-6xl text-blue-400 mb-8 select-none relative z-10 ml-2 md:ml-0" />
+        <FaQuoteLeft className="text-3xl sm:text-6xl text-blue-400 mb-4 sm:mb-8 select-none relative z-10 ml-2 md:ml-0" />
 
         {/* Quote Text */}
-        <p className="text-white text-center md:text-left text-lg md:text-xl font-medium mb-6 leading-relaxed max-w-md relative z-10">
+        <p className="text-white text-center md:text-left text-sm sm:text-lg md:text-xl font-medium mb-4 md:mb-6 leading-tight sm:leading-relaxed max-w-md relative z-10">
           {quote}.
         </p>
 
         {/* Founder Name */}
-        <p className="text-white/80 font-semibold md:text-left w-full md:mr-12 text-md relative z-10">
+        <p className="text-white/80 font-semibold md:text-left w-full md:mr-12 text-xs sm:text-md relative z-10">
           - {founderName}
         </p>
 
