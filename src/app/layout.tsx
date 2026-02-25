@@ -29,6 +29,9 @@ const uberMove = localFont({
 export const metadata: Metadata = {
   title: "The Redact Media",
   description: "A platform for media editing and collaboration.",
+  icons: {
+    icon: '/images/WebsiteCornerLogo.png',
+  },
 };
 
 export default function RootLayout({
