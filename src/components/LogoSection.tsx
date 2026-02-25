@@ -19,7 +19,7 @@ const LOGOS_ROW_2 = [
 const IMAGE_HEIGHT = 60;
 const SPEED = 0.5;
 
-function useMarquee(visibleCount: number) {
+function useMarquee(totalCount: number, visibleCount: number) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [positions, setPositions] = useState<number[]>([]);
   const [spacing, setSpacing] = useState(0);
@@ -30,11 +30,12 @@ function useMarquee(visibleCount: number) {
       const calculatedSpacing = containerWidth / visibleCount;
       setSpacing(calculatedSpacing);
 
+      // Initialize all logos, not just visible ones
       setPositions(
-        Array.from({ length: visibleCount + 1 }).map((_, i) => i * calculatedSpacing)
+        Array.from({ length: totalCount }).map((_, i) => i * calculatedSpacing)
       );
     }
-  }, [visibleCount]);
+  }, [totalCount, visibleCount]);
 
   useEffect(() => {
     if (!spacing) return;
@@ -44,8 +45,11 @@ function useMarquee(visibleCount: number) {
       setPositions(prev =>
         prev.map(x => {
           let next = x - SPEED;
+          // Calculate the total width of all logos in the marquee
+          const totalWidth = totalCount * spacing;
           if (next < -spacing) {
-            next = Math.max(...prev) + spacing;
+            // Move to the end of the line
+            next = next + totalWidth;
           }
           return next;
         })
@@ -55,14 +59,14 @@ function useMarquee(visibleCount: number) {
 
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [spacing]);
+  }, [spacing, totalCount]);
 
   return { containerRef, positions, spacing };
 }
 
 export default function PartnersLoop() {
-  const row1 = useMarquee(5);
-  const row2 = useMarquee(7);
+  const row1 = useMarquee(LOGOS_ROW_1.length, 5);
+  const row2 = useMarquee(LOGOS_ROW_2.length, 7);
 
   return (
     <div className="container mx-auto my-12 flex flex-col gap-10">
@@ -85,6 +89,7 @@ export default function PartnersLoop() {
                 width: `${row1.spacing}px`,
                 height: IMAGE_HEIGHT,
                 transform: `translateX(${pos}px)`,
+                visibility: pos > (LOGOS_ROW_1.length - 1) * row1.spacing || pos < -row1.spacing ? 'hidden' : 'visible'
               }}
             >
               <div className="relative w-full h-full max-w-[120px] px-4">
@@ -117,6 +122,7 @@ export default function PartnersLoop() {
               width: `${row2.spacing}px`,
               height: IMAGE_HEIGHT,
               transform: `translateX(${pos}px)`,
+              visibility: pos > (LOGOS_ROW_2.length - 1) * row2.spacing || pos < -row2.spacing ? 'hidden' : 'visible'
             }}
           >
             <div className="relative w-full h-full max-w-[100px] px-2">
