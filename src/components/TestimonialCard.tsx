@@ -30,8 +30,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       className="
         relative flex flex-col justify-center items-start
         w-full h-full
-        rounded-3xl p-8 sm:p-10 cursor-pointer overflow-hidden
-        backdrop-blur-xl
+        rounded-3xl p-6 sm:p-10 cursor-pointer overflow-hidden
+        bg-black/30 backdrop-blur-xl
         border border-white/15
         shadow-[0_18px_40px_-16px_rgba(0,0,0,0.55)] group
       "
@@ -57,8 +57,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
       <div className="relative z-20 space-y-4 pointer-events-none">
         {/* Big Quote */}
-        <div className="flex  w-full">
-          <FaQuoteLeft className="text-4xl text-blue-400 select-none" />
+        <div className="flex justify-end w-full">
+          <FaQuoteLeft className="text-3xl sm:text-4xl text-blue-400 select-none" />
         </div>
 
         {/* Feedback */}

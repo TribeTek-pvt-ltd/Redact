@@ -59,7 +59,7 @@ const FounderSays: React.FC<FounderSaysProps> = ({
         <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10 z-[1]" />
 
         {/* Quote Icon */}
-        <FaQuoteLeft className="text-5xl sm:text-6xl text-blue-400 mb-8 select-none relative z-10 ml-2 md:ml-0" />
+        <FaQuoteLeft className="hidden md:block text-5xl sm:text-6xl text-blue-400 mb-8 select-none relative z-10 ml-2 md:ml-0" />
 
         {/* Quote Text */}
         <p className="text-white text-center md:text-left text-lg md:text-xl font-medium mb-6 leading-relaxed max-w-md relative z-10">

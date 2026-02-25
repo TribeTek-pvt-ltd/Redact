@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaInstagram, FaEnvelope, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaEnvelope, FaLinkedin, FaTiktok, FaYoutube } from "react-icons/fa";
 
 export default function HeroSection() {
   return (
@@ -40,18 +40,32 @@ export default function HeroSection() {
             <FaFacebook />
           </a> */}
           <a
-            href="https://www.instagram.com/redact05/"
+            href="https://www.instagram.com/theredactmedia/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition-colors duration-300">
             <FaInstagram />
           </a>
           <a
-            href="https://www.linkedin.com/company/redact44/"
+            href="https://www.linkedin.com/company/redactmedia/?viewAsMember=true"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-sky-400 transition-colors duration-300">
             <FaLinkedin />
+          </a>
+          <a
+            href="https://www.tiktok.com/@redact700?_r=1&_t=ZS-94BGS4OIIM9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-400 transition-colors duration-300">
+            <FaTiktok />
+          </a>
+          <a
+            href="https://www.youtube.com/@RedactMedia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-red-600 transition-colors duration-300">
+            <FaYoutube />
           </a>
           <a
             href="mailto:contact@redact.com"

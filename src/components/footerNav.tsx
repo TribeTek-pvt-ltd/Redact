@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FaLinkedin, FaInstagram } from 'react-icons/fa'; // Import icons
+import { FaLinkedin, FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa'; // Import icons
 
 export default function Footer() {
   return (
@@ -16,11 +16,17 @@ export default function Footer() {
         </div>
         {/* Right Side: Social Links */}
         <div className="flex space-x-4">
-          <a href="https://www.linkedin.com/company/redact44/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+          <a href="https://www.linkedin.com/company/redactmedia/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
             <FaLinkedin size={24} className="hover:opacity-80 transition-opacity" />
           </a>
-          <a href="https://www.instagram.com/redact05/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+          <a href="https://www.instagram.com/theredactmedia/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
             <FaInstagram size={24} className="hover:opacity-80 transition-opacity" />
+          </a>
+          <a href="https://www.tiktok.com/@redact700?_r=1&_t=ZS-94BGS4OIIM9" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+            <FaTiktok size={24} className="hover:opacity-80 transition-opacity" />
+          </a>
+          <a href="https://www.youtube.com/@RedactMedia" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+            <FaYoutube size={24} className="hover:opacity-80 transition-opacity" />
           </a>
         </div>
       </div>

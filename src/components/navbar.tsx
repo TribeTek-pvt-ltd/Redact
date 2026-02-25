@@ -49,12 +49,12 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          
+
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" aria-label="Home">
               <Image
-                src="/images/logo.png"
+                src="/images/WebsiteCornerLogo.png"
                 alt="Redact Media Logo"
                 width={200}
                 height={80}
