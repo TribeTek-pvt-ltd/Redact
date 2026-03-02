@@ -36,6 +36,9 @@ export default function WorkCard({
     }
   };
 
+  const ytId = extractYouTubeID(url || "");
+  const displayThumbnail = thumbnail || (ytId ? `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg` : "");
+
   return (
     <>
       {/* Card */}
@@ -71,13 +74,19 @@ export default function WorkCard({
 
         {/* Thumbnail */}
         <div className="relative w-full h-3/4 rounded-xl overflow-hidden z-10">
-          <Image
-            src={thumbnail}
-            alt={title}
-            fill
-            className="object-cover"
-            priority
-          />
+          {displayThumbnail ? (
+            <Image
+              src={displayThumbnail}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-800 flex items-center justify-center text-white/50">
+              No Thumbnail
+            </div>
+          )}
         </div>
 
         {/* Bottom Text */}

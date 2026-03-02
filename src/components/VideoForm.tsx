@@ -35,17 +35,13 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
 
   const extractVideoId = (ytUrl: string): string | null => {
     try {
-      const urlObj = new URL(ytUrl);
-      if (urlObj.hostname.includes("youtube.com")) {
-        return urlObj.searchParams.get("v");
-      }
-      if (urlObj.hostname === "youtu.be") {
-        return urlObj.pathname.substring(1);
-      }
+      const regex =
+        /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([^&?/]+)/;
+      const match = ytUrl.match(regex);
+      return match ? match[1] : null;
     } catch {
       return null;
     }
-    return null;
   };
 
   useEffect(() => {
@@ -61,7 +57,13 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
       return;
     }
 
-    onAddVideo({ title, thumbnail, url, industry, category });
+    let finalUrl = url;
+    const videoId = extractVideoId(finalUrl);
+    if (videoId) {
+      finalUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    }
+
+    onAddVideo({ title, thumbnail, url: finalUrl, industry, category });
     setTitle("");
     setThumbnail("");
     setUrl("");
@@ -91,9 +93,8 @@ export default function VideoForm({ onAddVideo }: VideoFormProps) {
       <div
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        className={`relative w-full md:w-1/3 border-2 border-dashed rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${
-          thumbnail ? "border-blue-500/50" : "border-white/20"
-        } h-40 md:h-48`}>
+        className={`relative w-full md:w-1/3 border-2 border-dashed rounded-lg flex items-center justify-center cursor-pointer transition-all duration-300 ${thumbnail ? "border-blue-500/50" : "border-white/20"
+          } h-40 md:h-48`}>
         {thumbnail ? (
           <img
             src={thumbnail}
