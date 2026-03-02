@@ -10,7 +10,7 @@ export default function Footer() {
         {/* Left Side: Nav Items */}
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 sm:gap-x-10">
           <Link href="/" className="hover:text-blue-400 transition-colors text-sm sm:text-base font-medium uppercase tracking-wider">Home</Link>
-          <Link href="/work" className="hover:text-blue-400 transition-colors text-sm sm:text-base font-medium uppercase tracking-wider">Work</Link>
+          <Link href="/works" className="hover:text-blue-400 transition-colors text-sm sm:text-base font-medium uppercase tracking-wider">Work</Link>
           <Link href="/services" className="hover:text-blue-400 transition-colors text-sm sm:text-base font-medium uppercase tracking-wider">Service</Link>
           <Link href="/about" className="hover:text-blue-400 transition-colors text-sm sm:text-base font-medium uppercase tracking-wider">About Us</Link>
         </div>
