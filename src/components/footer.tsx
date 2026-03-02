@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import { useCalendly } from "@/app/hooks/useCalendly";
 
 export default function Hero() {
+  const { openCalendly } = useCalendly();
   return (
     <section className="w-full mt-30 bg-gradient-to-r from-blue-950/30 via-black/20 to-blue-950/30">
       <motion.div
@@ -33,7 +35,7 @@ export default function Hero() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
             >
-              <Button href="/contact" className="text-white">Schedule Call</Button>
+              <Button onClick={openCalendly} className="text-white">Schedule Call</Button>
             </motion.div>
           </div>
         </div>

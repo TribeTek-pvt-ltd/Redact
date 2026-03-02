@@ -2,7 +2,7 @@
 
 import { useEffect, useCallback } from "react";
 
-const CALENDLY_URL = "https://calendly.com/redact-tribetek/30min";
+const CALENDLY_URL = "https://calendly.com/redactmediateam/30min";
 
 // Extend the Window interface
 declare global {
