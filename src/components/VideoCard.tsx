@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaPen, FaTrash } from "react-icons/fa";
+import { videoIndustries as industries, videoCategories as categories } from "@/lib/constants";
 
 interface Video {
   _id?: string;
@@ -18,8 +19,6 @@ interface VideoCardProps {
   onUpdate: (updatedVideo: Video) => void;
 }
 
-const industries = ["Tech", "Construction", "Education", "Health"];
-const categories = ["Tutorial", "Promo", "Interview", "Other"];
 
 export default function VideoCard({
   video,

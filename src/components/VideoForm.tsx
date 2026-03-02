@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, DragEvent, useEffect } from "react";
+import { videoIndustries as industries, videoCategories as categories } from "@/lib/constants";
 
 interface VideoFormProps {
   onAddVideo: (video: {
@@ -12,19 +13,6 @@ interface VideoFormProps {
   }) => void;
 }
 
-const industries = [
-  "Event & lifestyle",
-  "Commercials",
-  "Automobile",
-  "Shortform videos",
-  "Beauty & Healthcare",
-];
-const categories = [
-  "Shortform Editing",
-  "Commercials",
-  "Sound Designing",
-  "Color Grading",
-];
 
 export default function VideoForm({ onAddVideo }: VideoFormProps) {
   const [title, setTitle] = useState("");
